@@ -1,0 +1,250 @@
+\subsection{Klassifizierung der Verfahren zur Roboterprogrammierung}
+\begin{figure}[ht]\centering 
+\includegraphics[width=0.5\linewidth]{figures/ch01_ueberblick.png}
+\caption{Überblick}
+\label{fig:ch01_komp}
+\end{figure}
+Kriterien:
+\begin{itemize}
+\item[1.] \textbf{Programmierort:} On-line (prozessnah, am Roboter) vs. Off-line (prozessfern, ohne Roboter)
+\item[2.] \textbf{Art der Programmierung:} Direkte vs. indirekte (textuelle oder graphische/gemischte) Programmierung, hybride Verfahren
+\item[3.] \textbf{Abstraktionsgrad der Programmierung:} Explizite/bewegungs- bzw. roboterorientierte vs. implizite/aufgabenorientierte Programmierung
+\end{itemize}
+\begin{figure}[ht]\centering 
+\includegraphics[width=\linewidth]{figures/ch01_schema.png}
+\caption{Schema}
+\label{fig:ch01_schema}
+\end{figure}
+\subsection{Arten der Programmierung}
+\subsubsection{Direkte/Prozessnahe Programmierung}
+\begin{itemize}
+\item \textbf{Einstellen des Roboters:} Ältestes Programmierverfahren.
+Der Bewegungsbereich jedes Gelenks wird durch Stopper eingeschränkt.
+Die Bewegungen erfolgen für jedes Gelenk einzeln bis zum Anschlag.
+Zuordnung zwischen Anfahrpunkten zu Stopper kann mit Codiermatritzen erfolgen.
+(sogenannter \glqq Bang-Bang-Robot\grqq)\\
+Nachteil: sehr kleine Menge von Anfahrpunkten.
+\item \textbf{Teach-In Programmierung:} Anfahren markanter Punkte der Bahn mit manueller Steuerung
+(Teach Box, Teach Panel, weitere: Spacemouse, Teach-Kugel)\\
+Funktionalität einer Teach Box:
+\begin{itemize}
+\item Einzelbewegung der Gelenke
+\item Bewegung des Effektors in 6 Freiheitsgraden
+\item Punkte anfahren u. abspeichern
+\item Speichern / Löschen von Anfahrpunkten
+\item Eingabe von Geschwindigkeiten
+\item Eingabe von Befehlen zur Bedienung des Greifers
+\item Starten / Stoppen ganzer Programme
+\end{itemize}
+Vorgehensweise beim Teach-In:
+\begin{itemize}
+\item Anfahren markanter Punkte der Bahn (= Folge von Zwischenpunkten)
+\item Speichern der Gelenkwerte
+\item Ergänzung der gespeicherten Werte
+um Parameter wie Geschwindigkeit, Beschleunigung usw.
+\item Anwendung: in der Fertigungsindustrie (Punktschweißen, Nieten), Handhabungsaufgaben (Pakete vom Fließband nehmen)
+\end{itemize}
+\item \textbf{Play-Back- (manuelle) Programmierung:}
+\begin{itemize}
+\item Einstellung des Roboters auf Zero-Force-Control
+(Roboter kann durch den Bediener bewegt werden)
+\item Abfahren der gewünschten Bahn
+\item Speichern der Gelenkwerte: automatisch (definierte Abtastfrequenz) oder manuell (durch Tastendruck)
+\item Anwendung: mathematisch schwer beschreibbare Bewegungsabläufe, Integrierung der handwerklichen Erfahrung, typischerweise für Lackieren oder Kleben eingesetzt
+\end{itemize}
+\begin{table}[hbt]
+\centering
+\begin{tabular}{|p{13cm}|}
+\hline
+Nachteile\\
+\hline
+\vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[-] schwere Roboter schwierig zu bewegen
+\item[-] wenig Platz in engen Fertigungszellen für Bediener, dadurch Sicherheitsrisiko
+\item[-] hoher Speicherbedarf (bei hoher Abtastrate)
+\item[-] schlechte Korrekturmöglichkeiten
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Nachteile der Play-Back-Programmierung}
+\label{tab:PBprog}
+\end{table}
+\item \textbf{Master-Slave-Programmierung:}
+\begin{itemize}
+\item Bediener führt einen kleinen, leicht bewegbaren Master
+Roboter (entspricht einem kinematischen Modell des
+Slave-Roboters)
+\item Bewegung wird auf den Slave-Roboter übertragen
+\item Bewegungen werden synchron ausgeführt
+\item Slave-Roboter wirkt als Kraftverstärker
+\item Anwendung: Handhabung großer Lasten bzw. großer Roboter
+\end{itemize}
+\begin{table}[hbt]
+\centering
+\begin{tabular}{|p{6.5cm}|p{6.5cm}|}
+\hline
+Vorteile & Nachteile\\
+\hline
+\vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[+] Möglichkeit, auch schwerste Roboter zu programmieren
+\end{itemize}
+ &
+ \vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[-] teuer, da zwei Roboter benötigt werden
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Zusammenfassung Master-Slave-Programmierung}
+\label{tab:MSprog}
+\end{table}
+\item \textbf{Sensorunterstützte Programmierung:}
+Manuell
+\begin{itemize}
+\item Bediener führt Programmiergriffel (Leuchtstift, Laserstift) entlang der
+abzufahrenden Bahn
+\item Erfassung der Bewegung durch externe Sensoren (zB. Kameras,
+Laserscanner)
+\item Berechnung der inversen Kinematik
+\end{itemize}
+Automatisch
+\begin{itemize}
+\item Vorgabe des Start- und Zielpunktes
+\item Sensorische Ertastung der Sollkontur (zB. über Kraft-Momenten-Sensor)
+\end{itemize}
+Anwendung: Abspeichern der Bahn als Folge der Gelenkwinkel
+Schleifen, Entgraten von Werkstücken	
+\end{itemize}
+\begin{table}[hbt]
+\centering
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+Vorteile & Nachteile\\
+\hline
+\vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[+] schnell bei einfachen Trajektorien
+\item[+] sofort anwendbar
+\item[+] geringe Fehleranfälligkeit
+\item[+] Bediener benötigt keine Programmierkenntnisse
+\item[+] kein Modell der Umwelt erforderlich
+\end{itemize}
+ &
+ \vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[-] hoher Aufwand bei komplexen Trajektorien
+\item[-] nur mit und am Roboter möglich
+\item[-] spezifisch für einen Robotertyp
+\item[-] Verletzungsgefahr durch Roboter
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Zusammenfassung Direkte Programmierung}
+\label{tab:dirprog}
+\end{table}
+\subsubsection{Textuelle Verfahren}
+Erstellung von Robotersteuerprogrammen erfolgt mittels erweiterter,
+höherer Programmiersprachen (PasRo, Val, etc.)
+\\ \\
+\textbf{Sprache:} (DIN 66025)
+\begin{itemize}
+\item Programm = Menge numerierter Sätze\\
+z.B. \glqq N70 G00 X20 Z12\grqq{} entspricht Werkzeug im Eilgang (G00) an Position X=20 Z=12 bewegen. (N = Satznummer)
+\item Sprachen:
+\begin{itemize}
+\item APT (Automatically Programmed Tools), 1961 MIT
+\item EXAPT (Extended Subset of APT), 1966 Aachen
+\end{itemize}
+\end{itemize}
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+Vorteile & Nachteile\\
+\hline
+\vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[+] Programmierung kann unabhängig vom Roboter erfolgen
+\item[+] strukturierte, übersichtliche Programmierlogik
+\item[+] Erstellung komplexer Programme (Einbezug von Wissensbasis,
+Weltmodell, Auswertung von Sensoren)
+\end{itemize}
+ &
+ \vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[-] Bediener benötigt Programmierkenntnisse
+\item[-] keine / schlechte Korrekturmöglichkeiten
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Zusammenfassung Textuelle Verfahren}
+\label{tab:textprog}
+\end{table}
+\subsubsection{Graphische/Gemischte Verfahren}
+\begin{itemize}
+\item Graphische Darstellung von Kontrollstrukturen (if/else, Schleifen,
+Marken...)
+\item Kopplung mit Visualisierungs-Tool und Simulations-Tool (z.B. RobCAD)
+\item  Trajektorien durch Interpolation aus Stützpunkten, Freihandzeichnen,
+analytisch
+\item Operationen Icon- oder Menu-gesteuert
+\item Simple graphische Programmierung, z.B. Lego Mindstorms:
+Leicht verständliche, ikonische Programmierung aber beschränkte Möglichkeiten
+\item Graphische Programmierung basierend auf sensorieller Erfassung der
+Benutzervorführung: Simulation der Roboterprogramme
+\end{itemize}
+\begin{table}[hbt]
+\centering
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+Vorteile & Nachteile\\
+\hline
+\vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[+] Programmierer benötigt weniger Programmierkenntnisse
+\item[+] einfache Programmierung, leichte Fehlererkennung
+\item[+] schnelles Erstellen komplexer Programme (rapid prototyping)
+\end{itemize}
+ &
+ \vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[-] sensorielle Benutzererfassung noch zu ungenau
+\item[-] Leistungsfähige Hardware für Signalanalyse, Modellierung, ...
+\item[-] Komplexe Modelle benötigt
+\item[-] 2D-Sicht des Anwenders
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Zusammenfassung Graphische Verfahren}
+\label{tab:textprog}
+\end{table}
+
+\subsection{Abstraktionsgrad der Programmierung}
+\subsubsection{Explizite/Roboterorientierte Programmierung}
+\glqq Wie ist es zu tun?\grqq \\
+Bewegungen und Greiferbefehle sind direkt in eine Programmiersprache eingebunden.
+Aufgabenmodell: gegeben durch Anfangs- und Endzustand (z.B. Relationale Darstellung)
+\subsubsection{Implizite/Aufgabenorientierte Programmierung}
+\glqq Was ist zu tun?\grqq \\
+Die Aufgabe, die der Roboter durchführen soll, wird beschrieben, z.B. in Form von Zuständen.
+\begin{itemize}
+\item Abstrakte Form der Programmierung erfolgt in den Phasen\\
+1. Modellierung der Umwelt\\
+2. Spezifikation der Aufgaben\\
+3. Erzeugung der Roboterprogramme
+\item u. U. erfolgt vor der Ausführung eine Überprüfung des
+Roboterprogramms (Simulation)
+\item Beispiel: Einschenken unter Berücksichtigung von Hindernissen
+\end{itemize}
