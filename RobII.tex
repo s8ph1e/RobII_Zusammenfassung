@@ -1,5 +1,7 @@
 \documentclass[11pt]{scrartcl}
 \usepackage{color}
+\usepackage{enumitem}
+\setlist[itemize,2]{label=\textbullet}
 \usepackage{geometry}
 \geometry{a4paper, top=25mm, left=20mm, right=20mm, bottom=40mm, headsep=10mm, footskip=5mm}
 \usepackage{ucs}
@@ -19,6 +21,10 @@
 %\RequirePackage[ngerman=ngerman-x-latest]{hyphsubst}
 \newcommand{\Gu}{\glqq{}}		%Gänsefüßchen unten
 \newcommand{\Go}{\grqq\xspace} 
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\ita}{\item[$\rightarrow$]}
+%\renewcommand*\labelitemii{-}
+%\newcommand{\tightemize}{\vspace{-2mm}\begin{itemize}\setlength\itemsep{0em}}
 \pagestyle{scrheadings}
 \pagenumbering{arabic}	        %Gänsefüßchen oben
  \addtolength{\textheight}{25mm}
@@ -54,7 +60,6 @@
 Sophie \textsc{v. Schmettow}\\
 Mirjam \textsc{Jöchner}\\
 SoSe 15\\
-
 
 
 
@@ -156,12 +161,7 @@ und nur für den privaten Gebrauch bestimmt ist.
 \input{ch02.tex}
 
 \section{Interaktive Programmierung: Programmierung durch Vormachen von Manipulationsaufgaben} %(3.-5. VL)
-%• Grundlagen
-%• Beispielsysteme (für Wissensrepr): Calinon, Schaal, IPoR II
-%• Klassifikation von PdV-Verfahren
-%• Bahnplanung
-%• Grifftaxonomie
-%• Griffplanung
+\input{ch03.tex}
 
 
 %Übung I (5. VL)
