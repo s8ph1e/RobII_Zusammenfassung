@@ -15,6 +15,13 @@
 %\usepackage{subfigure}
 %\usepackage{subfig}
 
+\usepackage{algpseudocode,algorithm,algorithmicx}
+\newcommand*\DNA{\textsc{dna}}
+
+\newcommand*\Let[2]{\State #1 $\gets$ #2}
+\algrenewcommand\algorithmicrequire{\textbf{Precondition:}}
+\algrenewcommand\algorithmicensure{\textbf{Postcondition:}}
+
 \usepackage[ngerman]{babel} 
 \usepackage{xspace}
 \usepackage{hyperref}
@@ -23,7 +30,9 @@
 \newcommand{\Go}{\grqq\xspace} 
 \newcommand{\red}{\textcolor{red}}
 \newcommand{\ita}{\item[$\rightarrow$]}
-%\renewcommand*\labelitemii{-}
+\DeclareSymbolFont{matha}{OML}{txmi}{m}{it}% txfonts
+\DeclareMathSymbol{\varv}{\mathord}{matha}{118}
+\renewcommand*\labelitemii{-}
 %\newcommand{\tightemize}{\vspace{-2mm}\begin{itemize}\setlength\itemsep{0em}}
 \pagestyle{scrheadings}
 \pagenumbering{arabic}	        %Gänsefüßchen oben
@@ -162,7 +171,7 @@ und nur für den privaten Gebrauch bestimmt ist.
 
 \section{Interaktive Programmierung: Programmierung durch Vormachen von Manipulationsaufgaben} %(3.-5. VL)
 \input{ch03.tex}
-
+\input{ch04.tex}
 
 %Übung I (5. VL)
 \section{Aktionsplanungsverfahren} %(6. VL)
