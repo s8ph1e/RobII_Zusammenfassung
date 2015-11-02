@@ -29,7 +29,7 @@ $\rightarrow$ Wie Handlungswissen erzeugen?
 \item[2.]Transparenz der Prozesse im Programmiersystem: Umsetzung von Handlungen des Benutzers soll nachvollziehbar sein
 \item[3.]Abgleich von Systemhypothesen mit der Benutzerintention: z.B. zur Korrektur falscher Systemhypothesen
 \item[4.]Flexibilisierung und Optimierung von Programmen: erlernte Programme sollen in vielen Situationen anwendbar sein
-\item[5.]Wiederverwendung von Teillösungen: FUnktionsbausteine sollen in anderen Pogrammen wiederverwendbar sein
+\item[5.]Wiederverwendung von Teillösungen: Funktionsbausteine sollen in anderen Pogrammen wiederverwendbar sein
 \end{itemize}
 
 \subsubsection*{Randbedingungen}
@@ -38,7 +38,7 @@ Notwendig zur Erzeugung von leistungsfähigen, automatischen aber auch sicheren 
 \item[1.]Weitgehend automatisierte Programmgenerierung
 \item[2.]Beschränkung der Benutzerinteraktion auf das Nötigste
 \item[3.]Maximierung des Informationsgewinns und der Eindeutigkeit der Ergebnisse der Benutzerinteraktion für das System
-\item[4.]Möglichst benutzerfreundliche Mensch-Maschine Interaktion: verständlich, transparent und flexibel, möglichst ähnlich zur zwischenmenschlichen Kommuni
+\item[4.]Möglichst benutzerfreundliche Mensch-Maschine Interaktion: verständlich, transparent und flexibel, möglichst ähnlich zur zwischenmenschlichen Kommunikation
 \end{itemize}
 
 \subsection{PdV - Generelles Framework}
@@ -49,7 +49,7 @@ Notwendig zur Erzeugung von leistungsfähigen, automatischen aber auch sicheren 
 \end{figure}
 Abbildung  \ref{fig:ch03_zykl} zeigt die Phasen von PdV.
 \subsubsection*{Beobachtung}
-Beobachtung der Benutzerinteraktion mittels externer und interner Sensorik (z.B. Kamerasysteme, Datenhandschuhe, Positionstracker).\\
+Beobachtung der Benutzerinteraktion mittels externer und interner Sensorik (z.B. Kamerasysteme, Datenhandschuhe, Positionstracker).
 \begin{itemize}
 \ita mit den gewonnenen Sensordaten lassen sich dann Objekte klassifizieren, Trajektorien aufzeichnen und weitere Vorverarbeitungsschritte wie
 Grifferkennung durchführen
@@ -93,7 +93,7 @@ Abbildung  \ref{fig:ch03_krit} zeigt die Klassifikationskriterien auf einen Blic
 Siehe Tabelle \ref{tab:aufgkomp}
 \begin{table}[hbt]
 \centering
-\begin{tabular}{|p{6.5cm}|p{6.5cm}|}
+\begin{tabular}{|p{8cm}|p{8cm}|}
 \hline
 Elementarfähigkeiten & Komplexe Aufgaben\\
 \hline
@@ -102,7 +102,8 @@ Reflexe, Basisskills, einfache Bewegungen
 \begin{itemize}
 \setlength\itemsep{0em}
 \item Lernen direkter Sensor-/Aktorzusammenhänge
-\item Beispiele: Verwendung neuronaler Netze auf adaptive Regelkreise, Zustandsautomaten
+\item Beispiele: Verwendung neuronaler Netze auf adaptive Regelkreise, Zustandsautomaten\footnote{Asada91, Koeppe95, Kaiser96, Ishikawa99,
+Bentivegna00, Calinon08, Pastor09}
 \item[$\rightarrow$] Probleme: Explizite Beispiele, stark konfigurationsabhängig,
 viele Trainingsbeispiele notwendig
 \end{itemize}
@@ -111,7 +112,8 @@ Task, Montageaufgaben
  \vspace{-4mm}
 \begin{itemize}
 \setlength\itemsep{0em}
-\item Interpretation von Handlungsfolgen
+\item Interpretation von Handlungsfolgen\footnote{Segre89, Inaba90, Kang94, Sagerer98, Aleotti06, Pardowitz07
+Veeraraghavan08}
 \ita Probleme: Breites Hintergrund-, Planungs- und Modellwissen,
 Klärungsdialoge mit dem Benutzern
 \end{itemize}\\
@@ -134,7 +136,8 @@ Aktive Beispiele
 \begin{itemize}
 \setlength\itemsep{0em}
 \item Benutzer führt explizit vor
-\item Beobachtung durch Sensorsystem (Datenhandschuh, Kameras)
+\item Beobachtung durch Sensorsystem (Datenhandschuh, Kameras)\footnote{Friedrich98, Ikeuchi99, Inoue/Kuniyoshi94,
+Zöllner06}
 \ita Probleme: Aufwendige Sensorsysteme, Identifikation relevanter Aktionen und Ziele bzw. Zustände schwierig
 \end{itemize}
  &
@@ -144,7 +147,7 @@ Passive Beispiele
 \setlength\itemsep{0em}
 \item Roboter wird duch externen \Gu Master\Go
 gesteuert, Signalaufzeichnung, Korrelation
-zwischen Sensor- und Aktordaten
+zwischen Sensor- und Aktordaten\footnote{Kaiser96, Koeppe98, Billard07}
 \ita Probleme: Gelerntes Wissen ist auf
 konkretes Zielsystem festgelegt
 \end{itemize} 
@@ -153,7 +156,7 @@ Implizite Beispiele
  \vspace{-4mm}
 \begin{itemize}
 \setlength\itemsep{0em}
-\item Zielspezifikation durch Vorgabe graphischer Ikone
+\item Zielspezifikation durch Vorgabe graphischer Ikone\footnote{Takahashi/Ogata97,Sagerer98, Riepp97}
 \ita Probleme: Dialog umfangreich, Anpassung an Zielsystem
 \end{itemize}\\
 \hline
@@ -200,7 +203,7 @@ Operatorumfang
 Siehe Tabelle \ref{tab:trajtech}
 \begin{table}[hbt]
 \centering
-\begin{tabular}{|p{6.5cm}|p{6.5cm}|}
+\begin{tabular}{|p{8cm}|p{8cm}|}
 \hline
 direkt & geplant\\
 \hline
@@ -219,7 +222,7 @@ Direkte Abbildung
  \vspace{-4mm}
 \begin{itemize}
 \setlength\itemsep{0em}
-\item Explizites oder gelerntes Transformationsmodell
+\item Explizites oder gelerntes Transformationsmodell\footnote{Kang97, Kaneko97}
 \ita Probleme: Zielsystem und Zielumgebung müssen korrespondieren
 \end{itemize}\\
 \hline
@@ -380,8 +383,146 @@ Auswahlbedingungen statt konkreter Werte benutzt
 
 %Tabelle 5.1 Skript!!
 \subsection{Wissensrepräsentation: Beispielsysteme}
-\subsubsection*{Probabilistisch (Calinon \& Billard)}
-\subsubsection*{Dynamisch (Pastor \& Schaal)}
+\subsubsection*{Probabilistisch (Calinon \& Billard)}\footnote{[Calinon07]: What is the teacher’s role in robot programming by demonstration?\\
+On learning, representing and generalizing a task in a humanoid robot}
+Ziel: Lernen von Skills, z.B. Schachfigur bewegen
+\begin{itemize}
+\item Aktive, physische Demonstration am Roboter $\rightarrow$ kein Korrespondenzproblem
+\item Repräsentation durch Gaussian Mixture Models (GMM) $\rightarrow$ subsymbolisch
+\item Direkte Ausführung
+\end{itemize}
+Hierbei werden folgende Lerndaten benötigt:
+\begin{itemize}
+\item $(\theta, x, y, h)$: $n$ Demonstrationen mit je $T$ Trajektoriepunkten
+\item $\theta$: Gelenkwinkel des Roboters + Zeitstempel
+\item $x$: Kartesische Position der Hände + Zeitstempel
+\item $y$: Distanzvektor der Hände zur Startposition des Objekts + Zeitstempel
+\item $h$: Binärer Zustand des Greifers (offen, geschlossen) + Zeitstempel
+\end{itemize}
+Das Lernverfahren besteht dann aus folgenden Schritten: 
+\begin{itemize}
+\item Dimensionsreduktion und zeitliche Angleichung: $(\theta, x, y, h) \rightarrow (\theta^\prime, x^\prime, y^\prime, h^\prime)$
+\item Lernen eines GMMs (vgl. Abbildung \ref{fig:ch03_gmm}) für alle Komponenten, z.B. $x^\prime$ (4-dimensional) mit Dichte $p(x^\prime)$:
+\begin{align*}
+p(x^\prime) = \sum\limits_{i=1}^k p(i)p(x^\prime|i) = \sum\limits_{i=1}^k \pi_i \mathcal{N}(x^\prime; \mu_i, \Sigma_i)
+\end{align*} mit $k$ = Anzahl der Normalverteilungen, $\pi$ = Gewichtung, $\mathcal{N}$ = Normalverteilung
+\item Bestimmung von $k$: Bayes‘sches Informationskriterium und EM-Algorithmus
+\begin{figure}[ht]\centering 
+\includegraphics[width=0.6\linewidth]{figures/ch03_gmm.png}
+\caption{Gaussian Mixture Model}
+\label{fig:ch03_gmm}
+\end{figure}
+\end{itemize}
+Die Repräsentation gestaltet sich folgendermaßen:
+\begin{itemize}
+\item Probabilistische Darstellung der Trajektorien $x^\prime: t \mapsto \mathcal{N}(\mu_{x^\prime}(t), \Sigma_x(t))$
+\item Berechnung durch Gaussian Mixture Regression (vgl. Abbildung \ref{fig:ch03_gmr}): Gewichtung der bedingten Wahrscheinlichkeiten $p(x^\prime, i|t)$
+\begin{align*}
+\mu_{x^\prime}(t) = \sum\limits_{i=1}^k \beta_i(t)\mu_{i, x^\prime|t} \text{ und } \Sigma_{x^\prime}(t) = \sum\limits_{i=1}^k \beta_i(t)^2\Sigma_{i, x^\prime|t}\\
+\text{ mit } p(x^\prime,i|t) = \mathcal{N}(\mu_{i, x^\prime|t}, \Sigma_{i, x^\prime|t}) \text{ und } \beta_i(t) = \frac{p(t|i)}{\Sigma{j=1}^k p(t|j)}
+\end{align*}
+\begin{figure}[ht]\centering 
+\includegraphics[width=0.6\linewidth]{figures/ch03_gmr.png}
+\caption{Gaussian Mixture Regression}
+\label{fig:ch03_gmr}
+\end{figure}
+\end{itemize}
+Die Ausführung besteht dann aus folgenden Schritten:
+\begin{itemize}
+\item Definition eines quadratischen Ähnlichkeitsmaßes: \Gu metric of imitation\Go
+\item Gewichtung der Abweichung von den Mittelwerten in $t$, z.B. $\mu_{x^\prime}(t)$
+\item Wahl der Gewichtsmatrix: $(\Sigma_{x^\prime}(t))^{-1}$
+\item Bestimmung des Nachfolgerzustands $\theta(t+1)$ bzw. der Transition $\theta(t) \rightarrow \theta(t+1)$, die
+das Ähnlichkeitsmaß minimiert
+\item Jacobi-Matrix zur Kombination von kartesischen und Gelenkwinkeleinschränkungen
+\end{itemize}
+Eine Bewertung des Verfahrens ist in Tabelle \ref{tab:cabi} dargestellt.
+\begin{table}[hbt]
+\centering
+\begin{tabular}{|p{6.5cm}|p{6.5cm}|}
+\hline
+Vorteile & Nachteile\\
+\hline
+\vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[+] schnelles Verfahren, ähnlich Playbackprogrammierung
+\item[+] automatische Adaptierung an Änderungen der Objektpositionen
+\end{itemize}
+ &
+ \vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[-] relevante Merkmale manuell definiert, hier z.B. nur Distanz zu Startposition
+\item[-] geringe Generalisierung, da keine Vorbedingungen, Ziele, Kollisionen
+ keine zielgerichtete Erzeugung von Bewegungen
+\item[-] keine Validierung
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Zusammenfassung: Calinon, Billard}
+\label{tab:cabi}
+\end{table}\\ 
+\subsubsection*{Dynamisch (Pastor \& Schaal)\footnote{[Pastor09]: Learning and generalization of motor skills by learning from demonstration}}
+Ziel: Lernen von Skills, z.B. Tennisschwung
+\begin{itemize}
+\item Aktive, physische Demonstration am Roboter $\rightarrow$ kein Korrespondenzproblem
+\item Repräsentation durch Dynamic Movement Primitives (Differentialgleichungen)
+\item Direkte Ausführung
+\end{itemize}
+Die Repräsentation ist wie folgt:
+\begin{itemize}
+\item Implizite Darstellung durch Menge von Differentialgleichungen:
+\begin{align*}
+\tau \dot{v} &= K(g-x) -Dv + (g-x_0)f\\
+\tau \dot{x} &= v\\
+\end{align*}
+\item $x$ = Position, $v$ = Geschwindigkeit, $K$ = Federkonstante,
+$D$ = Dämpfung, $g$ = Ziel, $x_0$ = Start, $\tau$ = zeitliche Skalierung
+\item $f$ = nicht-lineare Funktion, die die Demonstrationsmenge approximiert:
+\begin{align*}
+f(s) = \frac{\sum_{i=1}^n w_i\psi_i(s)s}{\sum_{i=1}^n \psi_i(s)} \text{ mit } \tau \dot{s} = -\alpha s
+\end{align*}
+\item Vorteil: Gewichte hängen nicht von $\tau, x_0 $ und $g$ ab
+\ita Änderungen von Start, Ziel und der zeitlichen Skalierung möglich
+\ita Generalisierung eingeschränkt möglich
+\end{itemize}
+Das Lernen läuft in folgenden Schritten ab:
+\begin{itemize}
+\item Berechnung von $v(t), \dot{v}(t)$ für jede Demonstration $x(t)$
+\item $s(t)$ wird durch Integration berechnet
+\item Der Wert $f(s)$ wird berechnet
+\item $\psi_i$ sind nicht normalisierte Normalverteilungen (\Gu Gauss‘sche Basisfunktionen\Go)
+\item Bestimmung der Parameter $w_i$ durch lineare Regression
+\end{itemize}
+Die Ausführung erfolgt über die Berechnung von $v(t), \dot{v}(t)$ im aktuellen Zustand und Integration.\\
+Eine Bewertung des Verfahrens ist in Tabelle \ref{tab:pascha} dargestellt.
+\begin{table}[hbt]
+\centering
+\begin{tabular}{|p{6.5cm}|p{6.5cm}|}
+\hline
+Vorteile & Nachteile\\
+\hline
+\vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[+] schnelles Verfahren
+\item[+] automatische Adaptierung an Start und Ziel
+\item[+] lokale Hindernisvermeidung möglich
+\end{itemize}
+ &
+ \vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[-] relevante Merkmale manuell definiert
+\item[-] geringe Generalisierung
+\item[-] keine Validierung
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Zusammenfassung: Pastor, Schaal}
+\label{tab:pascha}
+\end{table}\\ 
 \subsubsection*{Sub-/Symbolisch (IPoR II)}
 IPor (Interaktives Programmieren von Robotern wurde an der Universität Karlsruhe entwickelt. 
 Problembeschreibung:
@@ -397,10 +538,10 @@ Einsatz von Planungsmethoden:
 \begin{itemize}
 \item Repräsentation der Manipulationsaufgabe als Bahnplanungsproblem mit Einschränkungen
 \item Autonome Planung von Bewegungen, die das Ziel einer Manipulationsaufgabe erfüllen
-\item Problem: Manuelle Definition des Planungsproblems ist komplex (z.B. ≥ 40 dofs)
+\item Problem: Manuelle Definition des Planungsproblems ist komplex (z.B. $\leq$ 40 dofs)
 \ita Lernen von Planungsproblemen aus der Beobachtung des Menschen
 \end{itemize}
-Repräsentation als Bahnplanungsproblem mit EInschränkungen:
+Repräsentation als Bahnplanungsproblem mit Einschränkungen:
 \begin{itemize}
 \item Beschränkung der Bewegung eines Koordinatensystems relativ zu einem zweiten Koordinatensystem (ähnlich \Gu Task Frames\Go) 
 \item Drei Typen von Bewegungseinschränkungen:
@@ -416,6 +557,7 @@ Repräsentation als Bahnplanungsproblem mit EInschränkungen:
 \item homogener Transfromationsmatrix $M$, relativ zu $f$
 \item Region $R$
 \end{itemize}
+%Wiederholungsfolien 35, 36 ausgelassen
 \item Wann ist eine Einschränkung erfüllt?
 \begin{itemize}
 \item Transformation von $M$ definiert in $f$ relativ zu $g$:
@@ -427,16 +569,22 @@ M^\prime &= ^g H_f \cdot M
 $t$ = Position, Richtung: $m^\prime = (x y z)$\\
 $t$ = Orientierung: $m^\prime = (r_x r_y r_z )$
 \item Bestimmung des nächsten Punkts $n$ in $R$ und der Distanz $d = | m^\prime - n |$
-\item Erfüllt, wenn $d < \epsilon$
+\item Erfüllt, wenn $d < \varepsilon$
 \end{itemize}
 \item Repräsentation des Planungsproblems als \Gu Strategiegraph\Go :
 Tupel $X, C^t_n, C^t_e, C^b_n, C^b_e)$ mit Knoten $X$, zeitliche Einschränkungen der Knoten $C^t_n$ und Kanten $C^t_e$,
 Bewegungseinschränkungen der Knoten $C^b_n$ und Kanten $C^b_e$
 \end{itemize}
+Abbildung \ref{fig:ch03_stratgra} zeigt ein Beispiel eines solchen Graphen.
+\begin{figure}[ht]\centering 
+\includegraphics[width=0.6\linewidth]{figures/ch03_strategiegraph.png}
+\caption{Beispiel eines Strategiegraphen: \Gu Einschenken\Go}
+\label{fig:ch03_stratgra}
+\end{figure}
 
-
-Der folgende Abschnitt soll den PdV-Zyklus (vgl. Abbildung \ref{fig:ch03_zykl}) beispielhaft an IPoR II 
-verdeutlichen. 
+\noindent
+Im Folgenden soll der PdV-Zyklus (vgl. Abbildung \ref{fig:ch03_zykl}) beispielhaft an IPoR II 
+verdeutlicht werden. %Hierzu viele potentiell relevante Bilder auf den Folien 
 \paragraph*{Beobachtung} Als Sensorik wird verwendet: Mikrofon, Deckenkameras, Stereokamera mit Pan-Tilt-Unit, Flock-of-Birds, Voodoo, Cybergloves\\
 Virtual Technology - Datenhandschuh, Meßprinzip: Dehnmessstreifen, 20 Fingerbeugungs- und Spreizwinkel + 2 Freiheitsgrade im Handgelenk\\
 Bestimmung der Position und Orientierung der menschlichen Hände sowie von Objekten: Magnetfeldbasierter Positionstracker, Stereokamera
@@ -451,9 +599,15 @@ erfüllenden Teilzielen (= Topologie des Strategiegraphs)
 hat
 \end{itemize}
 
-\paragraph*{Interpretation} Klassifikation der Segmentierungspunkte in 4 Typen auf Basis des Weltzustands an den Intervallgrenzen: Kein Objekt, Objekt aufgenommen, Objekt gehalten, Objekt losgelassen
-
+\paragraph*{Interpretation} 
 \begin{itemize}
+\item Klassifikation der Segmentierungspunkte in 4 Typen auf Basis des Weltzustands an den Intervallgrenzen: 
+\begin{itemize}
+\item Kein Objekt
+\item Objekt aufgenommen
+\item Objekt gehalten
+\item Objekt losgelassen
+\end{itemize}
 \item Lernen des Planungsmodells
 \begin{itemize}
 \item  Topologie des Strategiegraphs: Segmentierung der Bewegungen des linken und rechten Arms, Kombination zu einem Graphen
@@ -462,10 +616,59 @@ Rechter Zeigefinger, Welt, ...} \}$; Erzeugung aller möglichen Einschränkungen
 für jeden Knoten und jede Kante $\rightarrow$ Region $R$ muss bestimmt werden
 \item Beispiel: $f$ = Flaschenöffnung, $g$ = Welt, $t$ = Richtung; $f$ = Flaschenöffnung, $g$ = Becheröffnung, $t$ = Position
 \end{itemize}
-\item Bestimmung der Region $R$
+\item Bestimmung der Region $R$: Für jede Einschränkung $(t, f, M, g, R)$
+\begin{itemize}
+\item Bestimmung des Werts von $f$ in jedem Punkt $t_i$ des Segments: $g^H_f(t_i) \cdot M$
+\item Umwandlung in 3d-Vektor $m^\prime(t_i)$
+\item Ergebnis: Menge von 3d-Vektoren
+\item Bestimme Region $R$, die alle 3d-Vektoren einschließt
+\ita Beispiel: Knoten-Einschränkung ($f$ = Flaschenöffnung, $g$ = Becheröffnung, $t$ = Position)
 \end{itemize}
+\end{itemize}
+\paragraph*{Abstraktion}
+Ziel: Anwendbarkeit des Planungsmodells in neuen Situationen auf verschiedenen Robotern
+\begin{itemize}
+\item Weitere Einschränkungen: Kräfte, Kontakte, Objektbewegung
+\item Wesentliche Abstraktion durch Koordinatensysteme und Einschränkungen
+\ita Abbildung von objektabhängigen Koordinatensystemen, z.B. Flasche.Abbildung $\rightarrow$ Milchpackung.Öffnung
+\end{itemize} 
 
-
+\paragraph*{Ausführung}
+\begin{itemize}
+\item Gelernte Einschränkungen definieren Suchraum für Roboterbewegungen
+\item Einsatz von \textit{Bahnplanung unter Einschränkungen} zur Ausführung von gelernten
+Planungsmodellen
+\item Einsatz von \textit{Griffplanung} zur Bestimmung qualitativ hochwertiger Griffe
+\end{itemize}
+Eine Bewertung des Verfahrens ist in Tabelle \ref{tab:ipo} dargestellt.
+\begin{table}[hbt]
+\centering
+\begin{tabular}{|p{6.5cm}|p{6.5cm}|}
+\hline
+Vorteile & Nachteile\\
+\hline
+\vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[+] Generalisierung auf Basis von Objekteigenschaften
+\item[+] Start- und Zielbeschreibung, Validierbarkeit
+\item[+] Hindernisvermeidung und Berücksichtigung von Einschränkungen
+\item[+] mehrere Lösungen und beliebige Optimalitätskriterien
+\end{itemize}
+ &
+ \vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[-] hoher Aufwand (Planungszeit, Simulationszeit)
+\item[-] 3d-Modelle der Objekte, menschlichen Hand notwendig
+\item[-] automatische Segmentierung bei dynamischen Bewegungen schwierig
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Zusammenfassung: IPOR II}
+\label{tab:ipo}
+\end{table}\\ 
+%Nächste VL:
 %• Bahnplanung
 %• Grifftaxonomie
 %• Griffplanung

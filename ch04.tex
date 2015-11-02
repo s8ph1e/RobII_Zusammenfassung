@@ -142,7 +142,122 @@ Hierzu muss der Basisalgorithmus erweitert werden:
 \subsubsection*{Hinderniserweiterung und Pfadglättung}
 \subsubsection*{TC-RRT: Planung mit Task Constraints}
 \subsection{Griffklassifikation}
+Bei IPoR II findet eine simple Abbildung auf Greifaktionen statt:
+\begin{itemize}
+\item Klassifikation des menschlichen Griffs im Segmentierungspunkt
+\item Abbildung auf vordefinierten Griff der gleichen Klasse für Roboterhand
+\item Bestimmung eines optimalen Griffs in Simulation
+\item Ausführung auf Roboter
+\end{itemize}
+Für die Klassifikation des menschlichen Griffs gibt es z.B. folgende Ansätze:
+\begin{itemize}
+\item Klassenhierarchie nach Cutkosky
+\item Training einer Support Vector Machine in jeder Hierarchieebene (10)
+\item Hierarchische Auswertung der Support Vector Machines
+\end{itemize}
 \subsubsection*{Cutkosky-Hierarchie}
+Die Cutkosky-Hierarchie ist in Abbildung \ref{fig:ch04_cuthie} dargestellt.
+\begin{figure}[ht]\centering 
+\includegraphics[width=0.6\linewidth]{figures/ch04_cutkosky.png}
+\caption{Die Cutkosky-Hierarchie}
+\label{fig:ch04_cuthie}
+\end{figure}
+Die in Abbildung \ref{fig:ch04_netztopo} gezeigte hierarchische Netztopologie reflektiert Griffklassifikation nach Cutkosky. Jedes Netz wird mit entsprechenden Beispielen trainiert.
+\begin{figure}[ht]\centering 
+\includegraphics[width=0.6\linewidth]{figures/ch04_netztopo.png}
+\caption{Hierarchische Netztopologie}
+\label{fig:ch04_netztopo}
+\end{figure}
 \subsection{Griffplanung}
 Zunächst einige relevante Definitionen:
+\begin{itemize}
+\item \red{Ziel}: Berechnung eines Griffs, d.h. Menge von Kontaktstellen zwischen Roboter und Objekt
+\item \red{Kontaktstellen}($\rightarrow$ Geometrisches Objektmodell, vgl. Abbildung \ref{fig:ch04_griff}):
+\begin{figure}[ht]\centering 
+\includegraphics[width=0.3\linewidth]{figures/ch04_griff.png}
+\caption{Griffplanung}
+\label{fig:ch04_griff}
+\end{figure}
+\begin{itemize}
+\item Punktkontakt ohne Reibung (\textcolor{blue}{A})
+\item Starrer Punktkontakt mit Reibung (\textcolor{blue}{B})
+\item Nicht-starrer Punktkontakt mit Reibung (\Gu soft finger contact\Go) (\textcolor{blue}{C})
+\item Flächenkontakte auf Basis von Punktkontakten
+\end{itemize} 
+\item \red{Wirkung auf Objekt}: Wrenchvektor: Kraft + Moment auf Objekt
+\begin{align*}
+\begin{pmatrix}
+f\\
+(c-s)\times f\\
+\end{pmatrix}
+\end{align*}
+\end{itemize}
+\begin{itemize}
+\item Beschreibung der Griffqualität:\\
+\begin{tabular}{p{12cm}p{3cm}}
+Cone Wrench Space (CWS): Kegel & \includegraphics[width=.5\linewidth]{figures/ch04_cws.png}\\ 
+Grasp Wrench Space (GWS): alle möglichen Summen aus jeweils einem Wrenchvektor jedes einzelnen Kegels & \includegraphics[width=.5\linewidth]{figures/ch04_gws.png}\\
+Task Wrench Space (TWS): aufgabenabhängig, hier: Knopf drücken & \includegraphics[width=.5\linewidth]{figures/ch04_tws.png}
+\end{tabular}
+\item Eigenschaften eines Griffs: Widerstand gegen Stöße (beliebiger externer Wrench w):
+\begin{itemize}
+\item Force-closure: -w liegt im GWS
+\item Form-closure: geometrische Einschränkung
+\end{itemize}
+\item Qualitätsmaße für Griffe (Grasp quality measure), Beispiel: größte Hyperkugel um 0, die im GWS liegt
+\end{itemize}
+Griffe werden bei der Vorwärtsgriffplanung in folgenden Schritten berechnet:
+\begin{itemize}
+\item[1.] Setze Gelenkwinkel des Handmodells vor dem Zugreifen, z.B. prismatischer Kraftgriff
+\item[2.] Setze 3d-Handmodell relativ zu Objekt vor dem Anrücken
+\item[3.] Bewege Hand auf das Objekt zu
+\item[4.] Schließe jeden einzelnen Finger bis auf Kontakt: Einfacher Algorithmus\footnote{Spezialisierte Algorithmen basierend auf Distanz: C2A [Tang2009]}
+\begin{itemize}
+\item[1.] Schrittweise Änderung der Gelenkwinkel bis Hand komplett geschlossen
+\item[2.] Überprüfung der Kollisionen in jedem Schritt → geom. Objektmodell
+\item[3.] Bei Kollision: gebe vorherige Gelenkwinkel zurück
+\end{itemize}
+\item[5.] Bestimme Kraftkegel in allen Kontaktpunkten
+\item[6.] Berechne Griffqualität
+\item[7.] $\ast$ Iteriere bis Griff mit hoher Griffqualität gefunden
+\end{itemize}
 \subsubsection*{Vorwärtsplaner: GraspIt!}
+\begin{itemize}
+\item Beliebige Robotersysteme
+\item Beliebige Objekte, Hindernisse
+\item Verschiedene Qualitätsmaße für Griffe
+\item Soft finger contacts
+\item Physikengine
+\end{itemize}
+Ein vorwärtsgerichtetes Greifplanungsverfahren für die Barretthand\footnote{[Miller03]: Automatic Grasp Planning Using Shape Primitives} auf Basis GraspIt! Simulators läuft folgendermaßen ab:
+\begin{itemize}
+\item Vorgabe einer Griffform (\Gu preshape \Go, hier zwei vordefinierte preshapes: zylindrisch und kugelförmig)
+\item Vorgabe einer Startpose und Anrückbewegung
+\item Durchführung des Griffs
+\item Evaluation mit Qualitätsmaß
+\end{itemize}
+Die Bestimmung der Greifstrategie (Preshape und Startlage) erfolgt auf Basis einer Zerlegung des zu greifenden Objekts in Objektprimitive (Kugeln, Zylinder, Kegel, Quader). Dabei existiert eine Vorgabe einer Menge von Greifstrategien für jedes der Objektprimitive. Die Anrückbewegung erfolgt dann linear in $z$-Richtung bis zu einem Kontakt, danach Backtracking. Abbildung \ref{fig:ch04_griffe} zeigt auf der linken Spalte generierte Greifstrategien für verschiedene Objekte und auf der rechten Seite deren Umsetzung.
+\begin{figure}[ht]\centering 
+\includegraphics[width=0.3\linewidth]{figures/ch04_griffe.png}
+\caption{Greifplanungsverfahren für die Barretthand}
+\label{fig:ch04_griffe}
+\end{figure}
+\noindent
+Das Lernen von Griffen durch PdV ist im folgenden noch einmal zusammengefasst:
+\begin{itemize}
+\item[1.] Beobachtung des Menschen
+\begin{itemize}
+\item Mensch demonstriert Griffbewegung
+\item Bestimmung der Griffform basierend auf Cutkosky-Hierarchie, z.B. sphärischer Präzisionsgriff
+\item Bestimmung der Anrückbewegung auf das Objekt
+\end{itemize} 
+\item[2.] (Vorwärtsgerichtete) Griffplanung zur Bestimmung von Kontaktstellen auf dem Objekt
+\begin{itemize}
+\item Abbildung der menschlichen auf eine Roboter-Griffform
+\item Abbildung der menschlichen auf eine Roboteranrückbewegung
+\item Anrücken an Objekt und Schließen der Hand
+\item Bestimmung der Kontaktstellen mit geometrischem Objektmodell
+\item Berechnung des gewählten Qualitätsmaßes für Griffe
+\end{itemize}
+\item[3.] Ausführung auf dem Robotersystem: Griffkraft manuell nachjustiert
+\end{itemize}
