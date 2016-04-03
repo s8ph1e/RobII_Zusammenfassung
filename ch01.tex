@@ -103,7 +103,7 @@ Vorteile & Nachteile\\
 \caption{Zusammenfassung Master-Slave-Programmierung}
 \label{tab:MSprog}
 \end{table}
-\item \textbf{Sensorunterstützte Programmierung:}
+\item \textbf{Sensorunterstützte Programmierung:}\\
 Manuell
 \begin{itemize}
 \item Bediener führt Programmiergriffel (Leuchtstift, Laserstift) entlang der
@@ -234,8 +234,152 @@ Vorteile & Nachteile\\
 \subsection{Abstraktionsgrad der Programmierung}
 \subsubsection{Explizite/Roboterorientierte Programmierung}
 \textcolor{red}{\glqq Wie ist es zu tun?\grqq} \\
-Bewegungen und Greiferbefehle sind direkt in eine Programmiersprache eingebunden.
-Aufgabenmodell: gegeben durch Anfangs- und Endzustand (z.B. Relationale Darstellung)
+Bewegungen und Greiferbefehle sind direkt in eine Programmiersprache eingebunden.\\
+Das Aufgabenmodell ist gegeben durch Anfangs- und Endzustand (z.B. Relationale Darstellung). Ein Beispiel ist in \autoref{cran} dargestellt.
+\begin{figure}[h!]\centering 
+\includegraphics[width=0.7\linewidth]{figures/ch01_cranfield.png}
+\caption{Der Cranfield-Montage-Benchmark}
+\label{cran}
+\end{figure}
+\textbf{Anwender $\rightarrow$ Roboter}:\\
+Jedes Robotersystem besitzt eine roboterabhängige Steuerungsebene, welche folgende Eigenschaften kapselt:
+\begin{itemize}
+\item Ansteuerung der Hardware (sowohl interne als auch externe)
+\item Bewegungsaktionen
+\item Lokale Modelle
+\item Elementare Operationen (erfordern evtl. Echtzeitregelung)
+\end{itemize}
+\begin{figure}[h!]\centering 
+\includegraphics[width=0.7\linewidth]{figures/ch01_einordnung.png}
+\caption{Einordnung roboterorientierten Programmierung}
+\label{cran}
+\end{figure}
+\textbf{Anforderungen an die oboterorientierte Programmierung}:
+\begin{itemize}
+\item Positions-, Geschwindigkeitsregelung der aktiven Komponenten (z.B. Gelenke, Räder)
+\item Auslesen und Parametrieren der internen und externen Sensorik
+\item Koordinatentransformationen, direkte und inverse Kinematik
+\item Sensorabhängige Regelung
+\item Verfahren auf Trajektorien
+\item Generierung und Zusammensetzen von Trajektorien zu komplexen Bewegungen
+\item Verkettung komplexer Bewegungen zu Elementaroperationen
+\end{itemize}
+\textbf{Komponenten der roboterorientierten Programmierung}: \autoref{zykl}
+\begin{figure}[h!]\centering 
+\includegraphics[width=0.7\linewidth]{figures/ch01_zykl.png}
+\caption{Regelungszyklus eines Roboters}
+\label{zykl}
+\end{figure}
+\textbf{Sprachelemente von Roboterprogrammiersprachen}:
+\begin{itemize}
+\item Befehle für:
+\begin{itemize}
+\item Bewegung eines oder mehrerer Roboter
+\item Betrieb von Greifern / Werkzeugen
+\item Ein-/Ausgabe von Daten / Signalen über Schnittstellen
+\item Externe Sensoren
+\item Zur Synchronisation / Kommunikation zwischen Prozessen
+\item Parallelverarbeitung
+\item Zur logischen Verkettung von Koordinatensystemen
+\end{itemize}
+\item Anweisungen zur Ablaufsteuerung
+\item Definition generischer Operationen (zB. Armbewegung + Griff $\rightarrow$ ein Operator)
+\end{itemize}
+\textbf{Bewegungsanweisungen}:
+\begin{itemize}
+\item Bewegungen im Gelenkwinkelraum:
+\begin{itemize}
+\item Bewege alle Gelenke mit max. Geschwindigkeit
+\item Regelung der Geschwindigkeiten mit gleichzeitiger Beendigung der Bewegung aller Gelenke
+\end{itemize}
+\item Kartesische Bewegungen (Stellung des TCPs)
+\begin{itemize}
+\item Erfordert inverse Kinematik
+\item Nutzung von Frames, z.B. relativ zu einem Objekt
+\end{itemize}
+\item Geometriebezogene Bahndefinition
+\end{itemize}
+\begin{table}[hbt]
+\centering
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+Vorteile & Nachteile\\
+\hline
+\vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[+] Hohe Einstellgenauigkeit der Position
+\item[+] Hohe Wiederholgenauigkeit
+\item[+] eindeutige Roboterkonfiguration
+\item[+] keine inverse Kinematik erforderlich
+\end{itemize}
+ &
+ \vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[-] Abhängigkeit von Robotertyp
+\item[-] kein Bezug der Gelenkwinkel zur Objektlage
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Bewegungen im Gelenkwinkelraum}
+\label{tab:bew}
+\end{table}
+\textbf{Sprachelemente -- Semantik von Greiferbefehlen}
+\begin{itemize}
+\item Verschiedene Greifertypen: evtl. mit taktiler und/oder Kraftsensorik
+\item Backengreifer: Industrie, Forschung (z.B. 3-Finger-Hand)
+\end{itemize}
+Mit zunehmender Abstraktion:
+\begin{enumerate}
+\item Steuerung im Gelenkwinkel-Raum
+\begin{itemize}
+\item Anzahl der Freiheitsgrade bestimmt Anzahl der Parameter (Backengreifer: 1, menschl. Hand: 22)
+\item Wenig Kapselungs-Aufwand (keine inverse Kinematik nötig) 
+\item Hand-abhängig
+\item Kein Bezug zwischen Fingerstellung und Handstellung
+\end{itemize}
+\item Steuerung im kartesischen/ zylindrischen/... Raum
+\begin{itemize}
+\item Parameter: Position/Orientierung jedes Fingers/ jeder Fingerspitze
+\item Inverse Kinematik nötig
+\item Berechnung aus Greif-/ Bewegungsplanung oder aus menschlicher Vorführung
+\item Mögliche Konfigurationen (Konfigurationsraum) handabhängig
+\end{itemize}
+\item Semantische Steuerung
+\begin{itemize}
+\item Parameter: Griff-Form, zu greifendes Objekt, Objektgröße, Objektform, ...
+\item Mapping auf Roboterhand nötig
+\item Übertragbar auf andere Roboterhände (mögliche Griffe handabhängig)
+\item Griff-Form vom Menschen lernbar
+\end{itemize}
+\end{enumerate}
+\textbf{Zusammenfassung -- Explizite Programmierung}: Nur in Verbindung mit (abstrakten) Programmiersprachen
+\begin{table}[hbt]
+\centering
+\begin{tabular}{|p{7.5cm}|p{7.5cm}|}
+\hline
+Vorteile & Nachteile\\
+\hline
+\vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[+] beliebig komplexe Bahnen
+\item[+] Anbindung von Sensoren
+\item[+] reaktive Planung
+\end{itemize}
+ &
+ \vspace{-5mm}
+\begin{itemize}
+\setlength\itemsep{0em}
+\item[-] Keine standardisierte Programmiersprache
+\item[-] Kenntnis der Programmiersprache
+\end{itemize}\\
+\hline
+\end{tabular}
+\caption{Bewegungen im Gelenkwinkelraum}
+\label{tab:bew}
+\end{table}
 \subsubsection{Implizite/Aufgabenorientierte Programmierung}
 \textcolor{red}{\glqq Was ist zu tun?\grqq} \\
 Die Aufgabe, die der Roboter durchführen soll, wird beschrieben, z.B. in Form von Zuständen.
@@ -247,4 +391,5 @@ Die Aufgabe, die der Roboter durchführen soll, wird beschrieben, z.B. in Form v
 \item u. U. erfolgt vor der Ausführung eine Überprüfung des
 Roboterprogramms (Simulation)
 \item Beispiel: Einschenken unter Berücksichtigung von Hindernissen
+\item Details im kommenden Kapitel
 \end{itemize}

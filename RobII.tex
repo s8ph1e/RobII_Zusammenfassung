@@ -1,7 +1,7 @@
 \documentclass[11pt]{scrartcl}
 \usepackage{color}
-\usepackage{enumitem}
-\setlist[itemize,2]{label=\textbullet}
+%\usepackage{enumitem}
+%\setlist[itemize,2]{label=\textbullet}
 \usepackage{geometry}
 \geometry{a4paper, top=25mm, left=20mm, right=20mm, bottom=40mm, headsep=10mm, footskip=5mm}
 \usepackage{ucs}
@@ -12,6 +12,9 @@
 \usepackage{graphicx}
 \usepackage[automark]{scrpage2}
 \usepackage{subcaption}
+\usepackage{footnote}
+\makesavenoteenv{tabular} %make footnotes in tables and tabulars appear
+\makesavenoteenv{table}
 %\usepackage{caption}
 %\usepackage{subfigure}
 %\usepackage{subfig}
@@ -155,9 +158,9 @@ SoSe 15\\
 
 \section*{Disclaimer}
 Dieses Dokument wurde im Rahmen des Master-Studiums
-für das Modul Autonome Robotik erstellt. Es stellt eine 
+für das Modul \glqq Autonome Robotik\grqq{} erstellt. Es stellt eine 
 Zusammenfassung dar und dient zur Vorbereitung auf die
-mündliche Prüfung. Neben den Materialien der Vorlesung,
+mündliche Prüfung. Neben den Materialien der Vorlesung
 fließen auch weitere Quellen ein, um den behandelten Stoff
 auszuarbeiten. Auf den Verweis von Quellen wird verzichtet,
 da die Erstellung keinerlei wissenschaftlichen Zweck verfolgt

@@ -8,7 +8,7 @@ $\rightarrow$ Flexible Fertigung
 $\rightarrow$ Handel:  Kommissionierung und Palettierung von Waren, Bestücken von Regalen\\
 $\rightarrow$ Pflege: Unterstützung von Rehabilitationsmaßnahmen durch Roboter, Rollstuhl mit Manipulationshilfe\\
 $\rightarrow$ Handwerk: Handhabungen in Schreinereien und Schlossereien
-\item In der humanoiden Servicerobotik: Manipulation beliebiger Objekte, selbstständiges Lösen komplexer Aufgaben, Einsatz im menschlichen Umfeld
+\item In der humanoiden Servicerobotik: Manipulation beliebiger Objekte, selbstständiges Lösen komplexer Aufgaben, Einsatz im menschlichen Umfeld\\
 $\rightarrow$ komplexe Umgebung und sehr viele Freiheitsgrade\\
 $\rightarrow$ Wie Handlungswissen erzeugen?
 \end{itemize}
@@ -102,8 +102,7 @@ Reflexe, Basisskills, einfache Bewegungen
 \begin{itemize}
 \setlength\itemsep{0em}
 \item Lernen direkter Sensor-/Aktorzusammenhänge
-\item Beispiele: Verwendung neuronaler Netze auf adaptive Regelkreise, Zustandsautomaten\footnote{Asada91, Koeppe95, Kaiser96, Ishikawa99,
-Bentivegna00, Calinon08, Pastor09}
+\item Beispiele: Verwendung neuronaler Netze auf adaptive Regelkreise, Zustandsautomaten \footnote{Asada91, Koeppe95, Kaiser96, Ishikawa99, Bentivegna00, Calinon08, Pastor09}
 \item[$\rightarrow$] Probleme: Explizite Beispiele, stark konfigurationsabhängig,
 viele Trainingsbeispiele notwendig
 \end{itemize}
@@ -122,7 +121,6 @@ Klärungsdialoge mit dem Benutzern
 \caption{Kriterium 1 - Komplexität der Aufgabe}
 \label{tab:aufgkomp}
 \end{table}
-
 \subsubsection*{Art der Demonstration}
 Siehe Tabelle \ref{tab:demo}
 \begin{table}[hbt]
@@ -136,8 +134,7 @@ Aktive Beispiele
 \begin{itemize}
 \setlength\itemsep{0em}
 \item Benutzer führt explizit vor
-\item Beobachtung durch Sensorsystem (Datenhandschuh, Kameras)\footnote{Friedrich98, Ikeuchi99, Inoue/Kuniyoshi94,
-Zöllner06}
+\item Beobachtung durch Sensorsystem (Datenhandschuh, Kameras)\footnote{Friedrich98, Ikeuchi99, Inoue/Kuniyoshi94, Zöllner06}
 \ita Probleme: Aufwendige Sensorsysteme, Identifikation relevanter Aktionen und Ziele bzw. Zustände schwierig
 \end{itemize}
  &
@@ -524,7 +521,7 @@ Vorteile & Nachteile\\
 \label{tab:pascha}
 \end{table}\\ 
 \subsubsection*{Sub-/Symbolisch (IPoR II)}
-IPor (Interaktives Programmieren von Robotern wurde an der Universität Karlsruhe entwickelt. 
+IPor (Interaktives Programmieren von Robotern wurde an der Universität Karlsruhe entwickelt. \\
 Problembeschreibung:
 \begin{itemize}
 \item Robotersystem mit sehr vielen Freiheitsgraden (Kuka LBR / SAH/HIT: 40)
@@ -578,7 +575,8 @@ Bewegungseinschränkungen der Knoten $C^b_n$ und Kanten $C^b_e$
 Abbildung \ref{fig:ch03_stratgra} zeigt ein Beispiel eines solchen Graphen.
 \begin{figure}[ht]\centering 
 \includegraphics[width=0.6\linewidth]{figures/ch03_strategiegraph.png}
-\caption{Beispiel eines Strategiegraphen: \Gu Einschenken\Go}
+\caption{Beispiel eines Strategiegraphen: \Gu Einschenken\Go $\rightarrow$ Die Ausführungsumgebung bezieht sich auf Unterschiede in Objekten,
+Objektposen und Hindernissen (verglichen mit Demonstrationen). Einschränkungen im Strategiegraphen referenzieren Koordinatensysteme. Deren Lage wird automatisch adaptiert. Bei Ausführung unter Verwendung von Bahnplanung repräsentieren die Knoten des Graphen Teilziele der Manipulationsaufgabe, seine Kanten Übergänge zwischen den Teilzielen. Ein Planungsproblems wird für jedes Teilziel gelöst.}
 \label{fig:ch03_stratgra}
 \end{figure}
 
@@ -610,12 +608,26 @@ hat
 \end{itemize}
 \item Lernen des Planungsmodells
 \begin{itemize}
-\item  Topologie des Strategiegraphs: Segmentierung der Bewegungen des linken und rechten Arms, Kombination zu einem Graphen
+\item  Topologie des Strategiegraphs: Segmentierung der Bewegungen des linken und rechten Arms, Kombination zu einem Graphen (vgl. \autoref{sg})
 \item Erzeugung der Bewegungseinschränkungen: Manuell definierte Koordinatensysteme für alle Objekte: $K = \{ \text{Flaschenöffnung, Becheröffnung,
 Rechter Zeigefinger, Welt, ...} \}$; Erzeugung aller möglichen Einschränkungen $(t, f, M, g, R)$ mit $f,g \in K$, Typ $t$ beliebig,
-für jeden Knoten und jede Kante $\rightarrow$ Region $R$ muss bestimmt werden
+für jeden Knoten und jede Kante $\rightarrow$ Region $R$ muss bestimmt werden (vgl. \autoref{sg1})
 \item Beispiel: $f$ = Flaschenöffnung, $g$ = Welt, $t$ = Richtung; $f$ = Flaschenöffnung, $g$ = Becheröffnung, $t$ = Position
 \end{itemize}
+\begin{figure}[h!]
+	\centering
+	\begin{subfigure}{.4\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch03_stratgraph.png}
+		\caption{}
+		\label{sg}
+	\end{subfigure}
+	\begin{subfigure}{.4\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch03_stratgraph1.png}
+		\caption{}
+		\label{sg1}
+	\end{subfigure}
+	\caption{}
+\end{figure}
 \item Bestimmung der Region $R$: Für jede Einschränkung $(t, f, M, g, R)$
 \begin{itemize}
 \item Bestimmung des Werts von $f$ in jedem Punkt $t_i$ des Segments: $g^H_f(t_i) \cdot M$
@@ -630,7 +642,7 @@ Ziel: Anwendbarkeit des Planungsmodells in neuen Situationen auf verschiedenen R
 \begin{itemize}
 \item Weitere Einschränkungen: Kräfte, Kontakte, Objektbewegung
 \item Wesentliche Abstraktion durch Koordinatensysteme und Einschränkungen
-\ita Abbildung von objektabhängigen Koordinatensystemen, z.B. Flasche.Abbildung $\rightarrow$ Milchpackung.Öffnung
+\ita Abbildung von objektabhängigen Koordinatensystemen, \\z.B. Flasche.Öffnung $\rightarrow$ Milchpackung.Öffnung
 \end{itemize} 
 
 \paragraph*{Ausführung}
