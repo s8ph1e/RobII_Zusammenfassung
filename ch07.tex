@@ -16,7 +16,7 @@ Fundamentale Fragen:
 
 \begin{figure}[ht]\centering 
 \includegraphics[width=0.8\textwidth]{figures/07_agentenzyklus.png}
-\caption{Der Agentenzyklus}
+\caption{Der Agentenzyklus: Jede Modellbildung der Welt ist starke Reduktion}
 \label{ch07_agentenzyklus}
 \end{figure}
 
@@ -32,7 +32,7 @@ Fundamentale Fragen:
 \end{itemize}
 \paragraph{Industrieroboter}
 \begin{itemize}
-	\item oftmals, bei Abwesenheit von Sensorik, kein Agent, sondre nur ein Werkzeug
+	\item Oftmals, bei Abwesenheit von Sensorik, kein Agent, sondre nur ein Werkzeug
 	\item Physische Umwelt
 	\item Beschränkte Umwelt
 	\item Wenn überhaupt rationaler Agent, üblicherweise extrem begrenzter Entscheidungsrahmen
@@ -89,7 +89,7 @@ Der Ausgang einer jeden Handlung ist eindeutig bestimmt
 & &
 Eine Handlung kann mit bestimmten Wahrscheinlichkeiten zu verschiedenen Ausgängen führen
 \\
-\textbf{vollständig} & \centering vs.\ & \textbf{unvollständig beobachtbar}\\
+\textbf{vollständig beobachtbar} & \centering vs.\ & \textbf{unvollständig beobachtbar}\\
 Der Agent kann die komplette Umwelt jederzeit vollständig und exakt wahrnehmen
 & &
 Der Agent kann die Umwelt nur eingeschränkt und fehlerbehaftet wahrnehmen
@@ -100,8 +100,8 @@ Nur eine als Agent modellierbare Entität agiert in der Umwelt
 Viele als Agenten modellierbare Entitäten agieren in der Umwelt und können kooperieren oder konkurrieren
 \end{tabular}
 
-Die Beschreibung der Umwelt durch das jeweils komplexere Merkmal wird nur gewählt, wenn das einfachere Merkmal im Szenario des Agenten keine hinreichende Beschreibung ist.
-Hinreichen ist hierbei auch in dem Sinne zu verstehen, dass es oftmals noch keine ausreichenden Verfahren gibt, um die komplexeren Merkmale zu berücksichtigen.
+Die Beschreibung der Umwelt durch das jeweils komplexere Merkmal wird nur gewählt, wenn das einfachere Merkmal im Szenario des Agenten keine hinreichende Beschreibung ist.\\
+\textit{Hinreichend} ist hierbei auch in dem Sinne zu verstehen, dass es oftmals noch keine ausreichenden Verfahren gibt, um die komplexeren Merkmale zu berücksichtigen.
 
 \subsubsection{Utility -- Motivation des Agenten}
 \begin{itemize}
@@ -110,10 +110,10 @@ Hinreichen ist hierbei auch in dem Sinne zu verstehen, dass es oftmals noch kein
 	\item Dieses Konzept ist deutlich allgemeiner, als spezielle Ziele z.B.\ in der logikbasierten Planung	
 \end{itemize}
 
-\paragraph{Konzept}
+\paragraph{Konzept der Utility}
 \begin{itemize}
-	\item Die utility modelliert in der Ökonomie ein numerisches Maß der Befriedigung eines Agenten (Menschen) durch einen bestimmten Konsum
-	\item In der Robotik/KI wird jedoch ein Motivationsmaß eines Agenten nicht \emph{modelliert}, sondern \textbf{konstruiert}
+	\item Die utility (auch: \textit{utility function}) modelliert in der Ökonomie ein numerisches Maß der Befriedigung eines Agenten (Menschen) durch einen bestimmten Konsum
+	\item In der Robotik/KI wird jedoch ein Motivationsmaß eines Agenten nicht \emph{modelliert}, sondern \emph{konstruiert}
 	\item Die uitility wird hier genutzt, um einem künstlichen Agenten bestimmte Motivationen einzupflanzen
 	\item Die utility ist ein allgemeines Konzept: es können konkurrierende und ergänzende Zielsetzungen fusioniert werden
 	\item Im Rahmen der utility können auch Absichten gegeneinander abgewogen werden
@@ -123,23 +123,30 @@ Hinreichen ist hierbei auch in dem Sinne zu verstehen, dass es oftmals noch kein
 Die urspr\"ungliche, klassische Aktionsplanung nimmt an, dass die Umwelt statisch, episodisch, diskret, deterministisch und vollst\"andig beobachtbar ist und zudem konkreten, nicht \"uberlappenden Ziele verfolgt. 
 F\"ur eine dynamische, sequentielle und kontinuierliche Umwelt gibt es Erweiterungen des klassischen Aktionsplanens, im Hinblick \textbf{stochastisch}, \textbf{vollst\"andig beobachtbar} und \textbf{unterschiedlich stark konkurrierende Ziele} jedoch nicht.
 %
-\begin{figure}[ht]\centering 
-\includegraphics[width=0.5\textwidth]{figures/ch07_stochastischeUmwelt.png}
-\caption{Stochastische Umwelt}
-\label{ch07_stumwelt}
+\begin{figure}[ht]
+	\centering 
+	\begin{subfigure}{.45\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch07_stochastischeUmwelt.png}
+		\caption{Stochastische Umwelt}
+		\label{ch07_stumwelt}
+	\end{subfigure}
+	\begin{subfigure}{.4\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch07_umwelt-bsp.png}
+		\caption{Beispiel}
+		\label{ch07_umwelt-bsp}
+	\end{subfigure}
 \end{figure}
 
 \autoref{ch07_stumwelt} zeigt eine stochastische Umwelt.
 \"Ubergangswahscheinlichtkeiten beschreiben hierbei den Ausgang von Handlungen.
 In stochastischen Umgebungen ist daher es essenziell, dass mit numerischen Wahrscheinlichkeiten umgegangen werden kann, jedoch ist das in der klassischen, logikbasierten Aktionsplanung nicht der Fall, weshalb \textbf{probabilistische Methoden} (wie MDPs) zum Einsatz kommen.
-
+%Exkurs zu Bayes F29+30
 \subsection{Markov Prozesse}
 \begin{itemize}
 \item ein verbreitetes Werkzeug f\"ur die Modellierung stochastischer Prozesse
 \item zentrale Eigenschaft: die zuk\"unftige Entwicklung kann durch Kenntnis einer \textbf{begrenzten} Vorgeschichte prognostiziert werden
 \item erst diese Markoveigenschaft erlaubt die Prognose bez\"uglich der Zukunft in einem solchen stochastischen Prozess
 \item es gibt zwei Arten von Markov Prozessen: zeitdiskrete und zeitstetige Markov Prozesse
-\item 
 \end{itemize}
 
 \paragraph{Zeitdiskreter Markov Prozess:}
@@ -152,7 +159,7 @@ In stochastischen Umgebungen ist daher es essenziell, dass mit numerischen Wahrs
 \item je geringer die Ordnung, desto einfach die Modellierung
 \end{itemize}
 
-Markovkette 1. Ordnung:
+\textbf{Markovkette 1. Ordnung}:
 \begin{itemize}
 \item nur die Gegenwart spielt eine Rolle f\"ur die Betrachtung der Zukunft
 \item die Wahrscheinlichkeit des Nachfolgezustands h\"angt nur vom aktuellen Zustand ab
