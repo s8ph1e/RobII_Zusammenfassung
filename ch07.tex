@@ -99,7 +99,7 @@ Nur eine als Agent modellierbare Entität agiert in der Umwelt
 & &
 Viele als Agenten modellierbare Entitäten agieren in der Umwelt und können kooperieren oder konkurrieren
 \end{tabular}
-
+\\ \\
 Die Beschreibung der Umwelt durch das jeweils komplexere Merkmal wird nur gewählt, wenn das einfachere Merkmal im Szenario des Agenten keine hinreichende Beschreibung ist.\\
 \textit{Hinreichend} ist hierbei auch in dem Sinne zu verstehen, dass es oftmals noch keine ausreichenden Verfahren gibt, um die komplexeren Merkmale zu berücksichtigen.
 
@@ -135,6 +135,7 @@ F\"ur eine dynamische, sequentielle und kontinuierliche Umwelt gibt es Erweiteru
 		\caption{Beispiel}
 		\label{ch07_umwelt-bsp}
 	\end{subfigure}
+	\caption{}
 \end{figure}
 
 \autoref{ch07_stumwelt} zeigt eine stochastische Umwelt.
@@ -158,8 +159,8 @@ In stochastischen Umgebungen ist daher es essenziell, dass mit numerischen Wahrs
 \item die Ordnung ist immer endlich, sonst w\"are die Markov Eigenschaft nicht erf\"ullt
 \item je geringer die Ordnung, desto einfach die Modellierung
 \end{itemize}
-
-\textbf{Markovkette 1. Ordnung}:
+\newpage
+\textbf{Markovkette 1. Ordnung} (Beispiel in \autoref{fig:ch07:mk-bsp})
 \begin{itemize}
 \item nur die Gegenwart spielt eine Rolle f\"ur die Betrachtung der Zukunft
 \item die Wahrscheinlichkeit des Nachfolgezustands h\"angt nur vom aktuellen Zustand ab
@@ -340,7 +341,6 @@ Die in jedem Schritt aufaddierte Belohnungen werden \emph{Utilitiy} genannt und 
 \end{itemize}
 
 \paragraph{Algorithmus}
-Siehe \autoref{alg:vi}
 \begin{algorithm}
   \caption{MDP discreteValueIteration()
     \label{alg:vi}}
@@ -534,7 +534,7 @@ Dadurch hat der MDP zwei Komponenten:
 	\item Subjektive Zustandsvermutung des Agenten
 \end{itemize}
 $\Rightarrow$ \textbf{POMDPs}
-\paragraph{POMDP} {\ }\\
+\subsubsection{Eigenschaften und Ablauf von POMDPs}
 POMDPs ermöglichen die Entscheidungsfindung in Domänen mit den Eigenschaften:
 \begin{itemize}
 	\item Dynamisch
@@ -544,7 +544,7 @@ POMDPs ermöglichen die Entscheidungsfindung in Domänen mit den Eigenschaften:
 	\item \underline{Unvollst\"andig beobachtbar}
 \end{itemize}
 
-\textbf{Struktur/Modell}:
+\paragraph{Struktur/Modell}
 \begin{itemize}
 	\item Eine Menge von symbolischen \textbf{Zust\"anden} der Welt $S$
 	\item Eine Menge von symbolischen \textbf{Handlungen} des Agenten $U$
@@ -555,7 +555,7 @@ POMDPs ermöglichen die Entscheidungsfindung in Domänen mit den Eigenschaften:
 	\item Einen Startzustand $s_0$
 \end{itemize}
 
-\textbf{Statische Eigenschaften}:
+\paragraph{Statische Eigenschaften}
 \begin{itemize}
 	\item Die statischen Eigenschaften des reinen MDP gelten auch im POMDP
 	\item Zusätzlich gilt: Der Agent kann in jedem Agentenzyklus \underline{genau eine} Beobachtung machen
@@ -563,7 +563,7 @@ POMDPs ermöglichen die Entscheidungsfindung in Domänen mit den Eigenschaften:
 	\item Im Folgenden wird von diskreten POMDPs ausgegangen
 \end{itemize}
 
-\textbf{Dynamikmodelle}:
+\paragraph{Dynamikmodelle}
 \begin{itemize}
 	\item Transitions- und Belohnungsmodell funktionieren wie beim MDP
 	\item Hinzu kommt das Beobachtungsmodell:
@@ -573,9 +573,9 @@ POMDPs ermöglichen die Entscheidungsfindung in Domänen mit den Eigenschaften:
 	\end{itemize}
 \end{itemize}
 
-\textbf{Sekund\"are Eigenschaften}:
+\paragraph{Sekund\"are Eigenschaften}
 \begin{itemize}
-	\item Die ENtscheidungsfunktion (policy) existiert auch beim POMDP, wenn auch in anderer Form
+	\item Die Entscheidungsfunktion (policy) existiert auch beim POMDP, wenn auch in anderer Form
 	\item Hinzu kommt die Zustandsvermutung:
 	\begin{itemize}
 		\item Im diskreten Fall eine diskrete Wahrscheinlichkeitsverteilung \"uber alle Zust\"ande
@@ -584,37 +584,80 @@ POMDPs ermöglichen die Entscheidungsfindung in Domänen mit den Eigenschaften:
 	\end{itemize}
 \end{itemize}
 
-\textbf{Entscheidungsfunktion}:
+\begin{figure}[!ht]
+	\centering 
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch08_pom.png}
+		\caption{Beginn}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch08_pom1.png}
+		\caption{Entscheidung}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch08_pom2.png}
+		\caption{Handlung}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch08_pom3.png}
+		\caption{Vorhersage}
+	\end{subfigure}
+	\begin{subfigure}{.5\textwidth}
+		\includegraphics[width=\textwidth]{figures/ch08_pom4.png}
+		\caption{Beobachtung}
+	\end{subfigure}
+	\caption{POMDP -- Schritte}
+	\label{pom}
+\end{figure}
+
+\paragraph{Entscheidungsfunktion}
 \begin{itemize}
 	\item Bei MDPs enth\"alt die Entscheidungsfunktion eine Handlung zu jedem Zustand
 	\item Im Gegensatz zu MDPs muss die Entscheidungsfunktion bei POMDPs \"uber \textbf{alle m\"oglichen Zustandsvermutungen} definiert sein
 	\item Struktur der Entscheidungsfunktion
 	\begin{itemize}
-		\item Bei diskreten POMDPs: \"uber dem $|S|-1$ dimensionalen Raum \underline{aller m\"oglichen Zustandsvermutungen} definiert
+		\item Bei diskreten POMDPs: \"uber dem $|S|-1$ dimensionalen Raum \underline{aller m\"oglichen}\\ \underline{Zustandsvermutungen} definiert
 		\item Bei kontinuierlichen POMDPs: \"uber einem unendlich-dimensionalen Raum definiert, daher speziell \"uber endlich-dimensionalen Teilr\"aumen angegeben
 	\end{itemize}
 	\item Berechnung der Entscheidungsfunktion: aufgrund der komplexen Struktur ist die Berechnung deutlich komplizierter als bei MDPs (Value Iteration existiert, ist aber anders)
 \end{itemize}
 
-\textbf{Raum der Vermutungen (diskrete POMDP)}:
+\paragraph{Raum der Vermutungen (diskrete POMDP)}
 \begin{itemize}
 	\item Alle m\"oglichen Wahrscheinlichkeiten \"uber allen Zust\"anden $s$ eines Szenarios spannen den Raum der Zustandsvermutungen auf
 	\item Da $\sum p(s_i) = 1$, ist der Raum begrenzt, also ein Simplex (= konvexe H\"ulle von $n+1$ Punkten in einem n-dimensionalen Raum)
 	\item Wegen der Summe $|S|-1$ Dimensionen
+	\item Beispiele in \autoref{raum}
+	\begin{figure}[!h]
+		\centering
+  		\includegraphics[width=0.5\linewidth]{figures/ch08_raum.png}
+  		\centering
+		\caption{Beispiel -- Raum der Vermutungen}
+		\label{raum}
+	\end{figure}
 \end{itemize}
-
+\newpage
 \subsubsection{POMDP Value Iteration}
+Aufgrund der komplexeren Struktur ist die Berechnung der Entscheidungsfunktion deutlich komplizierter als bei MDPs. Value Iteration existiert auch für POMDPs, funktioniert jedoch anders:
 \begin{itemize}
-	\item iterativer Ansatz (wie bei MDP)
-	\item ein \textbf{endlicher Horizont} wird vorausgesetzt
-	\item ein schrittweises Vorausschauen wird von einer initialen Entscheidungsfunktion aus durchgef\"uhrt
-	\item das Vorausschauen muss die stochastische Natur der Weltdynamik, als auch die verschieden genauen Beobachtungen eben dieser Dynamik in die Abw\"agung einflie{\ss}en lassen
+	\item Iterativer Ansatz (wie bei MDP)
+	\item Ein \underline{endlicher Horizont} wird vorausgesetzt
+	\item Ein schrittweises Vorausschauen wird von einer initialen Entscheidungsfunktion aus durchgef\"uhrt
+	\item Das Vorausschauen muss die stochastische Natur der Weltdynamik, als auch die verschieden genauen Beobachtungen eben dieser Dynamik in die Abw\"agung einflie{\ss}en lassen
 \end{itemize}
 
 \paragraph{Struktur}
 \begin{itemize}
-	\item Lineare Funktionen $\alpha$ repr\"asentieren die utility kontinuierlich \"uber dem gesamten Zustandsvermutungs-Simplex bezogen auf eine Handlung (nicht Zustand, wie im MDP)
-	\item f\"ur jede Zustandsvermutung kann aus den Funktionen eine utility berechnet werden
+	\item Lineare Funktionen $\alpha$ repr\"asentieren die utility kontinuierlich \"uber dem gesamten Zustandsvermutungs-Simplex bezogen auf eine \underline{Handlung} (nicht Zustand, wie im MDP)
+	\item F\"ur jede Zustandsvermutung kann aus den Funktionen eine utility berechnet werden
+	\item Beispiele (\autoref{ch08:vi-bsp}):
+	\begin{figure}[!h]
+		\centering
+  		\includegraphics[width=0.6\linewidth]{figures/ch08_vi-bsp.png}
+  		\centering
+		\caption{POMDP VI Struktur -- Beispiele für 2 und 3 Zustände}
+		\label{ch08:vi-bsp}
+	\end{figure}
 \end{itemize}
 
 \paragraph{Beginn}
@@ -628,11 +671,25 @@ POMDPs ermöglichen die Entscheidungsfindung in Domänen mit den Eigenschaften:
 \begin{enumerate}
 	\item Tempor\"are Koeffizienten werden durch die Bayes Vorw\"artsfilterung (Projektion) jeder vorigen linearen Funktion \"uber jede m\"ogliche Handlung und Wahrnehmung erzeugt
 	\begin{itemize}
-		\item die Projektion jeder linearen Funktion $\alpha$ aus $\Gamma$ in $t-1$ durch jede Kombination von Aktion $u$ und Beobachtung $m$ f\"uhrt zu den tempor\"aren Koeffizienten $v\{ k \}$ (Code F. 42)
+		\item Die Projektion jeder linearen Funktion $\alpha$ aus $\Gamma$ in $t-1$ durch jede Kombination von Aktion $u$ und Beobachtung $m$ f\"uhrt zu den tempor\"aren Koeffizienten $v\{ k \}$ (siehe Code in \autoref{ch08:vi1})
+		\begin{figure}[!h]
+			\centering
+  			\includegraphics[width=0.4\linewidth]{figures/ch08_vi1.png}
+  			\centering
+			\caption{POMDP VI Schritt 1}
+			\label{ch08:vi1}
+		\end{figure}
 	\end{itemize}
-	\item die tempor\"aren Koeffizienten werden f\"ur die Bildung der Erwartung \"uber alle m\"oglichen Beobachtungskombinationen verwendet, woraus die neuen linearen Funktionen erzeugt werden
+	\item Die tempor\"aren Koeffizienten werden f\"ur die Bildung der Erwartung \"uber alle m\"oglichen Beobachtungskombinationen verwendet, woraus die neuen linearen Funktionen erzeugt werden
 	\begin{itemize}
-		\item aus den tempor\"aren Koeffizienten wird f\"ur jede m\"ogliche Kombination von Beobachtungen die Gewinnerwartung berechnet und eine neue lineare Funktion $\alpha'$ erzeugt (Code F.43)
+		\item Aus den tempor\"aren Koeffizienten wird f\"ur jede m\"ogliche Kombination von Beobachtungen die Gewinnerwartung berechnet und eine neue lineare Funktion $\alpha'$ erzeugt (siehe Code in \autoref{ch08:vi2})
+		\begin{figure}[!h]
+			\centering
+  			\includegraphics[width=0.4\linewidth]{figures/ch08_vi2.png}
+  			\centering
+			\caption{POMDP VI Schritt 2}
+			\label{ch08:vi2}
+		\end{figure}
 	\end{itemize}
 \end{enumerate}
 
@@ -640,6 +697,13 @@ POMDPs ermöglichen die Entscheidungsfindung in Domänen mit den Eigenschaften:
 \begin{itemize}
 	\item Die Entscheidungsfunktion ist das Maximum der utility in der Menge von linearen Funktionen \"uber dem jeweiligen Bereich des Zustandsvermutungsraums
 	\item Diese Menge ist immer konvex \"uber dem Zustandsvermutungs-Simplex
+	\begin{figure}[!h]
+			\centering
+  			\includegraphics[width=0.7\linewidth]{figures/ch08_vi-bsp2.png}
+  			\centering
+			\caption{POMDP VI Schema; 2 Zustände, 3 Handlungen}
+			\label{ch08:vi3}
+	\end{figure}
 \end{itemize}
 
 \paragraph{Komplexit\"at}
@@ -650,26 +714,48 @@ POMDPs ermöglichen die Entscheidungsfindung in Domänen mit den Eigenschaften:
 	$|\Gamma_t| = |Actions| * |\Gamma_{t-1}|^{|Observations|}$
 	\item Was zu einer doppelt-exponentiellen Komplexit\"at (2-EXPSPACE) f\"uhrt:\\
 	$|\Gamma| = |Actions|^{(\sum_{i=0}^{t-1} |Observations|^i)}$
-	\item $\Rightarrow$ exakte POMDP Value Iteration unbrauchbar!!
-	\item $\Rightarrow$ um die Komplexit\"at handhabbar zu machen, wurden approximative Value Iteration Verfahren entwickelt. Dadurch wird meistens der Teil 2 des Iterationsschritts entsch\"arft. Alle relevanten Verfahren haben garantierte Fehlerschranken und zeichnen sich durch sehr gute Approximation aus
+	\newpage
+	\item Beispiel 3 Aktionen, 3 Beobachtungen, $|\Gamma|$:
+	\begin{itemize}
+		\item Horizont $1:3$
+		\item Horizont $2:81$
+		\item Horizont $3:1594323$ 
+		\item Horizont $4:1.2 \times 10^19$
+		\item Horizont $5:5.4 \times 10^57$
+	\end{itemize}
+	\item[$\Rightarrow$] exakte POMDP Value Iteration unbrauchbar!!
+	\item Um die Komplexit\"at handhabbar zu machen, wurden \textbf{approximative Value Iteration} Verfahren entwickelt. Dadurch wird meistens der Teil 2 des Iterationsschritts entsch\"arft. Alle relevanten Verfahren haben garantierte Fehlerschranken und zeichnen sich durch sehr gute Approximation aus
 \end{itemize}
 
 \paragraph{Point Based Value Iteration} als approximative Value Iteration
 \begin{itemize}
-	\item nutzt ein dynamisches Raster zur Berechnung der Entscheidungsfunktion
-	\item die Entscheidungsfunktion wird nur f\"ur eine dynamische Menge von Stellvertreterpunkten im Zustandsvermutungsraum berechnet
-	\item sie gilt jedoch f\"ur den gesamten Raum
-	\item Schema: die Genauigkeit h\"angt in der Praxis von der Anzahl der Vertreterpunkte und der \"Anderungsh\"aufigkeit optimaler Handlungen \"uber dem Zustandsraum ab
+	\item Nutzt ein dynamisches Raster zur Berechnung der Entscheidungsfunktion
+	\item Die Entscheidungsfunktion wird nur f\"ur eine dynamische Menge von Stellvertreterpunkten im Zustandsvermutungsraum berechnet
+	\item Sie gilt jedoch f\"ur den gesamten Raum
+	\item Schema: Die Genauigkeit h\"angt in der Praxis von der Anzahl der Vertreterpunkte und der \"Anderungsh\"aufigkeit optimaler Handlungen \"uber dem Zustandsraum ab (vgl. \autoref{ch08:pbvi})
+	\begin{figure}[!h]
+			\centering
+  			\includegraphics[width=0.4\linewidth]{figures/ch08_pbvi.png}
+  			\centering
+			\caption{PB VI Schema}
+			\label{ch08:pbvi}
+	\end{figure}
 \end{itemize}
-
-weitere approximative Value Iterations sind PERSEUS, HSV12, SARSOP..
+Weitere approximative Value Iterations sind PERSEUS, HSV12, SARSOP..
 
 \subsubsection{POMDPs und Serviceroboter}
 \begin{itemize}
-	\item die Nutzung von POMDPs in autonomen Servicerobotern steht noch ganz am Anfang
-	\item momentan fast nur in Simulationen und virtuellen Benchmarkszenarien im Einsatz
-	\item Mono-Modale SLAM-Szenarien stehen dort noch im Mittelpunkt
-	\item die \"Ubertragung der Theorie auf Robotersteuerungen wird gerade erforscht (steht zwischen Theoriebildung und Grundlagenforschung, d.h. Translation, angewandte Forschung, Prototypen-Erprobung und Produktionsstart fehlen noch)
+	\item Die Nutzung von POMDPs in autonomen Servicerobotern steht noch ganz am Anfang
+	\item Momentan fast nur in Simulationen und virtuellen Benchmarkszenarien im Einsatz
+	\item Mono-Modale SLAM\footnote{Simultaneous Localization And Mapping (SLAM) ist eine zentrale Fähigkeit für autonome, mobile Roboter, also auch Serviceroboter}-Szenarien stehen dort noch im Mittelpunkt
+	\item Die \"Ubertragung der Theorie auf Robotersteuerungen wird gerade erforscht. \autoref{ch08:einord} zeigt eine Einordnung aktueller Technologien.
+		\begin{figure}[!h]
+			\centering
+  			\includegraphics[width=0.3\linewidth]{figures/ch08_einord.png}
+  			\centering
+			\caption{POMDPs -- Technologieeinordnung}
+			\label{ch08:einord}
+	\end{figure}
 	\item Herausforderungen
 	\begin{itemize}
 		\item \"Uberwindung der Abstraktionsl\"ucke zwischen Roboter Sensorik/Aktorik und symbolischen POMDPs
@@ -679,15 +765,14 @@ weitere approximative Value Iterations sind PERSEUS, HSV12, SARSOP..
 		\item Integration von maschinellem Lernen
 	\end{itemize}
 	\item POMDPs in einer Robotersteuerung (vgl. \autoref{fig:ch08_pomdpRobotersteuerung})
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.4\textwidth]{figures/ch08_POMPDRobotersteuerung.png}
+		\caption{POMDPs in einer Robotersteuerung}
+		\label{fig:ch08_pomdpRobotersteuerung}
+	\end{figure}
 	\begin{itemize}
 		\item POMDPs werden mit anderen Steuerungsmethoden zusammen eingesetzt
 		\item Schichtung trennt die Methoden
 	\end{itemize}
 \end{itemize}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.6\textwidth]{figures/ch08_POMPDRobotersteuerung.png}
-\caption{POMDPs in einer Robotersteuerung}
-\label{fig:ch08_pomdpRobotersteuerung}
-\end{figure}

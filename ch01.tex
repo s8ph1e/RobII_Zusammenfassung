@@ -71,6 +71,7 @@ Nachteile\\
 \caption{Nachteile der Play-Back-Programmierung}
 \label{tab:PBprog}
 \end{table}
+\newpage
 \item \textbf{Master-Slave-Programmierung:}
 \begin{itemize}
 \item Bediener führt einen kleinen, leicht bewegbaren Master
@@ -201,7 +202,7 @@ analytisch
 \item Simple graphische Programmierung, z.B. Lego Mindstorms:
 Leicht verständliche, ikonische Programmierung aber beschränkte Möglichkeiten
 \item Graphische Programmierung basierend auf sensorieller Erfassung der
-Benutzervorführung: Simulation der Roboterprogramme
+Benutzervorführung:\\ Simulation der Roboterprogramme
 \end{itemize}
 \begin{table}[hbt]
 \centering
@@ -230,18 +231,18 @@ Vorteile & Nachteile\\
 \caption{Zusammenfassung Graphische Verfahren}
 \label{tab:textprog}
 \end{table}
-
+\newpage
 \subsection{Abstraktionsgrad der Programmierung}
 \subsubsection{Explizite/Roboterorientierte Programmierung}
 \textcolor{red}{\glqq Wie ist es zu tun?\grqq} \\
 Bewegungen und Greiferbefehle sind direkt in eine Programmiersprache eingebunden.\\
-Das Aufgabenmodell ist gegeben durch Anfangs- und Endzustand (z.B. Relationale Darstellung). Ein Beispiel ist in \autoref{cran} dargestellt.
+Das Aufgabenmodell ist gegeben durch Anfangs- und Endzustand (z.B. Relationale Darstellung). Ein Beispiel ist in \autoref{cranfield} dargestellt.\\
 \begin{figure}[h!]\centering 
 \includegraphics[width=0.7\linewidth]{figures/ch01_cranfield.png}
 \caption{Der Cranfield-Montage-Benchmark}
-\label{cran}
-\end{figure}
-\textbf{Anwender $\rightarrow$ Roboter}:\\
+\label{cranfield}
+\end{figure}\\
+\paragraph{Anwender $\rightarrow$ Roboter}
 Jedes Robotersystem besitzt eine roboterabhängige Steuerungsebene, welche folgende Eigenschaften kapselt:
 \begin{itemize}
 \item Ansteuerung der Hardware (sowohl interne als auch externe)
@@ -251,10 +252,10 @@ Jedes Robotersystem besitzt eine roboterabhängige Steuerungsebene, welche folge
 \end{itemize}
 \begin{figure}[h!]\centering 
 \includegraphics[width=0.7\linewidth]{figures/ch01_einordnung.png}
-\caption{Einordnung roboterorientierten Programmierung}
-\label{cran}
+\caption{Einordnung roboterorientierte Programmierung}
+\label{einord}
 \end{figure}
-\textbf{Anforderungen an die oboterorientierte Programmierung}:
+\paragraph{Anforderungen an die roboterorientierte Programmierung}
 \begin{itemize}
 \item Positions-, Geschwindigkeitsregelung der aktiven Komponenten (z.B. Gelenke, Räder)
 \item Auslesen und Parametrieren der internen und externen Sensorik
@@ -264,13 +265,14 @@ Jedes Robotersystem besitzt eine roboterabhängige Steuerungsebene, welche folge
 \item Generierung und Zusammensetzen von Trajektorien zu komplexen Bewegungen
 \item Verkettung komplexer Bewegungen zu Elementaroperationen
 \end{itemize}
-\textbf{Komponenten der roboterorientierten Programmierung}: \autoref{zykl}
+\paragraph{Komponenten der roboterorientierten Programmierung}
+\autoref{zykl}\\
 \begin{figure}[h!]\centering 
 \includegraphics[width=0.7\linewidth]{figures/ch01_zykl.png}
 \caption{Regelungszyklus eines Roboters}
 \label{zykl}
-\end{figure}
-\textbf{Sprachelemente von Roboterprogrammiersprachen}:
+\end{figure}\\
+\paragraph{Sprachelemente von Roboterprogrammiersprachen}
 \begin{itemize}
 \item Befehle für:
 \begin{itemize}
@@ -285,7 +287,7 @@ Jedes Robotersystem besitzt eine roboterabhängige Steuerungsebene, welche folge
 \item Anweisungen zur Ablaufsteuerung
 \item Definition generischer Operationen (zB. Armbewegung + Griff $\rightarrow$ ein Operator)
 \end{itemize}
-\textbf{Bewegungsanweisungen}:
+\paragraph{Bewegungsanweisungen}
 \begin{itemize}
 \item Bewegungen im Gelenkwinkelraum:
 \begin{itemize}
@@ -325,7 +327,7 @@ Vorteile & Nachteile\\
 \caption{Bewegungen im Gelenkwinkelraum}
 \label{tab:bew}
 \end{table}
-\textbf{Sprachelemente -- Semantik von Greiferbefehlen}
+\paragraph{Sprachelemente -- Semantik von Greiferbefehlen}
 \begin{itemize}
 \item Verschiedene Greifertypen: evtl. mit taktiler und/oder Kraftsensorik
 \item Backengreifer: Industrie, Forschung (z.B. 3-Finger-Hand)
@@ -354,7 +356,7 @@ Mit zunehmender Abstraktion:
 \item Griff-Form vom Menschen lernbar
 \end{itemize}
 \end{enumerate}
-\textbf{Zusammenfassung -- Explizite Programmierung}: Nur in Verbindung mit (abstrakten) Programmiersprachen
+\paragraph{Zusammenfassung -- Explizite Programmierung} Nur in Verbindung mit (abstrakten) Programmiersprachen
 \begin{table}[hbt]
 \centering
 \begin{tabular}{|p{7.5cm}|p{7.5cm}|}

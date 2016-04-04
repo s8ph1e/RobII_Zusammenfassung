@@ -116,7 +116,8 @@ Vorteile & Nachteile\\
 \end{tabular}
 \caption{Flächen -- approximativ}
 \label{tab:Flaechen_approx}
-\end{table}\\ 
+\end{table}
+\newpage
 Hierbei werden Freiformflächen im einfachsten Fall durch \textbf{Dreiecksflächen} approximiert:
 \begin{itemize}
 \item[] Gegeben seien 3 Punkte im Raum $P_1 , P_2 , P_3$.
@@ -230,11 +231,12 @@ Konsistenzprüfungen sind notwendig (\autoref{fig:kons})! \\
 	\includegraphics[width=0.3\linewidth]{figures/ch02_kons.png}
 	\caption{Konsistenzprüfung: $d < min(a,b)$}
 \label{fig:kons}
-\end{figure}
+\end{figure}\\
 \noindent
 \textbf{Zellenzerlegung}:\\
  Objekte werden aus disjunkten Elementarzellen aufgebaut. Verwendung finden einfache geometrische Objekte z,B. Tetraeder, Quader, ...
-Benutzt in der Strukturanalyse mit Finite-Elemente-Methoden (FEM).\\ \\
+Benutzt in der Strukturanalyse mit Finite-Elemente-Methoden (FEM).
+\newpage
 Diese Modelle können auf drei Arten umgesetzt werden:
 \begin{enumerate}
 \item Boundary Repräsentation
@@ -273,17 +275,17 @@ werden können (\autoref{fig:csg}).
 	\label{fig:csg}
 \end{figure}
 Auf ihnen sind verschiedene Operationen definiert, z.B.
-\begin{table}[hbt]
+\begin{table}[!hb]
 \centering
 \begin{tabular}{|p{6.5cm}|p{6.5cm}|}
 \hline
-Objekt $A$ \includegraphics[width=.1\textwidth]{figures/ch02_a.png} & Objekt $B$ \includegraphics[width=.1\textwidth]{figures/ch02_b.png}\\
+Objekt $A$ \includegraphics[width=.07\textwidth]{figures/ch02_a.png} & Objekt $B$ \includegraphics[width=.07\textwidth]{figures/ch02_b.png}\\
 \hline
-Vereinigung $A \cup B$ (Summe) & \includegraphics[width=.1\textwidth]{figures/ch02_ab.png}\\
+Vereinigung $A \cup B$ (Summe) & \includegraphics[width=.07\textwidth]{figures/ch02_ab.png}\\
 \hline
-Schnitt $A \cap B$ & \includegraphics[width=.1\textwidth]{figures/ch02_ab1.png} \\
+Schnitt $A \cap B$ & \includegraphics[width=.07\textwidth]{figures/ch02_ab1.png} \\
 \hline
-Differenz $A / B$ & \includegraphics[width=.1\textwidth]{figures/ch02_ab2.png}\\
+Differenz $A / B$ & \includegraphics[width=.07\textwidth]{figures/ch02_ab2.png}\\
 \hline
 Sweep:
 Ein Grundelement (u.U. eine Fläche) wird entlang einer Raumkurve
@@ -311,6 +313,7 @@ Teilbelegte kleinste Zellen werden als belegt markiert. Siehe \autoref{zb}.
 	\caption{Beispiel -- Zellenbelegung}
 	\label{zb}
 \end{figure}
+\newpage
 \subsection{Aufgabenmodellierung}
 \begin{figure}[h!]\centering 
 \includegraphics[width=0.6\linewidth]{figures/ch02_aufgabenmodell.png}
@@ -335,8 +338,9 @@ Teilbelegte kleinste Zellen werden als belegt markiert. Siehe \autoref{zb}.
 \item Wiederverwendbarkeit
 \item Integration des Wissens in ein Planungssystem
 \end{itemize}
-\paragraph*{Symbolische Abstraktion}:\\
-Benutzer beschreibt die Aufgabe mit seinen Worten (z.B. \glqq Bring mir Tee!\grqq) 
+\newpage
+\paragraph*{Symbolische Abstraktion}
+Benutzer beschreibt die Aufgabe mit seinen Worten\\ (z.B. \glqq Bring mir Tee!\grqq) 
 \begin{itemize}
 \ita Abbildung: Erzeugung der Roboterbefehle über mehrere Stufen (vgl. \autoref{symbab})
 \ita \glqq Fahre in die ‚Küche‘, greife ein Glas, fahre zurück und reiche mir den Becher.\grqq
@@ -347,7 +351,7 @@ Benutzer beschreibt die Aufgabe mit seinen Worten (z.B. \glqq Bring mir Tee!\grq
 \caption{Symbolische Abstraktion}
 \label{symbab}
 \end{figure}
-\paragraph*{Modellierung der Reihenfolge von Operatoren/Symbolische Handlungsatome}:
+\paragraph*{Modellierung der Reihenfolge von Operatoren/Symbolische Handlungsatome}
 \begin{itemize}
 \item In den gegebenen Beispielen wurden bereits implizit Handlungsatome angenommen
 \item Die kleinsten auszuführenden Handlungseinheiten werden als
@@ -356,11 +360,11 @@ Elementaroperationen oder atomare Handlungen bezeichnet.
 können dazu üblicherweise parametriert werden.
 \item Jeder Roboter besitzt eine endliche Menge an Elementaroperationen.
 \end{itemize}
-\paragraph*{Drei Ansätze für das Aufgabenmodell}:
+\paragraph*{Drei Ansätze für das Aufgabenmodell}
 \begin{enumerate}
 \item Sequentiell (\autoref{seq}): Festgelegte Folge von elementaren Aktionen 
-\item Vorranggraph (\autoref{vg}): Darstellung der Abhängigkeiten
-\item Hierarchisch (\autoref{hier}): Abstraktion von Teilhandlungen
+\item Vorranggraph (\autoref{vorgra}): Darstellung der Abhängigkeiten
+\item Hierarchisch (\autoref{hierar}): Abstraktion von Teilhandlungen
 \end{enumerate}
 \begin{figure}[h!]
 	\centering
@@ -372,16 +376,17 @@ können dazu üblicherweise parametriert werden.
 	\begin{subfigure}{.25\textwidth}
 		\includegraphics[width=\textwidth]{figures/ch02_ans1.png}
 		\caption{Vorranggraph}
-		\label{vg}
+		\label{vorgra}
 	\end{subfigure}
 		\begin{subfigure}{.25\textwidth}
 		\includegraphics[width=\textwidth]{figures/ch02_ans2.png}
 		\caption{Hierarchie}
-		\label{hier}
+		\label{hierar}
 	\end{subfigure}
 	\caption{Ansätze für das Aufgabenmodell}
 	\label{ans}
 \end{figure}
+\newpage
 \textbf{Sequentielle Handlungsbeschreibung}:
 \begin{itemize}
 \item Folge von (parametrierten) atomaren Handlungen
@@ -425,7 +430,7 @@ können dazu üblicherweise parametriert werden.
 \end{itemize}
 \item Mächtigere Handlungsbeschreibung benötigt auch mächtigere Verfahren bei der Ausführung!
 \end{itemize}
-\textbf{Hierarchisches Aufgabenmodell} (\autoref{hier}):\\
+\textbf{Hierarchisches Aufgabenmodell} (Abbildungen \ref{hier} und \ref{hiermod}):\\
 Sowohl Aufgabenspezifikation als auch Aufgabenzerlegung/-teilung sind hierarchisch strukturiert. Die Abstraktion erfolgt nach Raum, Zeit, Objekten und Alternativen.
 \begin{figure}[h!]\centering 
 \includegraphics[width=0.3\linewidth]{figures/ch02_hier.png}
@@ -441,12 +446,11 @@ Sowohl Aufgabenspezifikation als auch Aufgabenzerlegung/-teilung sind hierarchis
 	\begin{subfigure}{.45\textwidth}
 		\includegraphics[width=\textwidth]{figures/ch02_hier2.png}
 		\caption{Programmbeispiel: Montage von Welle und Hebel des Cranfield Benchmarks}
-		\label{vg}
 	\end{subfigure}
 	\caption{Hierarchisches Aufgabenmodell}
-	\label{vg1}
+	\label{hiermod}
 \end{figure}
-\paragraph*{Abstraktionsebenen im Aufgabenmodell}:\\
+\paragraph*{Abstraktionsebenen im Aufgabenmodell}
 Häufige Unterscheidung der in \autoref{abst} dargestellten semantischen Abstraktionsstufen. Diese benutzen symbolische Parameter.
 \begin{itemize}
 \ita Komplexität der Aufgabe beherrschbar
@@ -499,7 +503,7 @@ Ein \textcolor{red}{Operator} ist definiert durch $OP = (N, O, A, Par, K)$ mit
 \item Vorteil: Zusammengesetzte (Teil-)Programme können wiederverwendet werden
 \item Repräsentation gut \glqq lesbar\grqq{} (verständlich, erklärbar)
 \end{itemize}
-\textbf{Anwendung hierarchischer Handlungsbeschreibung in der Realität -- Flexible Programme}:\\
+\textbf{Anwendung hierarchischer Handlungsbeschreibung in der Realität  \\-- Flexible Programme}:\\
 Symbolische Abstraktionsebene zur Roboterprogrammierung
 \begin{itemize}
 \item Hierarchische Handlungsbeschreibung
@@ -518,7 +522,7 @@ Symbolische Abstraktionsebene zur Roboterprogrammierung
 \item Parallele Ausführung mehrerer Kinder möglich
 \end{itemize}
 \end{itemize}
-\paragraph*{Validierung der Modelle: Simulation oder Graphische Animation}:
+\paragraph*{Validierung der Modelle: Simulation oder Graphische Animation}
 \begin{enumerate}
 \item \textbf{Simulation der Komponenten}: Validierung anhand gegebener Einschränkungen (Kollisionen, Erreichbarkeit, Optimalitätskriterien: Weg, Zeit, Energie, ...)
 \begin{itemize}
@@ -530,7 +534,7 @@ Symbolische Abstraktionsebene zur Roboterprogrammierung
 \end{itemize}
 \end{enumerate}
 
-\paragraph*{Aufgabenmodell -- Zusammenfassung und Diskussion}
+\paragraph*{Aufgabenmodell -- Zusammenfassung und Diskussion}:\newline
 \textbf{Zusammenfassung}:
 \begin{itemize}
 \item Aufgabenmodell basiert auf elementaren Operationen

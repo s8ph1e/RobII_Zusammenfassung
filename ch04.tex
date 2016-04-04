@@ -113,7 +113,7 @@ Randbereich groß sind findet zunächst eine rasche Exploration und dann eine Ve
 \end{figure}
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=.3\textwidth]{figures/ch04_voronoi.png}
+	\includegraphics[width=.15\textwidth]{figures/ch04_voronoi.png}
 	\caption{Voronoi-Bias -- Detail}
 	\label{fig:vb}
 \end{figure}
@@ -149,6 +149,7 @@ RRT: Zusammenfassung
 \item Probabilistische (oder deterministische) Stichprobenerzeugung
 \item Einfach zu implementieren, nur wenige Parameter ($\varepsilon$, Distanzfunktion auf $\mathbb{K}$)
 \end{itemize}
+\newpage
 \paragraph{Anwendung in der Bahnplanung} Es sind drei Fragen zu klären:
 \begin{enumerate}
 \item Wie Einschränkungen berücksichtigen?
@@ -185,7 +186,7 @@ Hierzu muss der Basisalgorithmus erweitert werden:
 \end{figure}
 \textbf{Frage 3: Wie zielgerichtet planen?}
 Wie in \autoref{vb1} dargestellt definiert die Menge der Zieleinschränkungen i.d.R. ein stark begrenztes Gebiet in $\mathbb{K}$ (roter Bereich im 6. Panel der Abbildung), z.B. endliche Menge von gültigen Zielkonfigurationen. Somit ist die Wahrscheinlichkeit eine Zielkonfiguration zufällig zu erzeugen minimal, es dauert recht lange bis der Baum in den betreffenden Bereich reinwächst.
-Daher ist die in Algorithmus \autoref{alg:rrt-detail} dargestellte Modifikation der Stichprobenerzeugung sinnvoll (vgl. \autoref{rrt-erw}).\\
+Daher ist die in Algorithmus \autoref{alg:rrt-detail} dargestellte Modifikation der Stichprobenerzeugung sinnvoll (vgl. \autoref{rrt-erw}). Der resultierende Algorithmus ist Algorithmus \ref{alg:rrt-erw}.\\
 \begin{algorithm}
   \caption{Detail
     \label{alg:rrt-detail}}
@@ -229,7 +230,7 @@ Daher ist die in Algorithmus \autoref{alg:rrt-detail} dargestellte Modifikation 
       \State \Return{$T$, Nicht gefunden}
   \end{algorithmic}
 \end{algorithm}
-\bigskip
+\newpage \noindent
 \textbf{Beispiel für die Anwendung des Simplen RRT Planers}: Holonome Planung für einen Roboterarm mit 7 Freiheitsgraden (vgl. \autoref{fig:rrt-bsp})
 \begin{itemize}
 \item Konfigurationsraum $\mathbb{K}= \left[0,1\right]$ (Gelenkwinkelbereich $\left[-170°, +170°\right]$ wird auf Bereich $\left[0,1\right]$ normiert)
@@ -358,7 +359,7 @@ Problem: Narrow-Passages und Nullmengen treten sehr viel häufiger als bei Kolli
 \autoref{fig:sp-erz} stellt verschiedene Methoden der Stichprobenerzeugung gegenüber.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=.7\textwidth]{figures/ch04_sp-erz.png}
+	\includegraphics[width=.5\textwidth]{figures/ch04_sp-erz.png}
 	\caption{Vergleich der Stichprobenerzeugung: Jacobimatrix-basierte Ansätze bei komplexeren Einschränkungen im Vorteil}
 	\label{fig:sp-erz}
 \end{figure}\\
@@ -368,7 +369,8 @@ Der RGD wird beispielsweise in IPoR II verwendet, wie in \autoref{fig:rgd-ipor} 
 	\includegraphics[width=.3\textwidth]{figures/ch04_rgd-ipor.png}
 	\caption{RGD mit Distanz $d(F_1 ,F_2)$}
 	\label{fig:rgd-ipor}
-\end{figure}\\
+\end{figure}
+\newpage
 \textbf{RRT -- Erweiterungen}:
 \begin{itemize}
 \item Connect-Heuristik:
@@ -503,7 +505,7 @@ Die Bestimmung der Greifstrategie (Preshape und Startlage) erfolgt auf Basis ein
 \caption{Greifplanungsverfahren für die Barretthand}
 \label{fig:ch04_griffe}
 \end{figure}
-\noindent
+\newpage
 Das \textbf{Lernen von Griffen durch PdV} ist im folgenden noch einmal zusammengefasst:
 \begin{itemize}
 \item[1.] \underline{Beobachtung des Menschen}
