@@ -165,32 +165,42 @@ In stochastischen Umgebungen ist daher es essenziell, dass mit numerischen Wahrs
 \item die Wahrscheinlichkeit des Nachfolgezustands h\"angt nur vom aktuellen Zustand ab
 \item $Pr(X_{n+1} = x | X_n = x_n, \ldots, X_1 = x_1, X_0 = x_0) = Pr(X_{n+1}|X_n = x_n)$
 \end{itemize}
-
+\begin{figure}
+	\centering
+  	\includegraphics[width=0.5\linewidth]{figures/ch07_mk-bsp.png}
+	\caption{Beispiel -- Markovkette 1. Ordnung}
+	\label{fig:ch07:mk-bsp}
+\end{figure}
 Markovketten: Modellierung der Welt
 \begin{itemize}
 	\item Markovketten k\"onnen von Agenten zur Modellierung von stochastischen Umgebungen genutzt werden
-	\item bei diskreten Markovketten muss die Welt dazu in eine diskrete Zustandsmenge zerlegt werden
-	\item die Zerlegung kann f\"ur verschiedene Umweltaspekte getrennt erfolgen, z.B. Roboterposition, Objektform oder Intention eines Menschen
+	\item Bei diskreten Markovketten muss die Welt dazu in eine diskrete Zustandsmenge zerlegt werden
+	\item Die Zerlegung kann f\"ur verschiedene Umweltaspekte getrennt erfolgen, z.B. Roboterposition, Objektform oder Intention eines Menschen
 	\item Welt als diskrete Zust\"ande: einfache Beispiel: Unterteilung von R\"aumen in diskrete Regionen (die Position eines mobilen Roboters wird durch die Region, in der er sich befindet, repr\"asentiert)
-	\item Welt als stochastischer Prozess: Bestimmte \textbf{Aufl\"oser} f\"uhren zu stochastischen Zustands\"uberg\"angen (Bayesianische Modellierung), z.B. Handlung eines Agenten:\\ Beispiel:
+	\item Welt als stochastischer Prozess: Bestimmte \underline{Ausl\"oser} f\"uhren zu stochastischen Zustands\"uberg\"angen (Bayesianische Modellierung), z.B. Handlung eines Agenten:\\ Beispiel:
 	\begin{itemize}
 		\item Der Roboter steht vor einem Mensch, es fand noch keine Kommunikation statt
 		\item M\"oglichkeit 1: Roboter sagt: Folge mir!; damit ergibt sich eine Wahrscheinlichkeit von $75\%$, dass der Mensch interessiert ist und die Intention hat zu folgen und $25\%$, dass der Mensch keine Lust hat, also nicht die Intention entwickelt zu folgen
 		\item M\"oglichkeit 2: Roboter sagt: Ich habe etwas interessantes zu zeigen. Folge mir bitte!; damit steigt die Wahrscheinlichkeit, dass der Mensch folgen will auf $90\%$, wohingegen er mit $10\%$iger Wahrscheinlichkeit nicht folgen will
-		\item d.h. durch die Wahl der Handlung kann der Agent die \textbf{\"Ubergangswahrscheinlichkeiten steuern}!!!!!
+		\item d.h. durch die Wahl der Handlung kann der Agent die \textbf{\"Ubergangswahrscheinlichkeiten steuern}!!! (Siehe auch \autoref{fig:ch07:weltmode-bsp}).
 	\end{itemize}
 \end{itemize}
-
+\begin{figure}[!h]
+	\centering
+  	\includegraphics[width=0.5\linewidth]{figures/ch07_weltmode-bsp.png}
+	\caption{Verschiedene Auslöser haben unterschiedliche Übergangswahrscheinlichkeiten. Durch die Wahl der Handlung kann der Agent die Übergangswahrscheinlichkeiten steuern.}
+	\label{fig:ch07:weltmode-bsp}
+\end{figure}
 \subsubsection{Markov Entscheidungsprozesse}
-Ketten von Handlungen bzw. Ausl\"osern f\"uhren zu Bayes-Netzwerken. F\"ur die Entscheidungsfinder in diesen stochastischen Prozessen existiert ein fundiertes Modellierungsrahmenwerk spezieller Bayes-Netze: \textbf{Markov Decision Processes} (MDPs)
+Ketten von Handlungen bzw. Ausl\"osern f\"uhren zu Bayes-Netzwerken. F\"ur die Entscheidungsfinder in diesen stochastischen Prozessen existiert ein fundiertes Modellierungsrahmenwerk spezieller Bayes-Netze: \textbf{Markov Decision Processes} (MDPs). Hierbei kann der Agent, im Unterschied zu Markov-Ketten, aktiv Entscheidungen treffen.
 
 \paragraph{Struktur}
 \begin{itemize}
-\item Eine Menge von symbolischen Zust\"anden der Welt S (d.h. die Umwelt bei einem MDP ist diskret)
-\item Eine Menge von symbolischen Handlung des Agenten U
-\item Ein \"Ubergangsmodell (transition model) $T(s', u, s)$ welches die stochastischen \"Uberg\"ange modelliert (modelliert den Markov-Prozess)
-\item Ein Belohnungsmodell (reward model) $R(s,u)$ welches die Ziele und Absichten des Agenten modelliert
-\item Startzustand $s_0$
+\item Eine Menge von symbolischen \textbf{Zust\"anden} der Welt $S$ (d.h. die Umwelt bei einem MDP ist diskret)
+\item Eine Menge von symbolischen Handlungen des Agenten $U$
+\item Ein \textbf{\"Ubergangsmodell} (transition model) $T(s', u, s)$ welches die stochastischen \"Uberg\"ange modelliert, also das Verhalten der Welt aufspannt (modelliert den Markov-Prozess). Hierbei ist die Frage, wie wahrscheinlich ein bestimmtes Ergebnis folgt, wenn in einem beiebigen Zustand eine beliebige Handlung ausgeführt wird. Das Modell muss vollständig definiert werden (d.h.     Unmöglichkeiten haben die Wahrscheinlichkeit 0).
+\item Ein \textbf{Belohnungsmodell} (reward model) $R(s,u)$ welches die Ziele und Absichten des Agenten modelliert. Auch negative Belohnungen/Strafen möglich. 
+\item Ein \textbf{Startzustand} $s_0$
 \end{itemize}
 Zust\"ande und Aktionen m\"ussen dabei einzigartig sein.
 Es gilt au{\ss}erdem die Markov-Eigenschaft, d.h. alle Wahrscheinlichkeiten h\"angen immer nur vom aktuellen Zustand ab und nicht von den bereits vergangenen.
@@ -198,19 +208,39 @@ Die in jedem Schritt aufaddierte Belohnungen werden \emph{Utilitiy} genannt und 
 
 \paragraph{Statische Eigenschaften}
 \begin{itemize}
-	\item In einem MDP ist die Welt zu jedem Zeitpunkt in \textbf{genau einem} Zustand
+	\item In einem MDP ist die Welt zu jedem Zeitpunkt in \textbf{genau einem} Zustand (und nur in diesem, kein fuzzy Zustand, keine Wahrscheinlichkeits-Verteilung über mehrere Zustände
+	\ita brauche in echter Umgebung Diskretisierungsverfahren für kontinuierlichen Zustandsraum, im Zweifelsfall führe einen Restzustand \glqq other\grqq{} ein
 	\item In einem diskreten MDP ist dies ein symbolischer Zustand, welcher alle Eigenschaften der Welt repr\"asentiert
 	\item Der Agent kann in jedem Agentezyklus \textbf{genau eine} Handlung ausf\"uhren
-	\item In einem diskreten MDP ist dies eine symbolische Handlung
+	\item In einem diskreten MDP (diskrete Zeit) ist dies eine symbolische Handlung (kann auf tieferer Ebene aus mehreren Subhandlungen bestehen)
 	\item Im reinen MDP nimmt der Agent den aktuellen Zustand \textbf{immer und eindeutig} wahr
 \end{itemize}
-
+\begin{figure}[!h]
+	\centering
+  	\includegraphics[width=0.5\linewidth]{figures/ch07_stat-bsp.png}
+	\caption{MDP Beispiel -- statische Eigenschaften; hier für einen Museumsroboter welcher z.B. Möglichkeiten für Tracking und Dialogerkennung zur Aufbereitung des abstrakten Zustands hat (wenn der Mensch etwas gesagt hat hat er eher die Intention zu folgen)}
+	\label{fig:ch07:stat-bsp}
+\end{figure}
 \paragraph{Transitionsmodell}
 \begin{itemize}
-	\item $T(s', u, s) = p(\text{transition})$: wenn der alte Zustand $s$ war und der Agent die Handlung $u$ ausgef\"uhrt hat, dann beschreibt dieser Eintrag im Modell die Wahrscheinlichkeit, dass der neue Zustand $s'$ sein wird
+	\item $T(s', u, s) = p(\text{transition})$: wenn der alte Zustand $s$ war und der Agent die Handlung $u$ ausgef\"uhrt hat, dann beschreibt dieser Eintrag im Modell die Wahrscheinlichkeit, dass 			der neue Zustand $s'$ sein wird
+	\item auch Fehleranfälligkeit und Einschränkungen in den Entscheidungsmöglichkeiten können durch ein stochastisches Übergangsmodell modelliert werden
 	\item Das Transitionsmodell ist ein Tensor 3. Stufe
-	\item In der Praxis oft als Vektor (\"uber U) von Matrixen $(S, S')$ dargestellt: $|T| = |S| * |S| * |U|$
-	\item Die Gr\"o{\ss}e w\"achst also kubisch
+	\item In der Praxis oft als Vektor (\"uber U) von Matrixen $(S, S')$ dargestellt: $|T| = |S| * |S| * |U|$ (siehe \autoref{fig:ch07:transmod-bsp})
+	\item Die Gr\"o{\ss}e des Modells w\"achst also kubisch (MDP hat klassischerweise bis zu 10.000 Zustände wobei die Mehrheit Wahrscheinlichkeit 0 hat; diese werden nicht mit modelliert, da es 				sonst sehr sperrig werden würde)
+	\item Beispiel Museumsroboter: Ein Mensch erscheint im Szenario mit 25\% Wahrscheinlichkeit, völlig unabhängig vom Roboterverhalten (z.B. kommt im Durchschnitt an einem durchschnittlich besuchten  		Tag alle 30s ein Mensch vorbei). Das Verschwinden des Menschen ist abhängig vom Roboterverhalten
+	\begin{itemize}
+		\item Zustände: $S_1$=\textit{Kein Mensch}, $S_2$=\textit{Mensch, keine Intention zu folgen}, $S_3$=\textit{Mensch, Intention zu folgen} 
+		\item Handlungen: $U_1$=\textit{Sage \glqq Folge mir!\grqq}, $U_2$=\textit{Führe an einen Ort}, $U_3$=\textit{Tue nichts}
+		\item $|T| = |S| * |S| * |U| = 3*3*3=27$ Einträge
+		\ita Modellbildung nicht trivial und ohne frequentistische Experimente schwierig, Handlungen können Zustände verschiedenartig beeinflussen...
+	\end{itemize}
+	\begin{figure}[!h]
+		\centering
+  		\includegraphics[width=0.6\linewidth]{figures/ch07_transmod-bsp.png}
+		\caption{MDP Beispiel -- Transitionsmodell, Zeile muss Summe 1 haben, Spalten nicht (da Bias zu manchen Zuständen)}
+		\label{fig:ch07:transmod-bsp}
+	\end{figure}
 \end{itemize}
 
 \paragraph{Belohnungsmodell}
@@ -219,55 +249,54 @@ Die in jedem Schritt aufaddierte Belohnungen werden \emph{Utilitiy} genannt und 
 	\item Das Belohnungsmodell ist eine Matrix
 	\item Die Eintr\"age k\"onnen beliebige Realzahlen sein, je nach Modellierung
 	\item Durch das Belohnungsmodell k\"onnen auch konkurrierende oder erg\"anzende Zielsetzungen modelliert werden
+	\item Beispiel Museumsroboter: \textit{Sprechen} und \textit{Führen} kostet immer -1 Strafe, verglichen mit \textit{Tue nichts}, denn der Roboter ist faul und möchte Energie sparen, außerdem soll unnötige Unruhe im Museum vermieden werden. Einen folgenden Menschen an einen Ort zu führen gibt +5 Belohnung.
+	\begin{figure}[!h]
+		\centering
+  		\includegraphics[width=0.2\linewidth]{figures/ch07_belmodel-bsp.png}
+		\caption{MDP Beispiel -- Belohnungsmodell}
+		\label{fig:ch07:belmodel-bsp}
+	\end{figure}
 \end{itemize}
 
 \paragraph{Ziel des Agenten}
 \begin{itemize}
 	\item Das Ziel des rationalen Agenten im MDP ist, die Summe der Belohnungen bis zu einem bestimmten Zeithorizont (im reinen MDP meistens unendlich) zu maximieren
-	\item Dies f\"uhrt zu einer \textbf{Gewinnmaximierung} bzw. \textbf{Risikoabsch\"atzung} in die Zukunft als Grundlage f\"ur den Entscheidungsprozess
+	\item Dies f\"uhrt zu einer \textbf{Gewinnmaximierung} bzw. \textbf{Risikoabsch\"atzung} in die Zukunft als Grundlage f\"ur den Entscheidungsprozess (zwischendurch negative Belohnung einzusammeln kann Sinn machen, Kosten in Kauf nehmen um langfristig große Belohnung einzusammeln; im Entscheidungsprozess müssen viele potentielle Handlungsketten gleichzeitig berücksichtigt werden)
 	\item Das einzige explizite Ziel des Agenten ist die Gewinnmaximierung
 	\item Sie bezieht implizit alle gegebenen Zielsetzungen in den Entscheidungsprozess mit ein
 \end{itemize}
 
 \paragraph{Gewinnmaximierung}
 \begin{itemize}
-	\item Da in einer stochastischen Welt keine festen Handlungsketten existieren, wird eine Entscheidungsfunktion (\emph{policy}) berechnet
-	\item Die Entscheidungsfunktion $\pi$ gibt f\"ur jeden Zustand $s$ eine Handlung zur\"uck: $\pi(s)$
+	\item Da in einer stochastischen Welt keine festen Handlungsketten (in die Zukunft) existieren, wird eine Entscheidungsfunktion (\emph{policy}) berechnet
+	\item Die Entscheidungsfunktion $\pi$ gibt f\"ur jeden Zustand $s$ eine Handlung zur\"uck: $\pi(s)$ (im klassischen MDP ist Entscheidungsfunktion eine Look-Up-Table)
+	\begin{itemize}
+		\ita deswegen wird in diesem Kontext meistens von \glqq entscheiden\grqq{} nicht wie z.B. in STRIPS von \glqq planen\grqq{} geredet (Planung ändert sich zu jedem Schritt)
+	\end{itemize}
 	\item Ein Agent in einem MDP muss nur eine optimale Entscheidungsfunktion $\pi^*$ berechnen, welche immer die Handlung mit der gr\"o{\ss}ten, langfristigen Gewinnerwartung w\"ahlt: $\pi^* (s)$
-	\item Es gibt immer mindestens eine $\pi^* (s)$, welche zu einem gegebenen MDP Modell optimale Entscheidungen liefert
-	\item Bei unendlichem Horizont ist die optimale Entscheidungsfunktion station\"ar: es gibt f\"ur einen Zustand immer dieselbe optimale Handlung
-	\item In einem voll beobachtbaren (reinen) MDP ist die Variante mit unendlichem Horizont somit die einfachste
-	\item Im Folgenden wird bei reinem MDPs nur der Fall des unendlichen Zeithorizonts ber\"ucksichtigt
+	\item Es gibt immer \textit{mindestens} eine $\pi^* (s)$, welche zu einem gegebenen MDP Modell optimale Entscheidungen liefert (selbst wenn es nur schlechte Möglichkeiten gibt und in der Praxis keinen Sinn mach)!
+	\item Bei unendlichem Horizont ist die optimale Entscheidungsfunktion station\"ar: es gibt f\"ur einen Zustand immer dieselbe optimale Handlung. In einem voll beobachtbaren (reinen) MDP ist die Variante mit unendlichem Horizont somit die einfachste. Im Folgenden wird bei reinen MDPs nur der Fall des unendlichen Zeithorizonts ber\"ucksichtigt
 \end{itemize}
 
 \paragraph{Utility}
 \begin{itemize}
 	\item Die Utility einer Zustandskette ist die Summe ihrer Belohnungen bzw. Strafen:\\ $U_h(\left[s_0, s_1, s_2, \ldots \right]) = R(s_0) + R(s_1) + R(s_2) + \ldots$
-	\item Die Einf\"uhrung eines Abschlags (\emph{discount}) $\gamma$ auf Zust\"ande  in der Zukunft erm\"oglicht eine endliche utility f\"ur alle unendlichen Zustandsketten:\\ $U_h(\left[s_0, s_1, s_2, \ldots \right]) = R(s_0) + \gamma R(s_1) + \gamma^2 R(s_2) + \ldots$
+	\item Die Einf\"uhrung eines Abschlagsfaktors (\emph{discount})  $\gamma \in \left[0,1\right]$ auf Zust\"ande  in der Zukunft erm\"oglicht eine endliche utility f\"ur alle unendlichen Zustandsketten (wie beim Menschen, Belohnung morgen ist mehr wert als Belohnung in einem Jahr):\\ $U_h(\left[s_0, s_1, s_2, \ldots \right]) = R(s_0) + \gamma R(s_1) + \gamma^2 R(s_2) + \ldots$\\
+	Somit bildet sich eine Reihe welche asymptotisch konvergiert und das Problem der unendlichen Summe gelöst. $\gamma$ sollte aber nicht zu aggressiv gewählt werden
 \end{itemize}
 
 \paragraph{Entscheidungsfunktion}
 \begin{itemize}
 	\item Es existieren verschieden Verfahren, um eine optimale Entscheidungsfunktion aus dem gegebenen MDP Modell $(S, A, T, B)$ zu berechnen.
-	Unter anderem: Policy Iteration oder Reinforcement learning einer policy
-	\item Das wichtigste aber ist: \textbf{Value Iteration} (zur Berechnung der optimalen policy)
-\end{itemize}
-
-\paragraph{Umgebungseigenschaften}
-\begin{itemize}
-	\item Dynamisch
-	\item Sequenziell
-	\item Diskret (aber auch kontinuierlich)
-	\item Stochastisch
-	\item \textbf{Vollst\"andig} beobachtbar
-	\item Multiagent
+	Unter anderem: Policy Iteration oder Reinforcement Learning einer Policy (Gefahr hierbei: \glqq blinde Flecken\grqq{}der Policy)
+	\item Das wichtigste aber ist: \textbf{Value Iteration} (zur Berechnung der optimalen Policy, bietet sich nur nicht an wenn Modellbildung im Vorfeld für Szenario zu schwierig ist)
 \end{itemize}
 
 \subsubsection{MDP Value Iteration}
 
 \paragraph{Problem}
 \begin{itemize}
-	\item F\"ur jeden Zustand wird eine utility berechnet, die die erwartete utility aller m\"oglichen, folgenden Zustandssequenzen widerspiegelt
+	\item F\"ur jeden Zustand wird eine utility berechnet, die die \underline{erwartete utility} aller m\"oglichen, folgenden Zustandssequenzen widerspiegelt
 	\item Daraus kann die Entscheidungsfunktion direkt gewonnen werden
 	\item Die Zustandssequenzen wiederum h\"angen von der Entscheidungsfunktion ab
 	\item $\Rightarrow$ verschr\"anktes Problem
@@ -275,59 +304,132 @@ Die in jedem Schritt aufaddierte Belohnungen werden \emph{Utilitiy} genannt und 
 
 \paragraph{Ansatz}
 \begin{itemize}
-	\item iterativer Ansatz
-	\item die wirkliche utility eines Zustands w\"are die utility bezogen auf die optimale policy $U_{real}(s) = U^{\pi^*}(s)$
-	\item die wirkliche utility ist jedoch zu Beginn nicht bekannt, da die optimale policy noch berechnet werden muss
-	\item zuerst wird eine beliebige policy $\pi_{start}$ gew\"ahlt
-	\item dazu wird jedem Zustand eine initiale utility zugewiesen
-	\item die tats\"achliche utility jedes Zustands, bezogen auf eine policy $\pi$, ist die Summe aller zuk\"unftigen Belohnungen:
+	\item Iterativer Ansatz
+	\item Die wirkliche utility eines Zustands w\"are die utility bezogen auf die optimale policy\\ $U_{real}(s) = U^{\pi^*}(s)$
+	\item Die wirkliche utility ist jedoch zu Beginn nicht bekannt, da die optimale policy noch berechnet werden muss
+	\item Zuerst wird eine beliebige policy $\pi_{start}$ gew\"ahlt
+	\item Dazu wird jedem Zustand eine initiale utility zugewiesen
+	\item Die tats\"achliche utility jedes Zustands, bezogen auf eine policy $\pi$, ist die Summe aller zuk\"unftigen Belohnungen:
 	$U^{\pi}(s) = E \left[ \sum_{t = 0}^{\infty} \gamma^t R(s_t, u_t) | \pi, s_0 = s \right]$
 	\item die Summe der zuk\"unftigen Belohnungen h\"angt jedoch von der Handlungswahl und damit von $\pi$ ab
 \end{itemize}
 
 \paragraph{Handlungswahl}
 \begin{itemize}
-	\item es kann nun eine policy gefunden werden, die auf den aktuell zugewiesenen utilites basiert und I-Schritt weit optimal ist
-	\item nach der utility FUnktion wird nun die Handlung, die die erwartete zuk\"unftige Belohnung maximiert gew\"ahlt: $\pi^{1step*}(s) = argmax_u \sum_{s'} T(s', u, s) U(s')$
-	\item durch diese Formel wird auch ein Zusammenhang zwischen einem Zustand und seinem Nachbarn gebildet
+	\item Es kann nun eine policy gefunden werden, die auf den aktuell zugewiesenen utilites basiert und I-Schritt weit optimal ist
+	\item Nach der utility FUnktion wird nun die Handlung, die die erwartete zuk\"unftige Belohnung maximiert gew\"ahlt: $\pi^{1step*}(s) = argmax_u \sum_{s'} T(s', u, s) U(s')$
+	\item Durch diese Formel wird auch ein Zusammenhang zwischen einem Zustand und seinem Nachbarn gebildet
 \end{itemize}
 
 \paragraph{Iterationsschritt}
 \begin{itemize}
-	\item nun wird die Zuweisung wieder in die utility-Berechnung zur\"uckgef\"uhrt
-	\item es entsteht eine Iterationsformel zwischen benachbarten Zust\"anden:
+	\item Nun wird die Zuweisung wieder in die utility-Berechnung zur\"uckgef\"uhrt
+	\item Es entsteht eine Iterationsformel zwischen benachbarten Zust\"anden:
 	$U(s) = \gamma max_u (R(s,u) + \sum_{s'} T(s', u, s) U(s')) = \text{Bellmann Formel}$
-	\item somit kann r\"uckw\"arts von $\text{utility}(s)$ auf $\text{utility}(s')$ geschlossen werden
+	\item Somit kann r\"uckw\"arts von $\text{utility}(s)$ auf $\text{utility}(s')$ geschlossen werden
 \end{itemize}
 
 \paragraph{Iterationsablauf}
 \begin{itemize}
 	\item Beginn: irgendwelche niedrigen Werte f\"ur die utilites aller Zust\"ande
 	\item Iterationsschritt: Anwendung der Bellmann Formel auf jeden Zustand unter Nutzung aller seiner Nachbarn
-	\item Vielfach Anwendung des Iterationsschritts auf alle Zust\"ande
+	\item Vielfache Anwendung des Iterationsschritts auf alle Zust\"ande
 	\item Irgendwann wird ein Gleichgewicht erreicht, das die optimale policy $\pi^*$ ist
 	\item Die Iteration konvergiert zur optimalen policy
 	\item In der Praxis werden die Iterationen bis zu einer akzeptablen Konvergenzschranke durchgef\"uhrt
 \end{itemize}
 
+\paragraph{Algorithmus}
+Siehe \autoref{alg:vi}
+\begin{algorithm}
+  \caption{MDP discreteValueIteration()
+    \label{alg:vi}}
+  \begin{algorithmic}[1]
+    %\Require{$x$ and $y$ are packed \DNA strings of equal length $n$}
+    %\Statex
+    \Repeat 
+      \For{ \textbf{each} state $s$ \textbf{in} $S$}
+        \Let{$U^\prime(s)$}{$\gamma max_u(R(s,u)+\sum_{s^\prime}T(s^\prime,u,s)U(s^\prime))$}
+      \EndFor
+     \Until{convergence bound} \Comment{Änderung der utility-Werte zwischen zwei Schritten}
+     \State \Return{$U$}
+    %\EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+Beispiel Museumsroboter:
+\begin{itemize}
+	\item Zustände: $S_1$=\textit{Kein Mensch}, $S_2$=\textit{Mensch, keine Intention zu folgen}, $S_3$=\textit{Mensch, Intention zu folgen} 
+	\item Handlungen: $U_1$=\textit{Sage \glqq Folge mir!\grqq}, $U_2$=\textit{Führe an einen Ort}, $U_3$=\textit{Tue nichts}
+	\begin{figure}[!h]
+		\centering
+  		\includegraphics[width=0.6\linewidth]{figures/ch07_vi-bsp.png}
+		\caption{MDP VI Beispiel -- Modell}
+		\label{fig:ch07:vi-bsp}
+	\end{figure}
+	\item Initialisiere: $U(s_1=kein\text{ }Mensch) = -1$, $U(s_2=Mensch,\text{ }folgt\text{ }nicht) = -1$, $U(s_3=Mensch,\text{ }folgt) = -1$; wähle $\gamma = 0.9$
+	\item $U(s)=\gamma max_u(R(s,u)+\sum_{s^\prime}T(s^\prime,u,s)U(s^\prime))$
+	\begin{figure}[!h]
+		\centering
+  		\includegraphics[width=0.45\linewidth]{figures/ch07_vi-bsp1.png}
+		\caption{MDP VI Beispiel -- Iteration}
+		\label{fig:ch07:vi-bsp1}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+  		\includegraphics[width=0.65\linewidth]{figures/ch07_vi-bsp2.png}
+		\caption{MDP VI Beispiel -- Iterationsschritt}
+		\label{fig:ch07:vi-bsp2}
+	\end{figure}
+	\begin{figure}[!h]
+		\centering
+  		\includegraphics[width=0.45\linewidth]{figures/ch07_vi-bsp3.png}
+  		\centering
+		\caption{MDP VI Beispiel -- Ergebnis, \\$S_1: u_3$ am besten ab Iterationsschritt 1,\\ $S_2: u_1$ am besten ab Iterationsschritt 2\\ $S_3: u_2$ am besten ab Iterationsschritt 1}
+		\label{fig:ch07:vi-bsp2}
+	\end{figure}
+\end{itemize}
 \paragraph{Eigenschaften}
 \begin{itemize}
-	\item MDP Value Iteration ist eine Kontraktion: der Algorithmus konvergiert immer
+	\item MDP Value Iteration ist eine Kontraktion: der Algorithmus konvergiert immer (auch wenn Modell keinen Sinn macht, dies muss vorher sicher gestellt werden)
 	\item In der Praxis konvergiert er bei kleinerem $\gamma$ schneller
 	\item MDP Value Iteration ist verh\"altnism\"a{\ss}ig schnell (im Vergleich zu anderen Verfahren und anderen Arten von MDPs)
 	\item Fast optimale Entscheidungsfunktionen sind in der Praxis ausreichend
 \end{itemize}
 
-\subsubsection{POMDP (Partially Observable Markov Decision Processes)}
-Eine Erweiterung von MDPs f\"ur unvollst\"andig beobachtbare Umgebungen (Perzeption \"ublicherweise verrauscht und deckt nur einen Teil des Szenarios ab)
+\subsubsection{MDP -- Schlussfolgerung}
+\begin{itemize}
+	\item Es gibt ein algorithmisches Konzept für optimale Entscheidungsfindung in stochastischen Umgebungen
+	\item Ein rationaler Agent kann in Bezug auf Belohnungsmaximierung entscheiden
+	\item Die (fast) optimale Belohnungsmaximierung ist berechenbar
+	\item Die Modellierung eines Szenarios ist allerdings schwierig 
+	\item Nur: Welche Umgebungseigenschaften decken reine MDPs ab?
+\end{itemize}
+
+\paragraph{Umgebungseigenschaften}
+Markov Decision Processes sind ein theoretisches Rahmenwerk zur Modellierung von Entscheidungsfindung in
+\begin{itemize}
+	\item Dynamischen
+	\item Sequenziellen
+	\item Diskreten (aber auch kontinuierlichen)
+	\item Stochastischen
+	\item \textbf{Vollst\"andig} beobachtbaren (in Praxis meistens nicht gegeben, z.B. bei Serviceroboter)
+	\item (Multiagent-)
+\end{itemize}
+Domänen.\\
+Es gibt Erweitungen von MDPs für kontinuierliche Umgebungen (Zustände, Handlungen). Es gibt eine Erweiterung von MDPs für unvollständig beobachtbare Umgebungen: \textbf{Partially Observable Markov
+Decision Processes}.
+
+\subsection{POMDP (Partially Observable Markov Decision Processes)}
+Eine Erweiterung von MDPs f\"ur unvollst\"andig beobachtbare Umgebungen. Perzeption ist \"ublicherweise verrauscht und deckt nur einen Teil des Szenarios ab. Beispielsweise Spracherkennung ist eine zentrale Fähigkeit für Serviceroboter (natürliche Mensch-Roboter-Interaktion), Sprache ist aber sehr verrauscht.
 
 \paragraph{Zustandssch\"atzung}
 \begin{itemize}
 	\item Die Sch\"atzung des aktuellen Zustands muss nicht nur auf der Perzeption basieren
 	\item Grundprinzip: rationaler Agent in Dom\"ane mit Markov Eigenschaft:
 	\begin{itemize}
-		\item Aktueller Zustand kann \"uber unvollkommene Perzeption \textbf{beobachtet} werden (measurement)
-		\item Aktueller Zustand kann auf Basis des vorherigen Zustands und der ausgef\"uhrten Handlung \textbf{vorhergesagt} werden (prediction)
+		\item Aktueller Zustand kann \"uber unvollkommene Perzeption \underline{beobachtet} werden (measurement)
+		\item Aktueller Zustand kann auf Basis des vorherigen Zustands und der ausgef\"uhrten Handlung \underline{vorhergesagt} werden (prediction)
 	\end{itemize}
 	\item Die \textbf{Beobachtung} wird durch ein auf die Eigenschaften des physischen oder logischen Sensors abgestimmtes Unsicherheitsmodell abgebildet
 	\item Die Unsicherheit kann so explizit, numerisch angegebenw erden
@@ -344,18 +446,18 @@ Eine Erweiterung von MDPs f\"ur unvollst\"andig beobachtbare Umgebungen (Perzept
 \paragraph{Bayes Filter} {\ }\\
 Vorhersage und Beobachtung k\"onnen nun fusioniert werden, um zusammen eine h\"ohere Genauigkeit zu erreichen!\\
 
-Idee
+\textbf{Idee}:
 \begin{itemize}
 	\item Eine gute Vorhersage kann eine sehr ungenaue Beobachtung verbessern
 	\item Eine gute Beobachtung pr\"azisiert jedoch eine ungenaue Vorhersage
-	\item Da die Vorhersage nur iterativ funktioniert, arbeitet der Bayes Filter ebenfalls iterativ von Zeit t-1 nach t 
+	\item Da die Vorhersage nur iterativ funktioniert, arbeitet der Bayes Filter ebenfalls iterativ von Zeit $t-1$ nach $t$ 
 \end{itemize}
 
-Zustandsvermutung
+\textbf{Zustandsvermutung}:
 \begin{itemize}
 	\item Die Ausgabe einer Vorhersage und auch einer Beobachtung ist eine Wahrscheinlichkeitsverteilung
 	\item Da der Bayes Filter iterativ l\"auft, ist die Eingabe also auch eine Wahrscheinlichkeitsverteilung
-	\item Der Agent besitzt daher zu jedem Zeitpunkt eine \textbf{Zustandsvermutung} (belief)
+	\item Der Agent besitzt daher zu jedem Zeitpunkt eine \underline{Zustandsvermutung} (belief)
 	\item Die Zustandsvermutung repr\"asentiert die subjektive Wahrnehmung des Agenten bez\"uglich der nur unvollst\"andig beobachtbaren Welt (Zustandsraum)
 	\item Die Zustandsvermutung ist eine
 	\begin{itemize}
@@ -363,30 +465,36 @@ Zustandsvermutung
 		\item oder eine kontinuierliche Verteilung \"uber einem kontinuierlichen Zustandsraum
 	\end{itemize}
 \end{itemize}
-
-Vorhersage
+\begin{figure}[!h]
+	\centering
+  	\includegraphics[width=0.8\linewidth]{figures/ch08_kont-bayes.png}
+  	\centering
+	\caption{Beispiel -- kontinuierlicher Bayesfilter}
+	\label{kont-bayes}
+\end{figure}
+\textbf{Vorhersage}:
 \begin{itemize}
 	\item Zust\"ande $x$, Aktionen $u$
 	\item Diskreter Fall: $\overline{p}_{k,t} = \sum_i p(X_t = x_k | u_t, X_{t-1} = x_i)p_{i, t-1}$
 	\item Kontinuierlicher Fall: $\overline{bel}(x_t) = \int p(x_t | u_t, x_{t-1}) bel(x_{t-1})dx_{t-1}$
 \end{itemize}
 
-Beobachtung
+\textbf{Beobachtung}:
 \begin{itemize}
 	\item Zust\"ande $x$, Beobachtung $z$
 	\item Diskreter Fall: $p_{k,t} = \eta p(z_t | X_t = x_k) \overline{p}(k,t)$
 	\item Kontinuierlicher Fall: $bel(x_t) = \eta p(z_t | x_t) \overline{bel}(x_t)$
 \end{itemize}
 
-Diskreter Bayes Filter:\\
+\textbf{Diskreter Bayes Filter}:\\
 \autoref{fig:ch08:diskBayes}
 
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \begin{subfigure}{.5\textwidth}
   \centering
   \includegraphics[width=\linewidth]{figures/ch08_diskreterBayes.png}
-  \caption{Volst\"andige diskrete Bayes Filter mit Zust\"anden $x$, Aktion $u$ und Beobachtung $z$}
+  \caption{Vollst\"andiger diskreter Bayes Filter mit Zust\"anden $x$, Aktion $u$ und Beobachtung $z$}
   \label{fig:sub1}
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
@@ -399,15 +507,15 @@ Diskreter Bayes Filter:\\
 \label{fig:ch08:diskBayes}
 \end{figure}
 
-Kontinuierlicher Bayes Filter:\\
+\textbf{Kontinuierlicher Bayes Filter}:\\
 \autoref{fig:ch08:kontBayes}
-\begin{figure}
+\begin{figure}[h!]
 	\centering
   \includegraphics[width=0.5\linewidth]{figures/ch08_kontinuierlicherBayes.png}
 \caption{Allgemeine kontinuierlicher Bayes Filter}
 \label{fig:ch08:kontBayes}
 \end{figure}
-Kontinuierliche Bayes Filter werden durch spezielle Methoden realisiert.
+Kontinuierliche Bayes Filter werden durch spezielle Methoden realisiert.\\
 Parametrische Filter:
 \begin{itemize}
 	\item Kalman Filter
@@ -416,8 +524,8 @@ Parametrische Filter:
 	\item Information Filter
 	\item Extended Information Filter
 \end{itemize}
-Nicht-parametrische Filter: Partikelfilter\\
-
+Nicht-parametrische Filter: Partikelfilter\\ \\
+\textbf{MDP + Bayes Filter}:\\
 Um MDPs in einer unvollst\"andig beobachten Umgebung nutzen zu k\"onnen werden Bayes Filter mit MDPs verbunden.
 Das erfordert die Einf\"uhrung der Zustandsvermutung in den MDP.
 Dadurch hat der MDP zwei Komponenten:
@@ -426,49 +534,49 @@ Dadurch hat der MDP zwei Komponenten:
 	\item Subjektive Zustandsvermutung des Agenten
 \end{itemize}
 $\Rightarrow$ \textbf{POMDPs}
-
 \paragraph{POMDP} {\ }\\
-Umwelt:
+POMDPs ermöglichen die Entscheidungsfindung in Domänen mit den Eigenschaften:
 \begin{itemize}
 	\item Dynamisch
 	\item Sequentiell
-	\item Diskret oder Kontinuierlich
+	\item \underline{Diskret} oder Kontinuierlich
 	\item Stochastisch
-	\item Unvollst\"andig beobachtbar
+	\item \underline{Unvollst\"andig beobachtbar}
 \end{itemize}
 
-Struktur/Modell:
+\textbf{Struktur/Modell}:
 \begin{itemize}
-	\item Eine Menge von symbolischen Zust\"anden der Welt S
-	\item Eine Menge von symbolischen Handlungen des Agenten U
-	\item Eine Menge von symbolischen Beobachtungen des Agenten M
-	\item Ein \"Ubergangsmodell (transition model) $T(s', u, s)$ welches die stochastischen \"Uberg\"ange modelliert
-	\item Ein Belohnungsmodell (reward model) $R(s,u)$ welches die Ziele und Absichten des Agenten modelliert
-	\item Ein Beobachtungsmodell (observation model) $O(m, s')$ welches die Ungenauigkeit der Wahrnehmung des Agenten modelliert
+	\item Eine Menge von symbolischen \textbf{Zust\"anden} der Welt $S$
+	\item Eine Menge von symbolischen \textbf{Handlungen} des Agenten $U$
+	\item Eine Menge von symbolischen \textbf{Beobachtungen} des Agenten $M$
+	\item Ein \textbf{\"Ubergangsmodell} (transition model) $T(s', u, s)$ welches die stochastischen \"Uberg\"ange modelliert
+	\item Ein \textbf{Belohnungsmodell} (reward model) $R(s,u)$ welches die Ziele und Absichten des Agenten modelliert
+	\item Ein \textbf{Beobachtungsmodell} (observation model) $O(m, s')$ welches die Ungenauigkeit der Wahrnehmung des Agenten modelliert
 	\item Einen Startzustand $s_0$
 \end{itemize}
 
-Statische Eigenschaften
+\textbf{Statische Eigenschaften}:
 \begin{itemize}
-	\item statischen Eigenschaften des reinen MDP
-	\item + der Agent kann in jedem Agentenzyklus genau eine Beobachtung machen
-	\item + in einem diskreten POMDP ist dies eine symbolische Beobachtung
+	\item Die statischen Eigenschaften des reinen MDP gelten auch im POMDP
+	\item Zusätzlich gilt: Der Agent kann in jedem Agentenzyklus \underline{genau eine} Beobachtung machen
+	\item Weiterhin: In einem diskreten POMDP ist dies eine symbolische Beobachtung
+	\item Im Folgenden wird von diskreten POMDPs ausgegangen
 \end{itemize}
 
-Dynamikmodelle
+\textbf{Dynamikmodelle}:
 \begin{itemize}
 	\item Transitions- und Belohnungsmodell funktionieren wie beim MDP
-	\item Beobachtungsmodell
+	\item Hinzu kommt das Beobachtungsmodell:
 	\begin{itemize}
 		\item $O(m,s') =$ Wahrscheinlichkeit: wenn die Beobachtung $m$ gemacht wurde, dann ist die Wahrscheinlichkeit, dass der wirkliche Weltzustand $s'$ ist, vom Modell an $O(m,s'$ gegeben
-		\item das Beobachtungsmodell ist eine Matrix
+		\item Das Beobachtungsmodell ist eine Matrix
 	\end{itemize}
 \end{itemize}
 
-Sekund\"are Eigenschaften
+\textbf{Sekund\"are Eigenschaften}:
 \begin{itemize}
-	\item Die policy existiert auch beim POMDP, wenn auch in anderer Form
-	\item Hinzu kommt die Zustandsvermutung
+	\item Die ENtscheidungsfunktion (policy) existiert auch beim POMDP, wenn auch in anderer Form
+	\item Hinzu kommt die Zustandsvermutung:
 	\begin{itemize}
 		\item Im diskreten Fall eine diskrete Wahrscheinlichkeitsverteilung \"uber alle Zust\"ande
 		\item Die Zustandsvermutung wird zu jedem Zeitschritt durch Bayes Filterung neu berechnet
@@ -476,19 +584,19 @@ Sekund\"are Eigenschaften
 	\end{itemize}
 \end{itemize}
 
-Entscheidungsfunktion:
+\textbf{Entscheidungsfunktion}:
 \begin{itemize}
 	\item Bei MDPs enth\"alt die Entscheidungsfunktion eine Handlung zu jedem Zustand
 	\item Im Gegensatz zu MDPs muss die Entscheidungsfunktion bei POMDPs \"uber \textbf{alle m\"oglichen Zustandsvermutungen} definiert sein
 	\item Struktur der Entscheidungsfunktion
 	\begin{itemize}
-		\item Bei diskreten POMDPs: \"uber dem $|S|-1$ dimensionalen Raum aller m\"oglichen Zustandsvermutungen definiert
+		\item Bei diskreten POMDPs: \"uber dem $|S|-1$ dimensionalen Raum \underline{aller m\"oglichen Zustandsvermutungen} definiert
 		\item Bei kontinuierlichen POMDPs: \"uber einem unendlich-dimensionalen Raum definiert, daher speziell \"uber endlich-dimensionalen Teilr\"aumen angegeben
 	\end{itemize}
 	\item Berechnung der Entscheidungsfunktion: aufgrund der komplexen Struktur ist die Berechnung deutlich komplizierter als bei MDPs (Value Iteration existiert, ist aber anders)
 \end{itemize}
 
-Raum der Vermutungen (diskreter POMDP)
+\textbf{Raum der Vermutungen (diskrete POMDP)}:
 \begin{itemize}
 	\item Alle m\"oglichen Wahrscheinlichkeiten \"uber allen Zust\"anden $s$ eines Szenarios spannen den Raum der Zustandsvermutungen auf
 	\item Da $\sum p(s_i) = 1$, ist der Raum begrenzt, also ein Simplex (= konvexe H\"ulle von $n+1$ Punkten in einem n-dimensionalen Raum)
