@@ -199,7 +199,7 @@ Ketten von Handlungen bzw. Ausl\"osern f\"uhren zu Bayes-Netzwerken. F\"ur die E
 \begin{itemize}
 \item Eine Menge von symbolischen \textbf{Zust\"anden} der Welt $S$ (d.h. die Umwelt bei einem MDP ist diskret)
 \item Eine Menge von symbolischen Handlungen des Agenten $U$
-\item Ein \textbf{\"Ubergangsmodell} (transition model) $T(s', u, s)$ welches die stochastischen \"Uberg\"ange modelliert, also das Verhalten der Welt aufspannt (modelliert den Markov-Prozess). Hierbei ist die Frage, wie wahrscheinlich ein bestimmtes Ergebnis folgt, wenn in einem beiebigen Zustand eine beliebige Handlung ausgeführt wird. Das Modell muss vollständig definiert werden (d.h.     Unmöglichkeiten haben die Wahrscheinlichkeit 0).
+\item Ein \textbf{\"Ubergangsmodell} (transition model) $T(s', u, s)$ welches die stochastischen \"Uberg\"ange modelliert, also das Verhalten der Welt aufspannt (modelliert den Markov-Prozess). Hierbei ist die Frage, wie wahrscheinlich ein bestimmtes Ergebnis folgt, wenn in einem beliebigen Zustand eine beliebige Handlung ausgeführt wird. Das Modell muss vollständig definiert werden (d.h.     Unmöglichkeiten haben die Wahrscheinlichkeit 0).
 \item Ein \textbf{Belohnungsmodell} (reward model) $R(s,u)$ welches die Ziele und Absichten des Agenten modelliert. Auch negative Belohnungen/Strafen möglich. 
 \item Ein \textbf{Startzustand} $s_0$
 \end{itemize}
@@ -227,7 +227,7 @@ Die in jedem Schritt aufaddierte Belohnungen werden \emph{Utilitiy} genannt und 
 	\item $T(s', u, s) = p(\text{transition})$: wenn der alte Zustand $s$ war und der Agent die Handlung $u$ ausgef\"uhrt hat, dann beschreibt dieser Eintrag im Modell die Wahrscheinlichkeit, dass 			der neue Zustand $s'$ sein wird
 	\item auch Fehleranfälligkeit und Einschränkungen in den Entscheidungsmöglichkeiten können durch ein stochastisches Übergangsmodell modelliert werden
 	\item Das Transitionsmodell ist ein Tensor 3. Stufe
-	\item In der Praxis oft als Vektor (\"uber U) von Matrixen $(S, S')$ dargestellt: $|T| = |S| * |S| * |U|$ (siehe \autoref{fig:ch07:transmod-bsp})
+	\item In der Praxis oft als Vektor (\"uber U) von Matrizen $(S, S')$ dargestellt: $|T| = |S| * |S| * |U|$ (siehe \autoref{fig:ch07:transmod-bsp})
 	\item Die Gr\"o{\ss}e des Modells w\"achst also kubisch (MDP hat klassischerweise bis zu 10.000 Zustände wobei die Mehrheit Wahrscheinlichkeit 0 hat; diese werden nicht mit modelliert, da es 				sonst sehr sperrig werden würde)
 	\item Beispiel Museumsroboter: Ein Mensch erscheint im Szenario mit 25\% Wahrscheinlichkeit, völlig unabhängig vom Roboterverhalten (z.B. kommt im Durchschnitt an einem durchschnittlich besuchten  		Tag alle 30s ein Mensch vorbei). Das Verschwinden des Menschen ist abhängig vom Roboterverhalten
 	\begin{itemize}
@@ -317,7 +317,7 @@ Die in jedem Schritt aufaddierte Belohnungen werden \emph{Utilitiy} genannt und 
 
 \paragraph{Handlungswahl}
 \begin{itemize}
-	\item Es kann nun eine policy gefunden werden, die auf den aktuell zugewiesenen utilites basiert und I-Schritt weit optimal ist
+	\item Es kann nun eine policy gefunden werden, die auf den aktuell zugewiesenen utilities basiert und I-Schritt weit optimal ist
 	\item Nach der utility FUnktion wird nun die Handlung, die die erwartete zuk\"unftige Belohnung maximiert gew\"ahlt: $\pi^{1step*}(s) = argmax_u \sum_{s'} T(s', u, s) U(s')$
 	\item Durch diese Formel wird auch ein Zusammenhang zwischen einem Zustand und seinem Nachbarn gebildet
 \end{itemize}
@@ -526,7 +526,7 @@ Parametrische Filter:
 \end{itemize}
 Nicht-parametrische Filter: Partikelfilter\\ \\
 \textbf{MDP + Bayes Filter}:\\
-Um MDPs in einer unvollst\"andig beobachten Umgebung nutzen zu k\"onnen werden Bayes Filter mit MDPs verbunden.
+Um MDPs in einer unvollst\"andig beobachteten Umgebung nutzen zu k\"onnen werden Bayes Filter mit MDPs verbunden.
 Das erfordert die Einf\"uhrung der Zustandsvermutung in den MDP.
 Dadurch hat der MDP zwei Komponenten:
 \begin{itemize}
@@ -586,23 +586,23 @@ POMDPs ermöglichen die Entscheidungsfindung in Domänen mit den Eigenschaften:
 
 \begin{figure}[!ht]
 	\centering 
-	\begin{subfigure}{.5\textwidth}
+	\begin{subfigure}{.45\textwidth}
 		\includegraphics[width=\textwidth]{figures/ch08_pom.png}
 		\caption{Beginn}
 	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
+	\begin{subfigure}{.45\textwidth}
 		\includegraphics[width=\textwidth]{figures/ch08_pom1.png}
 		\caption{Entscheidung}
-	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
+	\end{subfigure}\\
+	\begin{subfigure}{.45\textwidth}
 		\includegraphics[width=\textwidth]{figures/ch08_pom2.png}
 		\caption{Handlung}
 	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
+	\begin{subfigure}{.45\textwidth}
 		\includegraphics[width=\textwidth]{figures/ch08_pom3.png}
 		\caption{Vorhersage}
 	\end{subfigure}
-	\begin{subfigure}{.5\textwidth}
+	\begin{subfigure}{.45\textwidth}
 		\includegraphics[width=\textwidth]{figures/ch08_pom4.png}
 		\caption{Beobachtung}
 	\end{subfigure}

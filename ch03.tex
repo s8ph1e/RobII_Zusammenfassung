@@ -224,7 +224,7 @@ Direkte Abbildung
 \end{itemize}\\
 \hline
 \end{tabular}
-\caption{Kriterium 4 - Technik der Trajektoriegenerierung}
+\caption{Kriterium 4 - Technik der Trajektoriengenerierung}
 \label{tab:trajtech}
 \end{table}
 
@@ -279,8 +279,7 @@ Diese ist für den menschlichen Benutzer mit den gleichen
 Problemen verbunden wie die physische. Hinzukommen Probleme der Navigation und Koordination
 in der simulierten Umgebung. Aufgrund der fehlenden Realität der virtuellen
 Welt kann es sogar zu Simulationsübelkeit kommen. Dies geschieht durch den Widerspruch
-der Signale, welche vom Gleichgewichts-, Orientierungs-, Seh- und Gehörsinn aufgenom-
-men werden.
+der Signale, welche vom Gleichgewichts-, Orientierungs-, Seh- und Gehörsinn aufgenommen werden.
 \item \textbf{Symbolische/Ikonische Demonstration:}
 Es wird eine Aktionssequenz erzeugt, durch graphisches Aneinanderreihen vorhandener Teillösungen. 
 Für diese Art der Demonstration reicht eine menügesteuerte, konventionelle graphische Schnittstelle.
@@ -299,8 +298,8 @@ auf Systemhypothesen. Nach einer Demonstration erhält man die Möglichkeit, Sys
 präsentieren und durch Auswahl, Editierungen und Ablehnung mit der
 Benutzerintension abzugleichen.
 In vielen Anwendungen (Textverarbeitung, Graphikanwendungen, Programmierung) sind
-textuelle oder menüubasierte Schnittstellen ausreichend. In der Robotik kann es durch den
-rämlichen Bezug der Systeme zusätzlich nötig sein, über zweidimensionale graphische
+textuelle oder menübasierte Schnittstellen ausreichend. In der Robotik kann es durch den
+räumlichen Bezug der Systeme zusätzlich nötig sein, über zweidimensionale graphische
 Interaktionsmuster hinaus eine dreidimensionale Schnittstelle zu bieten. Nur mit 
 Kommentierung ist eine Überwachung und gegebenenfalls eine Korrektur der systeminternen
 Programmgenerierung möglich.
@@ -312,7 +311,7 @@ Programmgenerierung möglich.
 \item \textbf{Datenhandschuhe \& -anzüge}: Dehnmessstreifen und Lichtleiter; niedrige Genauigkeit 
 \item \textbf{Exoskelette}: höhere Genauigkeit durch mechanische Struktur aber hohe Kosten, Gewicht, Einschränkung des Benutzers bei der Demonstration  
 \item \textbf{Interne Robotersensoren}: zuverlässige Werte (wenn für Demonstration und Ausführung derselbe Roboter verwendet wird ist bei gleicher Umweltsituation der erfolg garantiert) aber hoher Geräteaufwand und geringer Komfort für Benutzer, daher eher bei Teach-In und Telerobotik verwendet
-\item[$\rightarrow$] Sensordatenfusion sinnvoll, aber ihrerseit mit Herausforderungen behaftet
+\item[$\rightarrow$] Sensordatenfusion sinnvoll, aber ihrerseits mit Herausforderungen behaftet
 \end{itemize}
 \subsubsection*{Weltmodell sowie Planungs- und Entscheidungsmechanismen/ Programmiersystem}
 \begin{figure}[ht]\centering 
@@ -368,7 +367,7 @@ Bewertung:
 \item[+] größere Flexibilität gegenüber Umweltveränderungen und unterschiedlichen Manipulatortypen
 \item[+] Elementarfunktionen haben einen hohen Wiederverwendbarkeitswert, so braucht ein Programm nur die Sequenz der Elementarfähigkeiten
 enthalten und ihre einzelnen Parameter bestimmen und repräsentieren;  oft weichen in einer
-dynamischen Welt die Parameter der Elementarfähigkeiten von denen der Benutzerdemonstation ab, daher werden für variable Parameter Berechnungsfunktionen und
+dynamischen Welt die Parameter der Elementarfähigkeiten von denen der Benutzerdemonstration ab, daher werden für variable Parameter Berechnungsfunktionen und
 Auswahlbedingungen statt konkreter Werte benutzt
 \item[-] Elementarfähigkeiten müssen für jeden Manipulator a-priori erzeugt werden 
 \end{itemize}\\
@@ -390,7 +389,7 @@ Ziel: Lernen von Skills, z.B. Schachfigur bewegen
 \end{itemize}
 Hierbei werden folgende Lerndaten benötigt:
 \begin{itemize}
-\item $(\theta, x, y, h)$: $n$ Demonstrationen mit je $T$ Trajektoriepunkten
+\item $(\theta, x, y, h)$: $n$ Demonstrationen mit je $T$ Trajektorienpunkten
 \item $\theta$: Gelenkwinkel des Roboters + Zeitstempel
 \item $x$: Kartesische Position der Hände + Zeitstempel
 \item $y$: Distanzvektor der Hände zur Startposition des Objekts + Zeitstempel
@@ -490,7 +489,7 @@ Das Lernen läuft in folgenden Schritten ab:
 \item Berechnung von $v(t), \dot{v}(t)$ für jede Demonstration $x(t)$
 \item $s(t)$ wird durch Integration berechnet
 \item Der Wert $f(s)$ wird berechnet
-\item $\psi_i$ sind nicht normalisierte Normalverteilungen (\Gu Gauss‘sche Basisfunktionen\Go)
+\item $\psi_i$ sind nicht normalisierte Normalverteilungen (\Gu Gau{\ss}‘sche Basisfunktionen\Go)
 \item Bestimmung der Parameter $w_i$ durch lineare Regression
 \end{itemize}
 Die Ausführung erfolgt über die Berechnung von $v(t), \dot{v}(t)$ im aktuellen Zustand und Integration.\\
@@ -563,7 +562,7 @@ Repräsentation als Bahnplanungsproblem mit Einschränkungen:
 M^\prime &= ^0H_g^{-1} \cdot ^0 H_f \cdot M\\
 M^\prime &= ^g H_f \cdot M
 \end{align*}
-\item Umwandlung von $M^\prime$ in 3d-Vektor $m^\prime$:\\
+\item Umwandlung von $M^\prime$ in 3D-Vektor $m^\prime$:\\
 $t$ = Position, Richtung: $m^\prime = (x y z)$\\
 $t$ = Orientierung: $m^\prime = (r_x r_y r_z )$
 \item Bestimmung des nächsten Punkts $n$ in $R$ und der Distanz $d = | m^\prime - n |$
@@ -632,9 +631,9 @@ für jeden Knoten und jede Kante $\rightarrow$ Region $R$ muss bestimmt werden (
 \item Bestimmung der Region $R$: Für jede Einschränkung $(t, f, M, g, R)$
 \begin{itemize}
 \item Bestimmung des Werts von $f$ in jedem Punkt $t_i$ des Segments: $g^H_f(t_i) \cdot M$
-\item Umwandlung in 3d-Vektor $m^\prime(t_i)$
-\item Ergebnis: Menge von 3d-Vektoren
-\item Bestimme Region $R$, die alle 3d-Vektoren einschließt
+\item Umwandlung in 3D-Vektor $m^\prime(t_i)$
+\item Ergebnis: Menge von 3D-Vektoren
+\item Bestimme Region $R$, die alle 3D-Vektoren einschließt
 \ita Beispiel: Knoten-Einschränkung ($f$ = Flaschenöffnung, $g$ = Becheröffnung, $t$ = Position)
 \end{itemize}
 \end{itemize}
