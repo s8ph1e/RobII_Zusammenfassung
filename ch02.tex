@@ -35,7 +35,7 @@ Es gibt drei Ansätze zur geometrischen Modellierung (\autoref{fig:obrepr}):
 		\includegraphics[width=\textwidth]{figures/ch02_volumen.png}
 		\caption{}
 	\end{subfigure}
-	\caption{Objektrepr\"{a}entation}
+	\caption{Objektrepr\"{a}sentation}
 	\label{fig:obrepr}
 \end{figure}
 \paragraph*{Kanten}
@@ -56,7 +56,7 @@ Vorteile & Nachteile\\
  \vspace{-5mm}
 \begin{itemize}
 \setlength\itemsep{0em}
-\item[-] Mehrdeutigkeiten
+\item[-] Mehrdeutigkeiten (Abb. \ref{fig:obrepr}a unten)
 \item[-] hoher Eingabeaufwand
 \item[-] keine Kollisionsberechnung
 \item[-] kein Schnitt
@@ -279,7 +279,7 @@ Auf ihnen sind verschiedene Operationen definiert, z.B.
 \centering
 \begin{tabular}{|p{6.5cm}|p{6.5cm}|}
 \hline
-Objekt $A$ \includegraphics[width=.07\textwidth]{figures/ch02_a.png} & Objekt $B$ \includegraphics[width=.07\textwidth]{figures/ch02_b.png}\\
+ & Objekte $A$ \includegraphics[width=.07\textwidth]{figures/ch02_a.png} \& $B$ \includegraphics[width=.07\textwidth]{figures/ch02_b.png}\\
 \hline
 Vereinigung $A \cup B$ (Summe) & \includegraphics[width=.07\textwidth]{figures/ch02_ab.png}\\
 \hline
@@ -484,7 +484,7 @@ Ein \textcolor{red}{Operator} ist definiert durch $OP = (N, O, A, Par, K)$ mit
 \item $K$ = Körper des Operators:
 \begin{itemize}
 \item \textcolor{red}{\textbf{Aktion}/Elementaroperator}:\\ ausführbares Programm\\ $\Rightarrow$ Realisierung einfacher Fähigkeiten
-\item \textcolor{red}{\textbf{Task}/Makro-Operator}:\\ besteht aus weiteren Operationen $K = K_1K_2...K_n$ $\Rightarrow$\\ Realisierung einfacher Fähigkeiten
+\item \textcolor{red}{\textbf{Task}/Makro-Operator}:\\ besteht aus weiteren Operationen $K = K_1K_2...K_n$\\ $\Rightarrow$ Realisierung komplexer Aktionen
 \end{itemize}
 \end{itemize}
 \textbf{Hierarchische Repräsentation -- Ausführung}:
@@ -526,7 +526,7 @@ Symbolische Abstraktionsebene zur Roboterprogrammierung
 \begin{enumerate}
 \item \textbf{Simulation der Komponenten}: Validierung anhand gegebener Einschränkungen (Kollisionen, Erreichbarkeit, Optimalitätskriterien: Weg, Zeit, Energie, ...)
 \begin{itemize}
-\ita Für die Simulation von Effekten durch Manipulators wird die Physiksimulation verwendet: Masse, Reibung, Kräfte, Gelenke
+\ita Für die Simulation von Effekten durch Manipulatoren wird die Physiksimulation verwendet: Masse, Reibung, Kräfte, Gelenke
 \end{itemize}
 \item \textbf{Graphische Animation}: Der Anwender überprüft visuell die erstellten Modelle
 \begin{itemize}
@@ -534,7 +534,7 @@ Symbolische Abstraktionsebene zur Roboterprogrammierung
 \end{itemize}
 \end{enumerate}
 
-\paragraph*{Aufgabenmodell -- Zusammenfassung und Diskussion}:\newline
+\paragraph*{Aufgabenmodell -- Zusammenfassung und Diskussion}\phantom\newline
 \textbf{Zusammenfassung}:
 \begin{itemize}
 \item Aufgabenmodell basiert auf elementaren Operationen

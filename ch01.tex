@@ -112,14 +112,14 @@ abzufahrenden Bahn
 \item Erfassung der Bewegung durch externe Sensoren (zB. Kameras,
 Laserscanner)
 \item Berechnung der inversen Kinematik
+\item Abspeichern der Bahn als Folge der Gelenkwinkel
 \end{itemize}
 Automatisch
 \begin{itemize}
 \item Vorgabe des Start- und Zielpunktes
 \item Sensorische Ertastung der Sollkontur (zB. über Kraft-Momenten-Sensor)
 \end{itemize}
-Anwendung: Abspeichern der Bahn als Folge der Gelenkwinkel
-Schleifen, Entgraten von Werkstücken	
+Anwendung: Schleifen, Entgraten von Werkstücken	
 \end{itemize}
 \begin{table}[hbt]
 \centering
@@ -242,7 +242,7 @@ Das Aufgabenmodell ist gegeben durch Anfangs- und Endzustand (z.B. Relationale D
 \caption{Der Cranfield-Montage-Benchmark}
 \label{cranfield}
 \end{figure}\\
-\paragraph{Anwender $\rightarrow$ Roboter}
+\paragraph{Anwender $\rightarrow$ Roboter} /vgl. \autoref{einordrobprog}
 Jedes Robotersystem besitzt eine roboterabhängige Steuerungsebene, welche folgende Eigenschaften kapselt:
 \begin{itemize}
 \item Ansteuerung der Hardware (sowohl interne als auch externe)
@@ -253,7 +253,7 @@ Jedes Robotersystem besitzt eine roboterabhängige Steuerungsebene, welche folge
 \begin{figure}[h!]\centering 
 \includegraphics[width=0.7\linewidth]{figures/ch01_einordnung.png}
 \caption{Einordnung roboterorientierte Programmierung}
-\label{einord}
+\label{einordrobprog}
 \end{figure}
 \paragraph{Anforderungen an die roboterorientierte Programmierung}
 \begin{itemize}

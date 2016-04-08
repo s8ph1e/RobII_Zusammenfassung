@@ -14,7 +14,7 @@ Beispiel eines Planungsproblems -- Verteilen von Post durch einen Roboter:
 	\item Gegeben: Menge an Paketen mit jeweiligem Adressaten, Menge an Adressaten, Roboteraktionen: Greifen; Fahren; Ablegen
 	\item Gesucht: Handlungsfolge, die alle Pakete an ihren Bestimmungsort bringt
 	\item Einschränkungen: Batterieladung
-	\item Richtlinien: Zeitoptimal, wegoptimal, unterschiedliche Prioritäten,
+	\item Richtlinien: Zeitoptimal, wegoptimal, unterschiedliche Prioritäten
 \end{itemize}
 
 Probleme:
@@ -127,7 +127,7 @@ A* ist eine Baumsuche mit nicht systematischer Suche entlang der Baumstruktur.
 \begin{itemize}
 	\item Heuristik $h(n)$: Funktion, die die Distanz (Kosten) des Zustandes $n$ zum Zielzustand schätzt
 	\item Funktion $g(n)$: Ermittelt die tatsächlichen Kosten vom Ausgangszustand zum Zustand $n$
-	\item Suche jeweils in dem Knoten fortsetzten, in dem $f(n) = g(n) + h(n)$ minimal ist.
+	\item Suche jeweils in dem Knoten fortsetzen, in dem $f(n) = g(n) + h(n)$ minimal ist.
 \end{itemize}
 A* ist \textbf{vollständig} und \textbf{optimal} falls $h(n)$ eine untere Schranke für die tatsächlichen Kosten darstellt, d.h.\ die tatsächlichen Kosten unterschätzt.
 
@@ -135,7 +135,7 @@ A* ist \textbf{vollständig} und \textbf{optimal} falls $h(n)$ eine untere Schra
 Das zusätzliche Wissen ist die vollkommene Unabhängigkeit bestimmter Teilaufgaben.
 \vspace{1em} \\
 \begin{tabular}{p{0.5\textwidth} p{0.5\textwidth}}
-\textbf{Linear} & \textbf{Nichtlinear} \\
+\textbf{Lineare Planung} & \textbf{Nichtlineare Planung} \\
 \begin{itemize}
 	\item Lösungen von Teilzielen werden nacheinander geplant
 	\item Stack noch offener Teilziele
@@ -162,15 +162,15 @@ Das zusätzliche Wissen ist die vollkommene Unabhängigkeit bestimmter Teilaufga
 
 %\paragraph*{Aufgabenspezifisches Wissen erforderlich}
 
-Drei weitere Arten der uninformierten Suche/Heuristiken sind in \autoref{ch06_linearePlanung}, \autoref{ch06_nichtlinearePlanung} und \autoref{ch06_hierarchischePlanung} ausgeführt.
+Drei weitere Arten der informierten Suche/Heuristiken sind in \autoref{ch06_linearePlanung}, \autoref{ch06_nichtlinearePlanung} und \autoref{ch06_hierarchischePlanung} ausgeführt.
 \subsection{Lineare Planung}
 \label{ch06_linearePlanung}
 \begin{itemize}
 	\item Jedes Teilziel wird für sich gelöst.
-	Dann Lösung des nächsten Teilziels.
-	\item Teilziele auf einem Stack (feste Reihenfolge).
+	Dann Lösung des nächsten Teilziels
+	\item Teilziele auf einem Stack (feste Reihenfolge)
 	\item Voraussetzung: Teilzeile sind (weitestgehend) unabhängig
-	\item Lineare Planung ist effizient, wenn die Voraussetzung erfüllt ist.
+	\item Lineare Planung ist effizient, wenn die Voraussetzung erfüllt ist
 \end{itemize}
 Klassisches Beispiel: \textbf{Blockwelt}
 
@@ -178,11 +178,11 @@ Klassisches Beispiel: \textbf{Blockwelt}
 Szenario: Tisch mit Blöcken, Greifer\\
 Operatoren:
 \begin{itemize}
-	\item Pickup(x): Block x vom Tisch greifen
+	\item $Pickup(x)$: Block $x$ vom Tisch greifen
 	Nach der Anwendung von $Putdown(2,s_0)$ gilt $Ontable(2,s_1)$.
-	\item Putdown(x): Block x auf Tisch legen
-	\item Stack(x,y): x auf y ablegen
-	\item Unstack(x,y): x von y aufnehmen
+	\item $Putdown(x)$: Block $x$ auf Tisch legen
+	\item $Stack(x,y)$: $x$ auf $y$ ablegen
+	\item $Unstack(x,y)$: $x$ von $y$ aufnehmen
 \end{itemize}
 
 
@@ -201,10 +201,10 @@ Das Szenenmodell ist somit eine Konjunktion von Prädikaten in Prädikatenlogik.
 	\item Situationen: sind Zustände der Umwelt.
 	Sie werden durch die Anwendung von Aktionen auf den Anfangszustand dargestellt
 	\item Situationsabhängige Attribute: Die Attribute selbst werden durch Funktionen oder Variablen dargestellt.
-	Ihre Auswertung wird durch das Prädikat \emph{holds(fluent,situtation)} vorgenommen.
+	Ihre Auswertung wird durch das Prädikat \emph{holds(fluent,situation)} vorgenommen.
 	\item Situationsunabhängige Attribute: können einfach als Prädikate formuliert werden.
 	\item \textbf{Vorbedingungen} von Aktionen (Bsp. Blockwelt $Holding(x,s_t) \wedge Clear(y,s_t)$)
-	\item \textbf{Nachbedingungen} von Aktionen (Bsp. Blockwelt $\neg Holding(x, s_{t+1}) \wedge Holding(NIL, s_{t+1}) \wedge \neg Clear(y, s_{t+1}) \wedge On(x,y,s_{t+1} \wedge Clear(x, s_{t+1})$)
+	\item \textbf{Nachbedingungen} von Aktionen (Bsp. Blockwelt $\neg Holding(x, s_{t+1}) \wedge Holding(NIL, s_{t+1}) \wedge \neg Clear(y, s_{t+1}) \wedge On(x,y,s_{t+1}) \wedge Clear(x, s_{t+1})$)
 	\item Ergebnisse von Aktionen: Konsequenz einer Aktion auf die folgende Situation.
 \end{itemize}
 \textbf{Beispiel -- Lineare Planung in der Blockwelt}:
@@ -222,7 +222,7 @@ Das Szenenmodell ist somit eine Konjunktion von Prädikaten in Prädikatenlogik.
 \begin{itemize}
 	\item Operator $Putdown(x, s_t)$:\\
 		- Vorbedingung: $Holding(x, s_t)$\\
-		- Nachbedingung: $Ontable(x, s_{t+1}) \land Clear (x, s_{t+1} ) \land Holding(NIL, s_{t+1} ) \land \not Holding(x, s_{t+1})$
+		- Nachbedingung: $Ontable(x, s_{t+1}) \land Clear (x, s_{t+1} ) \land Holding(NIL, s_{t+1} ) \land \lnot Holding(x, s_{t+1})$
 	\item Beispiel: Zustand $s_0$: $Holding(2, s_0) \land Ontable(1, s_0)$
 	\item Nach Anwendung von $Putdown(2, s_0)$ gilt $Ontable(2, s_1)$
 	\item Intuitiv ist klar: Es gilt auch $Ontable(1, s_1)$. Dies kann aber nicht formal aus $Ontable(1, s_0)$ abgeleitet werden.
@@ -236,19 +236,19 @@ Ein linearer Planer.
 Wie beim Situationskalkül haben Operatoren Vor- und Nachbedingungen.
 Die Nachbedingungen bestehen jedoch aus einer \textbf{Add-} und einer \textbf{Delete"=Liste}.
 Die Add"=Liste enthält diejenigen Attribute, die dem neuen Zustand durch das Ausführen der Aktion hinzugefügt werden.
-Die Delete"=liste enthält diejenigen Attribute, die aus dem neuen Zustand durch das Ausführen der Aktion negiert werden.\\
+Die Delete"=Liste enthält diejenigen Attribute, die aus dem neuen Zustand durch das Ausführen der Aktion negiert werden.\\
 
-Annahme: Ein Operator ändert, wenn man ihn in der Welt ausführt, genau das, was in seiner Nachbedingung angegeben ist (d.h.\ Attribute, die nicht in der Definition des Operators erwähnte werden bleiben unverändert).
+Annahme: Ein Operator ändert, wenn man ihn in der Welt ausführt, genau das, was in seiner Nachbedingung angegeben ist (d.h.\ Attribute, die nicht in der Definition des Operators erwähnt werden bleiben unverändert).
 
 \paragraph{Operator}
 \begin{itemize}
-	\item Operator: o
+	\item Operator: $o$
 	\item Aktion: \emph{Pickup(x)}
 	\item Vorbedingung: $Holding(NIL) \wedge Clear(x) \wedge Ontable(x)$
 	\item Nachbedingungen:
 	\begin{itemize}
-		\item Add-Liste add(o): $Holding(x)$
-		\item Delete-Liste del(o): $Holding(NIL), Clear(x), Ontable(x)$
+		\item Add-Liste $add(o)$: $Holding(x)$
+		\item Delete-Liste $del(o)$: $Holding(NIL), Clear(x), Ontable(x)$
 	\end{itemize}
 \end{itemize}
 
@@ -257,15 +257,15 @@ Annahme: Ein Operator ändert, wenn man ihn in der Welt ausführt, genau das, wa
 	\item Situation: Ansammlung von Fakten ($\{ Ontable(1), On(2, 1), Holding(3), ... \}$)\\
 	\includegraphics[width=.2\textwidth]{figures/ch06_strips-bsp.png}
 	\item Planung: Suche eines Weges vom Initialzustand zum Zielzustand
-	\item Ziel: Nicht ein Zielknoten, sondern eine Menge von Knoten (Ziel gibt nicht immer alles vor, bspw.\ sagt \emph{On(3,2)} nichts über Block 1 aus).
+	\item Ziel: Nicht ein Zielknoten, sondern eine Menge von Knoten (Ziel gibt nicht immer alles vor, bspw. sagt $On(3,2)$ nichts über Block 1 aus).
 	\item [$\rightarrow$] Rückwärtssuche von der Menge der Zielknoten (\textbf{zielzentriert}) mit Mittel"=Ziel Analyse mit Zielkeller (\textbf{MZAMZK}):
 	\begin{itemize}
 		\item Eingabe: Menge der Ziele $Z$ und Startsituation $S$
 		\item Global: Menge der Operatoren
-		\item Varaible: Aktuelle Situation $St$
+		\item Variable: Aktuelle Situation $S_t$
 		\item Ausgabe: Plan $P$ (lineare Ordnung von Operatoren)
 	\end{itemize}
-	ALgorithmus (MZAMKZK) -- Wiederhole solange offene Ziele vorhanden sind:
+	Algorithmus (MZAMKZK) -- Wiederhole solange offene Ziele vorhanden sind:
 	\begin{enumerate}
 		 \item Wähle das erste Ziel $g$ aus (top of stack)
 		 \item Wähle einen anwendbaren Operator $o$, dessen Add"=Liste $g$ enthält
@@ -276,7 +276,7 @@ Annahme: Ein Operator ändert, wenn man ihn in der Welt ausführt, genau das, wa
 	\begin{itemize}
 		\item Einführung eines Kritikers zum Plan"=Debugging
 		\item Finden von sich aufhebenden Operationen
-		\item Löschen der entsprechenden Planteile (\emph{Pickup(1)} direkt vor \emph{Putdown(1)} wird gelöscht)
+		\item Löschen der entsprechenden Planteile ($Pickup(1)$ direkt vor $Putdown(1)$ wird gelöscht)
 	\end{itemize}
 \end{itemize}
 
@@ -285,14 +285,14 @@ Teilzielinteraktionen:
 	\item Negative TZI: Bearbeitung eines Teilziels zerstört Teile der Bearbeitung eines anderen Ziels
 	\item Positive TZI: Bearbeitung eines Teilziels erledigt Teile der Bearbeitung eines anderen Ziels mit
 \end{itemize}
-STRIPS berücksichtigt positive TZI, aber keine negative TZI.\\
+STRIPS berücksichtigt positive TZI, aber keine negativen TZI.\\
 
 \textbf{Sussman Anomalie} (suboptimale Pläne)
 \begin{itemize}
 	\item Ziel $On(1,2) \wedge On(2,3)$ (vgl. \autoref{ch06_sussman})
-	\item Erzeugter Plan: \emph{Unstack(3,1)}, \emph{Putdown(3)}, \emph{Pickup(1)}, \emph{Stack(1,2)}, \emph{Unstack(1,2)}, \emph{Putdown(1)}, \emph{Pickup(2)}, \emph{Stack(2,3)}, \emph{Pickup(1)}, \emph{Stack(1,2)}
+	\item Erzeugter Plan: $Unstack(3,1)$, $Putdown(3)$, $Pickup(1)$, $Stack(1,2)$, $Unstack(1,2)$, $Putdown(1)$, $Pickup(2)$, $Stack(2,3)$, $Pickup(1)$, $Stack(1,2)$
 	\item Die Sussman Anomalie kann mit POP (\autoref{ch06_nichtlinearePlanung}) oder Einführung eines Kritikers gelöst werden.
-	\item $Stack(1,2); Unstack(1,2)$ hebt sich auf, wird also gelöscht; nuns sind $Pickup(1); Putdown(1)$ direkt hintereinander, werden also auch gelöscht
+	\item $Stack(1,2); Unstack(1,2)$ hebt sich auf, wird also gelöscht; nun sind $Pickup(1); Putdown(1)$ direkt hintereinander, werden also auch gelöscht
 	\item[$\rightarrow$] erhalte optimierten Plan: $Unstack(3,1); Putdown(3); Pickup(2); Stack(2,3); Pickup(1); Stack(1,2)$
 \end{itemize}
 
@@ -314,12 +314,12 @@ STRIPS berücksichtigt positive TZI, aber keine negative TZI.\\
 \begin{itemize}
 	\item Geg.: zwei Objekte $o_1$ und $o_2$, Flugzeug $p$ und Flughafen $a_1$
 	\item Aktionen: $load(a,o,p)$ und $unload(a,o,p)$
-	\item Ziel: $at(a_2, o_1$, $at(a_2, o_2)$
+	\item Ziel: $at(a_2, o_1)$, $at(a_2, o_2)$
 	\item definiere: $fly(p,a_1,a_2)$ mit
 	\begin{itemize}
-		\item Precond: $plane(p) \wedge at(p,a_1) \wedge haveFuel(p)$
-		\item Add: $at(p,a_2)$
-		\item delete: $at(p,a_1), haveFuel(p)$
+		\item Vorbedingung: $plane(p) \wedge at(p,a_1) \wedge haveFuel(p)$
+		\item $add(fly)$: $at(p,a_2)$
+		\item $del(fly)$: $at(p,a_1), haveFuel(p)$
 	\end{itemize}
 	\item[$\rightarrow$] kann mit linearer Planung nicht gelöst werden, da immer ein Teilziel vollständig erfüllt wird und damit die Vorbedingung für das zweite Ziel nicht mehr gegeben ist
 \end{itemize}
@@ -343,7 +343,7 @@ Planung als Suche mit einer (Teil-)Ziel"=Menge (statt Stack). Arbeite mit einer 
 Im Suchraum werden alle möglichen Teilziel"=Anordnungen dargestellt: Teilzielinteraktionen durch Ziel"=Verzahnung bei der Planung betrachtet.
 Abhängigkeiten der einzelnen Operatoren können geplant werden.
 Plan kann z.B.\ in Form eines Vorranggraphen gespeichert werden.
-NLP folgt \textbf{Least Commitment Strategie} (Prinzip der geringsten Festlegung):
+Nichtlineare Planungssysteme (NLP) folgen einer \textbf{Least Commitment Strategie} (Prinzip der geringsten Festlegung):
 \begin{itemize}
 	\item Es gibt keine a priori Festlegung der Reihenfolge, in der die Ziele erreicht werden sollen
 	\item Die Reihenfolge, in der Aktionen ausgeführt werden, wird nur soweit nötig festgelegt
@@ -362,7 +362,7 @@ Nachteile:
 	\item Komplexere Algorithmen
 \end{itemize}
 
-Ein nicht"=linearer Plan $P$ ist eine Datenstruktur mit folgenden Komponenten:
+Ein \textbf{nicht"=linearer Plan $P$} ist eine Datenstruktur mit folgenden Komponenten:
 \begin{itemize}
 	\item eine Menge von Planschritten $S$ mit Operation $o$ ($S:o$)
 	\item eine Menge von Ordnungsbedingungen, die die Reihenfolge von Planschritten angeben ($S_i < S_j$), d.h.\ \glqq $S_i$ vor $S_j$ \grqq
@@ -384,7 +384,7 @@ Wiederhole solange Zielmenge $G$ nicht leer ist
 \end{itemize}
 
 \subsubsection{Partial Order Planning (POP)}
-Abhängigkeiten der einzelnen Operatoren können geplant werden und der Plan kann z.B. in Form eines Vorranggraphen gespeichert werden (Beispiel in \autoref{ch06_vorrang}): Partial Order Planning (POP)
+Abhängigkeiten der einzelnen Operatoren können geplant werden und der Plan kann z.B. in Form eines Vorranggraphen gespeichert werden (Beispiel in \autoref{ch06_vorrang})\\
 \begin{figure}[ht]\centering 
 \includegraphics[width=.4\textwidth]{figures/ch06_vorrang.png}
 \caption{Vorranggraph}
@@ -405,22 +405,9 @@ POP basiert auf einer Suche im Raum der mögliche Pläne, nicht auf einer direkt
 		\item Instanziieren von Variablen
 	\end{itemize}
 \end{itemize}
-Nichtlineare Planungssysteme (NLP) folgen einer Least Commitment Strategie: \glqq Prinzip der geringsten Festlegung\grqq{}
-\begin{itemize}
-\item Es gibt keine a priori Festlegung der Reihenfolge, in der die Ziele erreicht werden sollen
-\item Die Reihenfolge, in der Aktionen ausgeführt werden, wird nur soweit nötig festgelegt
-\item Variablen werden nur, falls notwendig, instanziiert
-\end{itemize}
+\newpage
 POP ist \textbf{vollständig} und erzeugt konsistente nicht"=lineare Pläne.\\
 Jede Linearisierung eines solchen Plans ist eine Lösung des Planungsproblems.\\ \\
-Ein \textbf{nicht-linearer Plan $P$} ist eine Datenstruktur mit folgenden Komponenten:
-\begin{itemize}
-\item eine Menge von Planschritten $S$ mit Operation $o$ $(S:o)$
-\item einer Menge von Ordnungsbedingungen, die die Reihenfolge von Planschritten angeben $(S_i < S_j)$, d.h. \glqq $S_i$ vor $S_j$\grqq
-\item einer Menge von Variablenbedingungen $(x=t)$, wobei $x$ eine Variable und $t$ ein Term ist, und Ungleichungsbeschränkungen
-\item einer Menge von kausalen Beziehungen (causal links), die Zusammenhänge zwischen Planschritten beschreiben, d.h. $S_i$ erzeugt die Vorbedingung $c$ für $S_j$
-\item Menge der offenen Vorbedingungen
-\end{itemize}
 Bei NLP POP kann es zu Konflikten kommen, wie in \autoref{ch06_popKonflikte} dargestellt.
 \begin{figure}[ht]\centering 
 \includegraphics[width=0.7\textwidth]{figures/ch06_popKonflikte.png}
@@ -434,7 +421,7 @@ Indem man \textbf{Kritiker} in NLP einführt kann man nach der Konfliktauflösun
 	\item Hilfreiche Interaktionen entdecken
 	\item Umwege entfernen (siehe Sussman"=Anomalie)
 \end{itemize}
-
+\newpage
 \subsubsection{Total vs.\ Partial Order Planning}
 \begin{tabular}{p{0.5\textwidth} p{0.5\textwidth}}
 \textbf{Total Order} & \textbf{Partial Order}\\
@@ -496,7 +483,7 @@ Ein \textbf{abstrakter Plan} enthält \underline{zusammengesetzte Operatoren}:
 		\item Ähnliche Funktionsaufrufe
 	\end{itemize}
 \end{itemize}
-Ein voll instantiierter Plan besteht nur aus \underline{Primitiven Operatoren}:
+Ein voll instantiierter Plan besteht nur aus \underline{primitiven Operatoren}:
 \begin{itemize}
 	\item STRIPS"=ähnliche Beschreibung
 	\item keine Vorbedingungen

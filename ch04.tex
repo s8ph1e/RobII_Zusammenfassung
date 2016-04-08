@@ -38,7 +38,7 @@ Hindernisraum liegen:
 \end{align*}
 \item \red{kollisionsfreier Weg $\tau$}: Weg mit $Bild(\tau) \subseteq \mathbb{K}_F$, also ein Pfad welcher alle Einschränkungen erfüllt
 \end{itemize}
-Bei einer Bahnplanung im Konfigurationsraum werden Bewegungen eines Roboters als \red{Trajektorie im Konfigurationsraum}, d.h. als Zustandsänderungen über die Zeit
+Bei einer Bahnplanung im Konfigurationsraum werden Bewegungen eines Roboters als \textbf{Trajektorie im Konfigurationsraum}, d.h. als Zustandsänderungen über die Zeit
 relativ zu einem stationären Koordinatensystem (kartesischer Raum, Gelenkwinkelraum) aufgefasst:
 \begin{itemize}
 \item Gegeben: $K_{Start}$ = Startkonfiguration, $\land_{Ziel}$ = Menge der Zieleinschränkungen
@@ -129,7 +129,7 @@ Randbereich groß sind findet zunächst eine rasche Exploration und dann eine Ve
 		\includegraphics[width=\textwidth]{figures/ch04_voron3.png}
 	\end{subfigure}
 	\begin{subfigure}{.3\textwidth}
-		\includegraphics[width=\textwidth]{figures/ch04_voron3.png}
+		\includegraphics[width=\textwidth]{figures/ch04_voron4.png}
 	\end{subfigure}
 	\begin{subfigure}{.3\textwidth}
 		\includegraphics[width=\textwidth]{figures/ch04_voron5.png}
@@ -185,7 +185,7 @@ Hierzu muss der Basisalgorithmus erweitert werden:
 	\label{fig:einschr}
 \end{figure}
 \textbf{Frage 3: Wie zielgerichtet planen?}
-Wie in \autoref{vb1} dargestellt definiert die Menge der Zieleinschränkungen i.d.R. ein stark begrenztes Gebiet in $\mathbb{K}$ (roter Bereich im 6. Panel der Abbildung), z.B. endliche Menge von gültigen Zielkonfigurationen. Somit ist die Wahrscheinlichkeit eine Zielkonfiguration zufällig zu erzeugen minimal, es dauert recht lange bis der Baum in den betreffenden Bereich reinwächst.
+Wie in \autoref{fig:vb1} dargestellt definiert die Menge der Zieleinschränkungen i.d.R. ein stark begrenztes Gebiet in $\mathbb{K}$ (roter Bereich im 6. Panel der Abbildung), z.B. endliche Menge von gültigen Zielkonfigurationen. Somit ist die Wahrscheinlichkeit eine Zielkonfiguration zufällig zu erzeugen minimal, es dauert recht lange bis der Baum in den betreffenden Bereich reinwächst.
 Daher ist die in Algorithmus \autoref{alg:rrt-detail} dargestellte Modifikation der Stichprobenerzeugung sinnvoll (vgl. \autoref{rrt-erw}). Der resultierende Algorithmus ist Algorithmus \ref{alg:rrt-erw}.\\
 \begin{algorithm}
   \caption{Detail
@@ -307,7 +307,7 @@ Problem: Narrow-Passages und Nullmengen treten sehr viel häufiger als bei Kolli
 \end{itemize}
 \textbf{Ansatz}\footnote{basiert auf [Stilman07], [Berenson09]}:
 \begin{itemize}
-\item Wesentliches Konzept: Erweiterung der Einschränkung-Definition um Richtungsfunktion im Taskraum (\glqq Öffnen der Blackbox\grqq)
+\item Wesentliches Konzept: Erweiterung der Einschränkung-Definition um Richtungsfunktion im Task\-{raum} (\glqq Öffnen der Blackbox\grqq)
 \item Richtungsfunktion berechnet den Abstand und den Richtungsvektor zu einem Zustand, der die Einschränkung erfüllt
 \item Verwendung lokaler Optimierung mit Gradientenabstieg um von beliebiger Konfiguration zu einer gültigen Konfiguration zu kommen
 \item Funktioniert sehr gut in der Praxis (oftmals einfache, konvexe Einschränkungen)
@@ -400,7 +400,7 @@ Bei IPoR II findet eine simple Abbildung auf Greifaktionen statt:
 Für die Klassifikation des menschlichen Griffs gibt es z.B. folgende Ansätze:
 \begin{itemize}
 \item Klassenhierarchie nach Cutkosky
-\item Training einer Support Vector Machine in jeder Hierarchieebene (10)
+\item Training einer Support Vector Machine in jeder Hierarchieebene 
 \item Hierarchische Auswertung der Support Vector Machines
 \end{itemize}
 \subsubsection*{Cutkosky-Hierarchie}
@@ -457,28 +457,23 @@ Task Wrench Space (TWS): aufgabenabhängig, hier: Knopf drücken & \includegraph
 \item Beispiel: größte Hyperkugel um 0, die im GWS liegt
 \end{itemize}
 \end{itemize}
+\subsubsection*{Vorwärtsplaner: GraspIt! Simulator für Greifbewegungen}
 Griffe werden bei der \textbf{Vorwärtsgriffplanung} in folgenden Schritten berechnet:
 \begin{itemize}
 \item[1.] Setze Gelenkwinkel des Handmodells vor dem Zugreifen, z.B. prismatischer Kraftgriff
 \item[2.] Setze 3d-Handmodell relativ zu Objekt vor dem Anrücken
 \item[3.] Bewege Hand auf das Objekt zu
-\item[4.] Schließe jeden einzelnen Finger bis auf Kontakt: Einfacher Algorithmus\footnote{Spezialisierte Algorithmen basierend auf Distanz: C2A [Tang2009]}
+\item[4.] Schließe jeden einzelnen Finger bis auf Kontakt: Einfacher Algorithmus\footnote{Spezialisierte Algorithmen basierend auf Distanz: C2A [Tang2009]} (vgl. \autoref{fig:graspit})
 \begin{itemize}
 \item[1.] Schrittweise Änderung der Gelenkwinkel bis Hand komplett geschlossen
-\item[2.] Überprüfung der Kollisionen in jedem Schritt → geom. Objektmodell
+\item[2.] Überprüfung der Kollisionen in jedem Schritt $\rightarrow$ geom. Objektmodell
 \item[3.] Bei Kollision: gebe vorherige Gelenkwinkel zurück
 \end{itemize}
 \item[5.] Bestimme Kraftkegel in allen Kontaktpunkten
 \item[6.] Berechne Griffqualität
 \item[7.] $\ast$ Iteriere bis Griff mit hoher Griffqualität gefunden
 \end{itemize}
-\subsubsection*{Vorwärtsplaner: GraspIt! Simulator für Greifbewegungen}
-Die Greifbewegung erfolgt nach einem einfachen Algorithmus: Finger schließen bis Kontakt (vgl. \autoref{fig:graspit})
-\begin{enumerate}
-\item Schrittweise Änderung der Gelenkwinkel bis Hand komplett geschlossen
-\item Überprüfung der Kollisionen in jedem Schritt $\rightarrow$ geom. Objektmodell
-\item Bei Kollision: gebe vorherige Gelenkwinkel zurück
-\end{enumerate}
+\newpage
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=.7\textwidth]{figures/ch04_graspit.png}
@@ -522,5 +517,5 @@ Das \textbf{Lernen von Griffen durch PdV} ist im folgenden noch einmal zusammeng
 \item Bestimmung der Kontaktstellen mit geometrischem Objektmodell
 \item Berechnung des gewählten Qualitätsmaßes für Griffe
 \end{itemize}
-\item[3.] \underline{Ausführung auf dem Robotersystem: Griffkraft manuell nachjustiert}
+\item[3.] \underline{Ausführung auf dem Robotersystem}: Griffkraft manuell nachjustiert
 \end{itemize}

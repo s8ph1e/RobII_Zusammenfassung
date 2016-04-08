@@ -32,7 +32,7 @@ Fundamentale Fragen:
 \end{itemize}
 \paragraph{Industrieroboter}
 \begin{itemize}
-	\item Oftmals, bei Abwesenheit von Sensorik, kein Agent, sondre nur ein Werkzeug
+	\item Oftmals, bei Abwesenheit von Sensorik, kein Agent, sondern nur ein Werkzeug
 	\item Physische Umwelt
 	\item Beschränkte Umwelt
 	\item Wenn überhaupt rationaler Agent, üblicherweise extrem begrenzter Entscheidungsrahmen
@@ -72,12 +72,12 @@ Umwelten verschiedener Agenten können gut durch einige fundamentale, duale Eige
 \textbf{statisch} & \centering vs.\ & \textbf{dynamisch}\\
 Der Agent ist das einzige Element, welches den Zustand der Umwelt verändert
 & &
-Die Umwelt kann sich auch ohne zutun des Agenten verändern
+Die Umwelt kann sich auch ohne Zutun des Agenten verändern
 \\
 \textbf{episodisch} & \centering vs.\ & \textbf{sequentiell}\\
-Der zeitliche Verlauf des Geschehens  ist in abgeschlossene Einheiten unterteilt, zwischen denen keinerlei kausal Zusammenhänge bestehen
+Der zeitliche Verlauf des Geschehens  ist in abgeschlossene Einheiten unterteilt, zwischen denen keinerlei Kausalzusammenhänge bestehen
 & &
-Die vollständige zeitliche Vergangenheit hat Auswirkungen auf die Gegenwart ,die Gegenwart auf die gesamte Zukunft
+Die vollständige zeitliche Vergangenheit hat Auswirkungen auf die Gegenwart, die Gegenwart auf die gesamte Zukunft
 \\
 \textbf{diskret} & \centering vs.\ & \textbf{kontinuierlich}\\
 Die Zustände der Umwelt sind diskret, ebenso der zeitliche Verlauf des Geschehens
@@ -105,9 +105,9 @@ Die Beschreibung der Umwelt durch das jeweils komplexere Merkmal wird nur gewäh
 
 \subsubsection{Utility -- Motivation des Agenten}
 \begin{itemize}
-	\item Ein Agent benötigt Motivation um Absichten als Fundament für Entscheidungen
+	\item Ein Agent benötigt Motivation und Absichten als Fundament für Entscheidungen
 	\item In der Entscheidungstheorie durch das Konzept der \textbf{Utility} abgebildet (Ursprung des Begriffs in der Ökonomie)
-	\item Dieses Konzept ist deutlich allgemeiner, als spezielle Ziele z.B.\ in der logikbasierten Planung	
+	\item Dieses Konzept ist deutlich allgemeiner als spezielle Ziele z.B.\ in der logikbasierten Planung	
 \end{itemize}
 
 \paragraph{Konzept der Utility}
@@ -120,8 +120,8 @@ Die Beschreibung der Umwelt durch das jeweils komplexere Merkmal wird nur gewäh
 \end{itemize}
 
 \subsubsection{Problem}
-Die urspr\"ungliche, klassische Aktionsplanung nimmt an, dass die Umwelt statisch, episodisch, diskret, deterministisch und vollst\"andig beobachtbar ist und zudem konkreten, nicht \"uberlappenden Ziele verfolgt. 
-F\"ur eine dynamische, sequentielle und kontinuierliche Umwelt gibt es Erweiterungen des klassischen Aktionsplanens, im Hinblick \textbf{stochastisch}, \textbf{vollst\"andig beobachtbar} und \textbf{unterschiedlich stark konkurrierende Ziele} jedoch nicht.
+Die urspr\"ungliche, klassische Aktionsplanung nimmt an, dass die Umwelt statisch, episodisch, diskret, deterministisch und vollst\"andig beobachtbar ist und zudem konkrete, nicht \"uberlappende Ziele verfolgt. 
+F\"ur eine dynamische, sequentielle und kontinuierliche Umwelt gibt es Erweiterungen des klassischen Aktionsplanens, im Hinblick auf \textbf{stochastisch}, \textbf{vollst\"andig beobachtbar} und \textbf{unterschiedlich stark konkurrierende Ziele} jedoch nicht.
 %
 \begin{figure}[ht]
 	\centering 
@@ -132,7 +132,7 @@ F\"ur eine dynamische, sequentielle und kontinuierliche Umwelt gibt es Erweiteru
 	\end{subfigure}
 	\begin{subfigure}{.4\textwidth}
 		\includegraphics[width=\textwidth]{figures/ch07_umwelt-bsp.png}
-		\caption{Beispiel}
+		\caption{Beispiel: Museumsroboter}
 		\label{ch07_umwelt-bsp}
 	\end{subfigure}
 	\caption{}
@@ -140,7 +140,7 @@ F\"ur eine dynamische, sequentielle und kontinuierliche Umwelt gibt es Erweiteru
 
 \autoref{ch07_stumwelt} zeigt eine stochastische Umwelt.
 \"Ubergangswahscheinlichtkeiten beschreiben hierbei den Ausgang von Handlungen.
-In stochastischen Umgebungen ist daher es essenziell, dass mit numerischen Wahrscheinlichkeiten umgegangen werden kann, jedoch ist das in der klassischen, logikbasierten Aktionsplanung nicht der Fall, weshalb \textbf{probabilistische Methoden} (wie MDPs) zum Einsatz kommen.
+In stochastischen Umgebungen ist es daher essenziell, dass mit numerischen Wahrscheinlichkeiten umgegangen werden kann, jedoch ist das in der klassischen, logikbasierten Aktionsplanung nicht der Fall, weshalb \textbf{probabilistische Methoden} (wie MDPs) zum Einsatz kommen.
 %Exkurs zu Bayes F29+30
 \subsection{Markov Prozesse}
 \begin{itemize}
@@ -164,7 +164,7 @@ In stochastischen Umgebungen ist daher es essenziell, dass mit numerischen Wahrs
 \begin{itemize}
 \item nur die Gegenwart spielt eine Rolle f\"ur die Betrachtung der Zukunft
 \item die Wahrscheinlichkeit des Nachfolgezustands h\"angt nur vom aktuellen Zustand ab
-\item $Pr(X_{n+1} = x | X_n = x_n, \ldots, X_1 = x_1, X_0 = x_0) = Pr(X_{n+1}|X_n = x_n)$
+\item $Pr(X_{n+1} = x | X_n = x_n, \ldots, X_1 = x_1, X_0 = x_0) = Pr(X_{n+1} = x|X_n = x_n)$
 \end{itemize}
 \begin{figure}
 	\centering
@@ -177,8 +177,8 @@ Markovketten: Modellierung der Welt
 	\item Markovketten k\"onnen von Agenten zur Modellierung von stochastischen Umgebungen genutzt werden
 	\item Bei diskreten Markovketten muss die Welt dazu in eine diskrete Zustandsmenge zerlegt werden
 	\item Die Zerlegung kann f\"ur verschiedene Umweltaspekte getrennt erfolgen, z.B. Roboterposition, Objektform oder Intention eines Menschen
-	\item Welt als diskrete Zust\"ande: einfache Beispiel: Unterteilung von R\"aumen in diskrete Regionen (die Position eines mobilen Roboters wird durch die Region, in der er sich befindet, repr\"asentiert)
-	\item Welt als stochastischer Prozess: Bestimmte \underline{Ausl\"oser} f\"uhren zu stochastischen Zustands\"uberg\"angen (Bayesianische Modellierung), z.B. Handlung eines Agenten:\\ Beispiel:
+	\item Welt als diskrete Zust\"ande -- einfaches Beispiel: Unterteilung von R\"aumen in diskrete Regionen (die Position eines mobilen Roboters wird durch die Region, in der er sich befindet, repr\"asentiert)
+	\item Welt als stochastischer Prozess: Bestimmte \underline{Ausl\"oser} f\"uhren zu stochastischen Zustands\"uberg\"angen (Bayesianische Modellierung), z.B. Handlung eines Agenten:\\ Beispiel Museumsroboter:
 	\begin{itemize}
 		\item Der Roboter steht vor einem Mensch, es fand noch keine Kommunikation statt
 		\item M\"oglichkeit 1: Roboter sagt: Folge mir!; damit ergibt sich eine Wahrscheinlichkeit von $75\%$, dass der Mensch interessiert ist und die Intention hat zu folgen und $25\%$, dass der Mensch keine Lust hat, also nicht die Intention entwickelt zu folgen
@@ -205,14 +205,14 @@ Ketten von Handlungen bzw. Ausl\"osern f\"uhren zu Bayes-Netzwerken. F\"ur die E
 \end{itemize}
 Zust\"ande und Aktionen m\"ussen dabei einzigartig sein.
 Es gilt au{\ss}erdem die Markov-Eigenschaft, d.h. alle Wahrscheinlichkeiten h\"angen immer nur vom aktuellen Zustand ab und nicht von den bereits vergangenen.
-Die in jedem Schritt aufaddierte Belohnungen werden \emph{Utilitiy} genannt und die Aufgabe des Agenten besteht darin, Aktionen mit hoher Belohnung zu w\"ahlen, um die Utility zu maximieren.
+Die in jedem Schritt aufaddierten Belohnungen werden \emph{Utility} genannt und die Aufgabe des Agenten besteht darin, Aktionen mit hoher Belohnung zu w\"ahlen, um die Utility zu maximieren.
 
 \paragraph{Statische Eigenschaften}
 \begin{itemize}
 	\item In einem MDP ist die Welt zu jedem Zeitpunkt in \textbf{genau einem} Zustand (und nur in diesem, kein fuzzy Zustand, keine Wahrscheinlichkeits-Verteilung über mehrere Zustände
 	\ita brauche in echter Umgebung Diskretisierungsverfahren für kontinuierlichen Zustandsraum, im Zweifelsfall führe einen Restzustand \glqq other\grqq{} ein
 	\item In einem diskreten MDP ist dies ein symbolischer Zustand, welcher alle Eigenschaften der Welt repr\"asentiert
-	\item Der Agent kann in jedem Agentezyklus \textbf{genau eine} Handlung ausf\"uhren
+	\item Der Agent kann in jedem Agentenzyklus \textbf{genau eine} Handlung ausf\"uhren
 	\item In einem diskreten MDP (diskrete Zeit) ist dies eine symbolische Handlung (kann auf tieferer Ebene aus mehreren Subhandlungen bestehen)
 	\item Im reinen MDP nimmt der Agent den aktuellen Zustand \textbf{immer und eindeutig} wahr
 \end{itemize}
@@ -239,14 +239,14 @@ Die in jedem Schritt aufaddierte Belohnungen werden \emph{Utilitiy} genannt und 
 	\begin{figure}[!h]
 		\centering
   		\includegraphics[width=0.6\linewidth]{figures/ch07_transmod-bsp.png}
-		\caption{MDP Beispiel -- Transitionsmodell, Zeile muss Summe 1 haben, Spalten nicht (da Bias zu manchen Zuständen)}
+		\caption{MDP Beispiel -- Transitionsmodell, Zeilen müssen Summe 1 haben, Spalten nicht (da Bias zu manchen Zuständen)}
 		\label{fig:ch07:transmod-bsp}
 	\end{figure}
 \end{itemize}
 
 \paragraph{Belohnungsmodell}
 \begin{itemize}
-	\item $R(s,u) = \text{Belohnung oder Strafe}$: wenn der Zustand $s$ war und der Agent f\"uhrt die Handlung $u$ aus, erh\"alt er die sofortige Belohnung (oder negativer Belohnung, also Strafe) wie vom Modell an $R(s,u)$ gegeben
+	\item $R(s,u) = \text{Belohnung oder Strafe}$: wenn der Zustand $s$ war und der Agent f\"uhrt die Handlung $u$ aus, erh\"alt er die sofortige Belohnung (oder negative Belohnung, also Strafe) wie vom Modell an $R(s,u)$ gegeben
 	\item Das Belohnungsmodell ist eine Matrix
 	\item Die Eintr\"age k\"onnen beliebige Realzahlen sein, je nach Modellierung
 	\item Durch das Belohnungsmodell k\"onnen auch konkurrierende oder erg\"anzende Zielsetzungen modelliert werden
@@ -283,7 +283,7 @@ Die in jedem Schritt aufaddierte Belohnungen werden \emph{Utilitiy} genannt und 
 \begin{itemize}
 	\item Die Utility einer Zustandskette ist die Summe ihrer Belohnungen bzw. Strafen:\\ $U_h(\left[s_0, s_1, s_2, \ldots \right]) = R(s_0) + R(s_1) + R(s_2) + \ldots$
 	\item Die Einf\"uhrung eines Abschlagsfaktors (\emph{discount})  $\gamma \in \left[0,1\right]$ auf Zust\"ande  in der Zukunft erm\"oglicht eine endliche utility f\"ur alle unendlichen Zustandsketten (wie beim Menschen, Belohnung morgen ist mehr wert als Belohnung in einem Jahr):\\ $U_h(\left[s_0, s_1, s_2, \ldots \right]) = R(s_0) + \gamma R(s_1) + \gamma^2 R(s_2) + \ldots$\\
-	Somit bildet sich eine Reihe welche asymptotisch konvergiert und das Problem der unendlichen Summe gelöst. $\gamma$ sollte aber nicht zu aggressiv gewählt werden
+	Somit bildet sich eine Reihe welche asymptotisch konvergiert und das Problem der unendlichen Summe ist gelöst. $\gamma$ sollte aber nicht zu aggressiv gewählt werden
 \end{itemize}
 
 \paragraph{Entscheidungsfunktion}
@@ -318,7 +318,7 @@ Die in jedem Schritt aufaddierte Belohnungen werden \emph{Utilitiy} genannt und 
 \paragraph{Handlungswahl}
 \begin{itemize}
 	\item Es kann nun eine policy gefunden werden, die auf den aktuell zugewiesenen utilities basiert und I-Schritt weit optimal ist
-	\item Nach der utility FUnktion wird nun die Handlung, die die erwartete zuk\"unftige Belohnung maximiert gew\"ahlt: $\pi^{1step*}(s) = argmax_u \sum_{s'} T(s', u, s) U(s')$
+	\item Nach der utility Funktion wird nun die Handlung, die die erwartete zuk\"unftige Belohnung maximiert gew\"ahlt: $\pi^{1step*}(s) = argmax_u \sum_{s'} T(s', u, s) U(s')$
 	\item Durch diese Formel wird auch ein Zusammenhang zwischen einem Zustand und seinem Nachbarn gebildet
 \end{itemize}
 
@@ -410,7 +410,7 @@ Beispiel Museumsroboter:
 Markov Decision Processes sind ein theoretisches Rahmenwerk zur Modellierung von Entscheidungsfindung in
 \begin{itemize}
 	\item Dynamischen
-	\item Sequenziellen
+	\item Sequentiellen
 	\item Diskreten (aber auch kontinuierlichen)
 	\item Stochastischen
 	\item \textbf{Vollst\"andig} beobachtbaren (in Praxis meistens nicht gegeben, z.B. bei Serviceroboter)
@@ -432,7 +432,7 @@ Eine Erweiterung von MDPs f\"ur unvollst\"andig beobachtbare Umgebungen. Perzept
 		\item Aktueller Zustand kann auf Basis des vorherigen Zustands und der ausgef\"uhrten Handlung \underline{vorhergesagt} werden (prediction)
 	\end{itemize}
 	\item Die \textbf{Beobachtung} wird durch ein auf die Eigenschaften des physischen oder logischen Sensors abgestimmtes Unsicherheitsmodell abgebildet
-	\item Die Unsicherheit kann so explizit, numerisch angegebenw erden
+	\item Die Unsicherheit kann so explizit, numerisch angegeben werden
 	\item Diese Unsicherheit kann verschieden modelliert werde:
 	\begin{itemize}
 		\item kontinuierlich oder diskret
@@ -568,7 +568,7 @@ POMDPs ermöglichen die Entscheidungsfindung in Domänen mit den Eigenschaften:
 	\item Transitions- und Belohnungsmodell funktionieren wie beim MDP
 	\item Hinzu kommt das Beobachtungsmodell:
 	\begin{itemize}
-		\item $O(m,s') =$ Wahrscheinlichkeit: wenn die Beobachtung $m$ gemacht wurde, dann ist die Wahrscheinlichkeit, dass der wirkliche Weltzustand $s'$ ist, vom Modell an $O(m,s'$ gegeben
+		\item $O(m,s') =$ Wahrscheinlichkeit: wenn die Beobachtung $m$ gemacht wurde, dann ist die Wahrscheinlichkeit, dass der wirkliche Weltzustand $s'$ ist, vom Modell an $O(m,s')$ gegeben
 		\item Das Beobachtungsmodell ist eine Matrix
 	\end{itemize}
 \end{itemize}
